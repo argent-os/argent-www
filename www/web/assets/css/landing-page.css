@@ -36,8 +36,9 @@ h5, .h5 {
 
 h6, .h6 {
   font-size: 14px;
-  font-weight: 600;
-  text-transform: uppercase;
+  font-weight: 200;
+  font-family: 'Nunito';
+  letter-spacing: 1px;
 }
 
 p {
