@@ -1,0 +1,341 @@
+body {
+  font-family: 'Nunito', 'Source Sans Pro', 'Open Sans','Helvetica Neue',Arial,sans-serif;
+  background:#39455C;
+  color: #333;
+  background-attachment: fixed,             fixed,              fixed;
+  /*background-image: #fcfcfc;*/
+  background-position: center center;  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    font-family: 'Nunito', 'Source Sans Pro', 'Open Sans','Helvetica Neue',Arial,sans-serif;
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.1;
+    color: inherit;
+    color: #95a2aa;
+}
+
+p {
+    color: #95a2aa;
+}
+a {
+text-decoration: none;
+}
+
+a:hover {
+text-decoration: none;
+}
+
+label {
+  font-weight: normal;
+}
+
+.primary {
+  color:#4F6CAD;  
+}
+.primary:hover {
+  color:white;
+}
+.border-bottom {
+  border-bottom: 1px solid #eee;
+}
+
+.well {
+  border-radius:8px;
+  background-color:rgba(0,0,0,.02);
+}
+
+.nav-bottom-border {
+  border-bottom:1px solid #eee;  
+}
+
+@media (max-width:767px) {
+  #content {
+    color: #333;
+    background-attachment: fixed,             fixed,              fixed;
+    background-position: center center;  background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+  }
+  .navbar-inverse {
+    /*background-color: rgba(18,27,37,1);*/
+  }
+}
+
+.modal-content {
+  position: relative;
+  background-color: #fff;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 3px 9px rgba(0,0,0,.2);
+  box-shadow: 0 3px 9px rgba(0,0,0,.2);
+  outline: 0;
+}
+
+.form-control {
+
+  border: none;
+  border-bottom: 1px solid rgba(255,255,255,0.3);
+  border-radius: 0px; 
+  background-color: transparent;
+
+  @include box-shadow(none);
+
+  &:focus {
+    @include box-shadow(none);
+    background-color: rgba(25,25,25,0.05);
+  }
+}
+
+.btn-gray{
+  @include button-variant($text-color, #ddd, darken(#ddd, 5%));
+}
+
+.btn-sidebar{
+  @include button-variant(#fff, $sidebar-bg, darken($sidebar-bg, 5%));
+}
+
+
+.table-no-border {
+  margin-left: -$table-cell-padding;
+  margin-right: -$table-cell-padding;
+
+  > thead > tr > th,
+  > thead > tr > td,
+  > tbody > tr > th,
+  > tbody > tr > td,
+  > tfoot > tr > th,
+  > tfoot > tr > td {
+    border-top: 0;
+  }
+}
+
+
+.table-sm {
+  > thead > tr > th,
+  > thead > tr > td,
+  > tbody > tr > th,
+  > tbody > tr > td,
+  > tfoot > tr > th,
+  > tfoot > tr > td {
+    padding: 4px;
+  }
+
+  &.table-no-border {
+    margin-left: -4px;
+    margin-right: -4px;
+  }
+}
+
+.progress-bar{
+  border-radius: $border-radius-base;
+  @include box-shadow(none);
+}
+
+.progress-sm{
+  height: 10px;
+  margin-bottom: $line-height-computed/2;
+}
+
+.progress-xs{
+  height: 5px;
+  margin-bottom: $line-height-computed/2;
+}
+
+.breadcrumb {
+
+  > .active {
+    font-weight: $font-weight-thin;
+  }
+
+  > li + li:before {
+    font-weight: $font-weight-thin;
+    color: #555;
+  }
+}
+
+.alert-sm{
+  padding: 10px 12px;
+  font-size: 13px;
+
+  .close{
+    font-size: 18px;
+  }
+}
+
+.alert-dismissable .close{
+  position: static;
+  color: $close-color;
+}
+
+
+.list-group-item > .fa-chevron-right.pull-right {
+  margin-top: 4px;
+}
+
+
+.list-group-item {
+  border-left: 0;
+  border-right: 0;
+
+  // Round the first and last items
+  &:first-child {
+    border-top: 0;
+  }
+  &:last-child {
+    border-bottom: 0;
+  }
+}
+
+.panel{
+  .dropdown-menu > &{
+    margin-top: -5px;
+    margin-bottom: -5px;
+  }
+}
+
+.panel-heading{
+  border-color: $panel-inner-border;
+}
+
+a.list-group-item {
+  color:white;
+}
+
+a.list-group-item:hover {
+  color:rgba(255,255,255,1);
+}
+
+.btn {
+  padding-left:20px;
+  padding-right:20px;
+  color:white;
+  border-radius:8px;
+  font-weight:thin;
+  transition: all 0.3s ease 0s;
+}
+
+.btn-success {
+  background: linear-gradient(#27D6A1,#27CE9C);
+}
+
+.btn-success.active.focus, .btn-success.active:focus, .btn-success.active:hover, .btn-success:active.focus, .btn-success:active:focus, .btn-success:active:hover, .open>.btn-success.dropdown-toggle.focus, .open>.btn-success.dropdown-toggle:focus, .open>.btn-success.dropdown-toggle:hover {
+    color: #eee;
+    background-color: #198565;
+    border-color: #13634b;
+}
+
+.btn-success.focus, .btn-success:focus {
+    color: #fff;
+    background-color: #1fa37c;
+    border-color: #13634b;
+}
+
+.btn:hover {
+  color:white;
+  border-radius:8px;
+  font-weight:thin;
+  transition: all 0.3s ease 0s;
+}
+
+.btn-ghost:hover,.btn-ghost:focus {
+  color:white;
+  border-radius:90px;
+  font-weight:thin;
+  border:1px solid #666;
+  transition: all 0.3s ease 0s;
+}
+
+.btn-ghost {
+  color: #7b8087;
+  border-radius:90px;
+  font-weight:thin;
+  border:1px solid #cacaca;
+  transition: all 0.3s ease 0s;
+  background:transparent;
+}
+
+.btn-ghost-light {
+  color: #fff;
+  border-radius:8px;
+  font-weight:thin;
+  border:2px solid #fff;
+  transition: all 0.3s ease 0s;
+  background:transparent;
+}
+
+.btn-ghost-light:hover,.btn-ghost-light:focus {
+  color:white;
+  border-radius:8px;
+  font-weight:thin;
+  border:2px solid #fff;
+  transition: all 0.3s ease 0s;
+}
+
+
+.btn-invisible {
+  border-radius:8px;
+  font-weight:thin;
+  border:none;
+  transition: all 0.3s ease 0s;
+  background:transparent;
+}
+.btn-invisible:hover {
+  color:white;
+  border-radius:8px;
+  font-weight:thin;
+  border:none;
+  transition: all 0.3s ease 0s;
+}
+
+.dropdown-menu>li>a {
+  top:12px;
+  display: block;
+  margin: 8px;
+  border-radius: 8px !important;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  font-weight: 400;
+  color: #333;
+  &:first-child {
+    padding-top: 15px;
+    padding-bottom: 0px;
+
+  }
+  &:last-child {
+    padding-bottom:15px;
+  }  
+}
+
+.navbar .nav > li > .dropdown-menu::before {
+  position: absolute;
+  top: -13px;
+  left: 10%;
+  display: inline-block;
+  border-right: 11px solid transparent;
+  border-bottom: 11px solid #CCC;
+  border-left: 11px solid transparent;
+  border-bottom-color: rgba(0, 0, 0, 0.2);
+  content: '';  
+}
+
+.navbar .nav > li > .dropdown-menu::after {
+  position: absolute;
+  top: -11px;
+  left: 10%;
+  display: inline-block;
+  border-right: 11px solid transparent;
+  border-bottom: 11px solid white;
+  border-left: 11px solid transparent;
+  content: '';
+}
+
+
+

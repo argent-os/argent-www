@@ -1,0 +1,31 @@
+
+
+
+
+
+
+
+        body {
+
+/*london sky*/
+    background: #00396f;
+    background: -webkit-radial-gradient(closest-corner, rgba(16, 47, 70, 0) 60%, rgba(25, 25, 25, 0.2)), -webkit-linear-gradient(108deg, rgba(25, 25, 25, .8) 10%, rgba(25, 57, 111, .9) 90%), url(../../../img/london.jpg);
+    background: -moz-radial-gradient(closest-corner, rgba(16, 47, 70, 0) 60%, rgba(25, 25, 25, 0.2)), -webkit-linear-gradient(108deg, rgba(25, 25, 25, .8) 10%, rgba(25, 57, 111, .9) 90%), url(../../../img/london.jpg);        
+    background: -ms-radial-gradient(closest-corner, rgba(16, 47, 70, 0) 60%, rgba(25, 25, 25, 0.2)), -webkit-linear-gradient(108deg, rgba(25, 25, 25, .8) 10%, rgba(25, 57, 111, .9) 90%), url(../../../img/london.jpg);        
+    background: -o-radial-gradient(closest-corner, rgba(16, 47, 70, 0) 60%, rgba(25, 25, 25, 0.2)), -webkit-linear-gradient(108deg, rgba(25, 25, 25, .8) 10%, rgba(25, 57, 111, .9) 90%), url(../../../img/london.jpg);        
+	background-attachment: fixed,             fixed,              fixed;
+	background-position: center center;  background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+}
+        
+
+
+.card-theme {
+
+
+    background: #232526; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #232526 , #414345); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #232526 , #414345); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}

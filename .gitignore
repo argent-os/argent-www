@@ -1,0 +1,13 @@
+node_modules/
+bower_components/
+data/
+.sass-cache/
+.tmp/
+.idea/
+*.log
+.DS_Store
+src/app/index.js
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml

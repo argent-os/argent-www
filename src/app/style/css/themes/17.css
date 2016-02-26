@@ -1,0 +1,28 @@
+
+        body {
+
+/*crazy gradient*/
+
+
+background: #65E7F1; /* fallback for old browsers */
+background: -webkit-linear-gradient(to left, #D54958 , #DA519A); /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to left, #D54958 , #DA519A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            
+	background-attachment: fixed,             fixed,              fixed;
+	background-position: center center;  background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+}
+        
+
+
+.card-theme {
+
+
+    background: #232526; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #232526 , #414345); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #232526 , #414345); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+

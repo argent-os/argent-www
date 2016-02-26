@@ -1,0 +1,18 @@
+.timerctrls {
+	margin-right:10px;
+    border:none !important;	
+    display:inline;
+}
+
+.timerctrls>a{
+    color:#fff;
+	cursor:pointer;
+}
+
+@media(max-width:767px) {
+	.timer-fa{
+		font-size:20px;
+		margin-bottom:40px;
+		display:inline;
+	}
+}

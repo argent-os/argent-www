@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html data-ng-app="app" ng-strict-di data-ng-controller="App as vm">
+<head>
+  <base href="/#/">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+  <title ng-if="!user" ng-controller="OrganizationListController"> PayKloud </title>      
+  <span ng-controller="TrackerController">
+  <title ng-if="status.active" > {{counter}} </title>
+  <title ng-if="!status.active" ng-controller="OrganizationListController"> {{vm.organization.name}} </title>    
+  </span>
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,300' rel='stylesheet' type='text/css'>  
+  <link href='https://fonts.googleapis.com/css?family=Nunito:400,300,700' rel='stylesheet' type='text/css'> 
+
+  <link rel="stylesheet" href="../bower_components/angular-loading-bar/build/loading-bar.css">
+  <link rel="stylesheet" href="../bower_components/chardin.js/chardinjs.css"></link>  
+  <link rel="stylesheet" href="../bower_components/ionicons/css/ionicons.min.css"></link>  
+  <link rel="stylesheet" type="text/css" href="../bower_components/sweetalert/dist/sweetalert.css">  
+  <link rel="stylesheet" type="text/css" href="../bower_components/angularPrint/angularPrint.css">  
+  <link rel="stylesheet" type="text/css" href="../bower_components/ng-notifications-bar/dist/ngNotificationsBar.min.css" />
+
+  <!-- build:css style.css -->
+  <!-- inject:css -->
+  <link rel="stylesheet" href="app/style/css/css_default/index_default.css">
+  <link rel="stylesheet" href="app/lib/css/default-natural-language.css" />
+  <link rel="stylesheet" href="app/lib/css/component-nl.css" />
+  <link rel="stylesheet" href="app/lib/css/normalize-menu-3d.css" />
+  <link rel="stylesheet" href="app/lib/css/style-menu-3d.css" />
+  <link rel="stylesheet" href="app/lib/css/component-menu-3d.css" />  
+  <link rel="stylesheet" href="app/lib/css/component-progress-button.css" />  
+  <link rel="stylesheet" href="app/style/css/themes/{{userTheme}}.css">
+  <link rel="stylesheet" href="app/style/css/themes/{{themeSelected}}.css">
+  <link rel="stylesheet" href="app/lib/js/ui/bootstrap-daterangepicker/daterangepicker.css"/>
+  <link rel="stylesheet" href="app/lib/js/ui/bootstrap-button-loader/dist/ladda-themeless.min.css">
+
+  <style>
+    /* This helps the ng-show/ng-hide animations start at the right place. */
+    /* Since Angular has this but needs to load, this gives us the class early. */
+
+    /* Fix once node-sass/lib-sass is fixed */
+    body {
+      font-family: 'Nunito', 'Source Sans Pro', 'Open Sans','Helvetica Neue',Arial,sans-serif !important;      
+    }
+
+    .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+        font-family: 'Nunito', 'Source Sans Pro', 'Open Sans','Helvetica Neue',Arial,sans-serif !important;
+    }
+
+    button, .btn, .btn-ghost, .btn-ghost-light, {
+        font-family: 'Nunito', 'Source Sans Pro', 'Open Sans','Helvetica Neue',Arial,sans-serif !important;            
+    }
+
+    nav, .navbar {
+        font-family: 'Source Sans Pro', 'Open Sans','Helvetica Neue',Arial,sans-serif !important;            
+    }
+
+
+    .table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(n) > th {
+        /*border-top:1px solid #fafafa;*/
+    }
+    .table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+        background-color: #fff;
+        /*border-top:1px solid #efefef;*/
+        /*border-bottom:1px solid #efefef;*/
+    }
+    .table thead > tr > th { 
+      /*border-bottom: 1px solid #f1f1f1; */
+    }
+    .table thead > tr > th, .table tbody > tr > th, .table tfoot > tr > th, .table thead > tr > td, .table tbody > tr > td, .table tfoot > tr > td
+    { 
+      /*border: 1px solid #eee; */
+    }
+    
+    .text-shadow {
+      text-shadow: -2px 2px rgba(25,25,25,0.2);
+    }
+
+    .dropdown-menu>li>a:last-child {
+        font-family: 'Nunito', 'Source Sans Pro', 'Open Sans','Helvetica Neue',Arial,sans-serif !important;                  
+        text-shadow:none;
+    }
+
+    .ng-hide {
+      display: none!important;
+    }
+    @media(max-width: 767px) {
+      .mobile-text-center {
+        text-align: center;
+      }
+    }    
+    #mask {
+        position:absolute; 
+        top:0; 
+        left:0; 
+        right:0; 
+        bottom:0; 
+        background-color:#2C3A49; 
+        z-index:-3;
+    } 
+    #bg, #search-bg {
+      background-image: linear-gradient(270deg, rgba(0,0,0,0.4),rgba(0,0,0,.7)), url('{{vm.user.picture.secureUrl}}');
+      background-size: 100% 400px;
+      clip: rect(1px, auto, 190px, 1px);
+      transform: scale(1.8);
+      background-repeat: no-repeat;
+    }    
+
+    .flat-grey {
+        color:#576065;      
+    }
+    
+    .centered {
+      margin-left:auto;margin-right:auto;display:block;
+    }
+    .margin-top {
+      margin-top:20px;
+    }
+    .margin-bottom {
+      margin-bottom:10px;
+    }
+    .navbar-default .navbar-toggle .icon-bar {
+        background-color: white;
+    }
+    .integrations-bg {
+         /*background:url(app/img/space.jpg);*/
+         color:#7a90ff;
+    }
+
+    #quoteform .form-control {
+      border-width: 1px;
+      color:rgba(255,255,255,0.8);
+      border-color: rgba(255,255,255,0.3);
+    }
+
+    #quoteform .no-margin {
+      margin-bottom:10px;      
+    }
+
+    #quoteform .form-control:focus {
+      border-width: 3px;
+      border-color: rgba(255,255,255,0.4);
+    }
+
+    .label-darklight {
+        color: rgba(255,255,255,0.5) !important;      
+    }
+
+    .robin-green {
+        color: #2CC094;
+    }
+
+    .robin-red {
+        color: #FB5028;
+    }
+    
+    .primary:hover {
+      color:inherit;
+    }
+    #innerquoteform .form-control {
+      border-width: 1px;
+      color:#95a2aa;
+      border-color: #eee;
+    }
+
+    #innerquoteform .no-margin {
+      margin-bottom:10px;      
+    }
+
+    #innerquoteform .form-control:focus {
+      border-width: 3px;
+      border-color: #0079FF;
+    }
+
+    button:focus {outline:none!important;}    
+    .preloader {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      font-size: 20px;
+      display: block;
+      width: 3.75em;
+      height: 4.25em;
+      margin-left: -4.675em;
+      margin-top: -2.025em;
+      -webkit-transform-origin: center center;
+          -ms-transform-origin: center center;
+              transform-origin: center center;
+      -webkit-transform: rotateY(180deg) rotateZ(-60deg);
+              transform: rotateY(180deg) rotateZ(-60deg);
+    }  
+    /* shadow on nav */
+    nav li {
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        -webkit-font-smoothing: antialiased;
+    }  
+    /* edit plan buttons */ 
+    #plangroup {
+      box-shadow:-5px 2px 9px rgba(0, 0, 0, 0.1)      
+    }
+    #infogroup:hover a{
+      color: #000;
+    }
+    #infogroup:active a, #infogroup:focus a{
+      color: #000;
+    }    
+    #btnfreeplan {
+      color:#707c80;
+      border:none!important;
+      box-shadow:none!important;            
+    } 
+    #btnteamplan {
+      color:#707c80;
+      border:none!important;
+      box-shadow:none!important;            
+    }     
+    #btnproplan {
+      border:none;
+      border-right:1px solid rgba(25,25,25,0.05);      
+      color:#707c80;
+         
+    }
+    #btnfreeplan:hover {
+      color:#fff;
+    } 
+    #btnproplan:hover {
+      color:#fff;
+      border-right:1px solid white;
+    }    
+    #btnproplan:focus {
+      border-right:1px solid green;
+    }
+    /* edit team list */
+    #teamlist ul li { display: inline; }  
+    #teamlist ul
+    {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    }
+
+    /* custom robinhood style loader */
+    *{-webkit-box-sizing:border-box;-moz-box-sizing: border-box;box-sizing:border-box;}*:after,*:before{-webkit-box-sizing:inherit;-moz-box-sizing:inherit;box-sizing:inherit;}body{font-family:sans-serif;}.box{float:left;width:20%;}
+
+    .loader {
+      border: 1px solid #ccc;
+      border-top-color: #333;
+      border-radius: 100%;
+
+      height: 16px;
+      width: 16px;
+
+      -webkit-animation: loaderSpin 1s infinite linear;
+      animation: loaderSpin 1s infinite linear;
+    }
+    .loader--thickness-2 { border-width: 2px; }
+    .loader--thickness-3 { border-width: 3px; }
+    .loader--thickness-4 { border-width: 4px; }
+    .loader--thickness-5 { border-width: 5px; }
+
+    .loader--size-24 { height: 24px; width: 24px; }
+    .loader--size-32 { height: 32px; width: 32px; }
+    .loader--size-48 { height: 48px; width: 48px; }
+    .loader--size-64 { height: 64px; width: 64px; }
+
+    @-webkit-keyframes loaderSpin {
+      0%   { -webbkit- transform: rotate(0deg); }
+      100% { -webbkit- transform: rotate(360deg); } }
+    @keyframes loaderSpin {
+      0%   { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); } }
+
+      .responsive-loader {
+        margin-left:23%;    
+      }
+      @media(max-width:767px) {
+          .responsive-loader {
+            margin-left:21%;        
+          }    
+      }  
+      @media(max-width:400px) {
+          .responsive-loader {
+            margin-left:20%;        
+          }    
+      }
+
+      /* Toggle Styles sidebar nav for invoice */
+
+      #wrapper {
+          padding-left: 0;
+          -webkit-transition: all 0.5s ease;
+          -moz-transition: all 0.5s ease;
+          -o-transition: all 0.5s ease;
+          transition: all 0.5s ease;
+      }
+
+      #wrapper.toggled {
+          padding-left: 250px;
+      }
+
+      #sidebar-wrapper {
+          z-index: 1000;
+          position: fixed;
+          left: 250px;
+          width: 0;
+          height: 100%;
+          margin-left: -250px;
+          overflow-y: auto;
+          background: #000;
+          -webkit-transition: all 0.5s ease;
+          -moz-transition: all 0.5s ease;
+          -o-transition: all 0.5s ease;
+          transition: all 0.5s ease;
+      }
+
+      #wrapper.toggled #sidebar-wrapper {
+          width: 250px;
+      }
+
+      #page-content-wrapper {
+          width: 100%;
+          position: absolute;
+          padding: 15px;
+      }
+
+      #wrapper.toggled #page-content-wrapper {
+          position: absolute;
+          margin-right: -250px;
+      }
+
+      @media(min-width:768px) {
+          #wrapper {
+              padding-left: 250px;
+          }
+
+          #wrapper.toggled {
+              padding-left: 0;
+          }
+
+          #sidebar-wrapper {
+              width: 250px;
+          }
+
+          #wrapper.toggled #sidebar-wrapper {
+              width: 0;
+          }
+
+          #page-content-wrapper {
+              padding: 20px;
+              position: relative;
+          }
+
+          #wrapper.toggled #page-content-wrapper {
+              position: relative;
+              margin-right: 0;
+          }
+      }  
+
+      /* custom input file style */
+      input[type="file"] {
+          display: none;
+          opacity:0;
+          cursor:pointer;
+          width: 200px;
+      }
+      .custom-file-upload {
+          border: 1px solid #ccc;
+          display: inline-block;
+          padding: 6px 12px;
+          cursor: pointer;
+      }  
+      input:-webkit-autofill {
+          -webkit-box-shadow: 0 0 0px 1000px #F9F9F9 inset;
+      }
+      input:-webkit-autofill:focus {
+          -webkit-box-shadow: 0 0 0px 1000px #fff inset;
+      }      
+.navbar-nav>li>.dropdown-menu {
+    margin-top: 0;
+/*    border-top-right-radius: 0 !important;
+    border-top-left-radius: 0!important;*/
+}
+.open>.dropdown-menu {
+    display: block;
+}
+.dropdown-menu {
+    border-radius: 5px!important;
+    margin-left: -10px;
+    -webkit-box-shadow: -2px 1px 15px rgba(25,25,25,.1);
+    box-shadow: -2px 1px 15px rgba(25,25,25,.1);
+}
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    display: none;
+    min-width: 123px;
+    padding: 1px 0;
+    margin: 2px 0 0;
+    list-style: none;
+    font-size: 14px;
+    text-align: left;
+    background-color: #fff;
+    border: 1px solid #eee;
+    background-clip: padding-box;
+}      
+.dropdown-menu>li>a:last-child {
+     padding-bottom: 0px; 
+}
+.dropdown-menu>li>a:first-child {
+     padding-top: 0px; 
+    padding-bottom: 0;
+}      
+
+
+.dropdown.open .dropdown-menu {
+    max-height: 300px;
+    opacity: 1;
+}    
+.navbar .nav>li>.dropdown-menu::after {
+    top: -7px;
+    border-bottom: 9px solid #fff;
+}  
+.navbar .nav>li>.dropdown-menu::before {
+    border-bottom-color: transparent;
+}
+
+.open > .dropdown-menu li a {
+  color: #6f7c82;  
+}
+.dropdown-menu li a{
+  color: #fff;
+}
+
+.open > .dropdown-menu {
+  -webkit-transform: scale(1, 1);
+  transform: scale(1, 1);  
+  
+}
+
+.dropup .dropdown-menu {
+  -webkit-transform-origin: bottom;
+  transform-origin: bottom;  
+}
+ul .dropdown .dropdown-menu {
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+
+    max-height: 0;
+    display: block;
+    overflow: hidden;
+    opacity: 0;
+}
+ul .dropdown-menu {
+  -webkit-transform-origin: top;
+  transform-origin: top;
+  -webkit-animation-fill-mode: forwards;  
+  animation-fill-mode: forwards; 
+  -webkit-transform: scale(1, 0);
+  display: block;
+  
+  transition: all 0.2s ease-out;
+  -webkit-transition: all 0.2s ease-out;
+}
+.navbar .nav > li > .dropdown-menu:after {
+
+}
+.dropup > .dropdown-menu:after {
+  border-bottom: 0;
+  border-top: 6px solid rgba(39, 45, 51, 0.9);
+  top: auto;
+  display: inline-block;
+  bottom: -6px;
+  content: '';
+  position: absolute;
+  left: 50%;
+  border-right: 6px solid transparent;
+  border-left: 6px solid transparent;
+}
+.dropdown-menu>li>a {
+    top: 12px;
+    display: block;
+    margin: 8px;
+    font-weight: 400;
+    color: #333;
+    padding: 0 10px;
+}
+.dropdown-menu ul ul li:first-child a {
+    padding-top: 15px;
+}
+.dropdown-menu ul ul a {
+    display: block;
+    line-height: 1.45em;
+    padding: 5px 15px;
+    -webkit-font-smoothing: subpixel-antialiased;
+    font-weight: 500;
+    color: #6f7c82 !important;
+}
+/* Default buttons */
+
+
+
+.alert>p, .alert>ul {
+    margin-bottom: 0;
+    color: #fff;
+}
+
+
+/* BUTTON UI */
+.button { display:inline-block; text-decoration:none; outline:none; cursor:pointer; font:bold 12px/1em 'Nunito', 'Open Source Sans', sans-serif; padding:8px 11px;text-shadow:0 1px 0 #fff; background:#f5f5f5; background:-webkit-gradient(linear, left top, left bottom, from(#f9f9f9), to(#f0f0f0)); background:-moz-linear-gradient(top, #f9f9f9, #f0f0f0); border:1px solid #dedede; border-color:#dedede #d8d8d8 #d3d3d3; -webkit-border-radius:4px; -moz-border-radius:4px; border-radius:4px; -webkit-box-shadow:0 1px 2px #eaeaea, inset 0 1px 0 #fbfbfb; -moz-box-shadow:0 1px 2px #eaeaea, inset 0 1px 0 #fbfbfb; box-shadow:0 1px 2px #eaeaea, inset 0 1px 0 #fbfbfb;box-shadow: none!important;
+  
+  }
+.button:hover,
+.button:focus { background:#efefef; background:-webkit-gradient(linear, left top, left bottom, from(#f9f9f9), to(#e9e9e9)); background:-moz-linear-gradient(top, #f9f9f9, #e9e9e9); border-color:#ccc; -webkit-box-shadow:0 2px 1px #e0e0e0, inset 0 1px 0 #fbfbfb; -moz-box-shadow:0 2px 1px #e0e0e0, inset 0 1px 0 #fbfbfb; box-shadow:0 1px 2px #e0e0e0, inset 0 1px 0 #fbfbfb;}
+.button:active { position:relative; top:0px; background:#efefef; background:-webkit-gradient(linear, left top, left bottom, from(#eaeaea), to(#f4f4f4)); background:-moz-linear-gradient(top, #eaeaea, #f4f4f4); border-color:#c6c6c6; -webkit-box-shadow:0 1px 0 #fff, inset 0 0 5px #ddd; -moz-box-shadow:0 1px 0 #fff, inset 0 0 5px #ddd; box-shadow:0 1px 0 #fff, inset 0 0 5px #ddd;}
+button.rounded { padding:8px 15px; -webkit-border-radius:15px; -moz-border-radius:15px; border-radius:15px;}
+
+/* Small buttons */
+button.small { padding:5px 11px; font-size:11px; font-weight:normal; -webkit-border-radius:3px; -moz-border-radius:3px; border-radius:3px;}
+button.small.rounded { -webkit-border-radius:11px; -moz-border-radius:11px; border-radius:11px;}
+
+/*  Large buttons */
+button.large { padding:12px 15px; font-size:20px; font-weight:normal; -webkit-border-radius:5px; -moz-border-radius:5px; border-radius:5px;font-size:16px;}
+button.large.rounded { padding:12px 22px; -webkit-border-radius:23px; -moz-border-radius:23px; border-radius:23px;}
+
+/* COLOR VARIATIONS */
+
+/*  Blue */
+button.blue { background:#377ad0; background:-webkit-gradient(linear, left top, left bottom, from(#52a8e8), to(#377ad0)); background:-moz-linear-gradient(top, #52a8e8, #377ad0); border-color:#4081af #2e69a3 #20559a; color:#fff; text-shadow:0 1px 1px #4081af; -webkit-box-shadow:0 1px 2px #d6d6d6, inset 0 1px 1px #72b9eb; -moz-box-shadow:0 1px 2px #d6d6d6, inset 0 1px 1px #72b9eb; box-shadow:0 1px 2px #d6d6d6, inset 0 1px 1px #72b9eb;}
+button.blue:hover,
+button.blue:focus { background:#206bcb; background:-webkit-gradient(linear, left top, left bottom, from(#3e9ee5), to(#206bcb)); background:-moz-linear-gradient(top, #3e9ee5, #206bcb); border-color:#2a73a6 #165899 #07428f; -webkit-box-shadow:0 1px 0 0 #fff, inset 0 1px 0 0 #62b1e9; -moz-box-shadow:0 1px 0 0 #fff, inset 0 1px 0 0 #62b1e9; box-shadow:0 1px 0 0 #fff, inset 0 1px 0 0 #62b1e9;}
+button.blue:active { background:#3282d3; border-color:#154c8c #154c8c #0e408e; text-shadow:0 -1px 1px #1d62ab; -webkit-box-shadow:0 1px 0 0 #fff, inset 0 0 6px 3px #1657b5; -moz-box-shadow:0 1px 0 0 #fff, inset 0 0 6px 3px #1657b5; box-shadow:0 1px 0 0 #fff, inset 0 0 6px 3px #1657b5;}
+
+
+/*  Robin Green */
+button.robin-green-button { background:#2CC094; background:-webkit-gradient(linear, left top, left bottom, from(#41C69E), to(#27AC85)); background:-moz-linear-gradient(top, #41C69E, #2CC094); border-color:#009B90 #009B90 #009B90; color:#fff; text-shadow:0 1px 1px #4081af; -webkit-box-shadow:0 1px 2px #d6d6d6, inset 0 1px 1px #72b9eb; -moz-box-shadow:0 1px 2px #d6d6d6, inset 0 1px 1px #72b9eb; box-shadow:0 1px 2px #d6d6d6, inset 0 1px 1px #72b9eb;}
+button.robin-green-button:hover,
+button.robin-green-button:focus { background:#2CC094; background:-webkit-gradient(linear, left top, left bottom, from(#56CCA9), to(#27AC85)); background:-moz-linear-gradient(top, #56CCA9, #27AC85); border-color:#009B90 #009B90 #009B90; -webkit-box-shadow:0 1px 0 0 #fff, inset 0 1px 0 0 #62b1e9; -moz-box-shadow:0 1px 0 0 #fff, inset 0 1px 0 0 #62b1e9; box-shadow:0 1px 0 0 #fff, inset 0 1px 0 0 #62b1e9;}
+button.robin-green-button:active { background:#27AC85; border-color:#53961e #53961e #53961e; text-shadow:0 -1px 1px #27AC85; -webkit-box-shadow:0 1px 0 0 #fff, inset 0 0 6px 3px #27AC85; -moz-box-shadow:0 1px 0 0 #fff, inset 0 0 6px 3px #1657b5; box-shadow:0 1px 0 0 #fff, inset 0 0 6px 3px #1657b5;}
+
+
+
+
+/* Light Blue */
+button.light_blue { background:#92dbf6; background:-webkit-gradient(linear, left top, left bottom, from(#abe4f8), to(#6fcef3)); background:-moz-linear-gradient(top, #abe4f8, #6fcef3); border-color:#7cbdd5; color:#fff; text-shadow:0 1px 0 #b6e6f9; -webkit-box-shadow:0 1px 2px #d6d6d6, inset 0 1px 0 #c0ebfa; -moz-box-shadow:0 1px 2px #d6d6d6, inset 0 1px 0 #c0ebfa; box-shadow:0 1px 2px #d6d6d6, inset 0 1px 0 #c0ebfa;}
+button.light_blue:hover,
+button.light_blue:focus { background:#85d6f5; background:-webkit-gradient(linear, left top, left bottom, from(#b1e9fd), to(#66c6ea)); background:-moz-linear-gradient(top, #b1e9fd, #66c6ea); border-color:#66a8bf; -webkit-box-shadow:0 0 1px #d6d6d6, inset 0 1px 0 #c0ebfa; -moz-box-shadow:0 0 1px #d6d6d6, inset 0 1px 0 #c0ebfa; box-shadow:0 0 1px #d6d6d6, inset 0 1px 0 #c0ebfa;}
+button.light_blue:active { background:#92dbf6; border-color:#66a8bf; -webkit-box-shadow:0 1px 0 #fff, inset 0 0 5px #66a8bf; -moz-box-shadow:0 1px 0 #fff, inset 0 0 5px #66a8bf; box-shadow:0 1px 0 #fff, inset 0 0 5px #66a8bf;}
+
+/*  Green */
+button.green { background:#7fbf4d; background:-webkit-gradient(linear, left top, left bottom, from(#7fbf4d), to(#63a62f)); background:-moz-linear-gradient(top, #7fbf4d, #63a62f); border-color:#63a62f; color:#fff; text-shadow:0 1px 0 #53961e; -webkit-box-shadow:0 1px 2px #d6d6d6, inset 0 1px 0 #96d865; -moz-box-shadow:0 1px 2px #d6d6d6, inset 0 1px 0 #96d865; box-shadow:0 1px 2px #d6d6d6, inset 0 1px 0 #96d865;}
+button.green:hover,
+button.green:focus { background:#76b347; background:-webkit-gradient(linear, left top, left bottom, from(#86c755), to(#5ea12a)); background:-moz-linear-gradient(top, #86c755, #5ea12a); border-color:#53961e; -webkit-box-shadow:0 0 1px #d6d6d6, inset 0 1px 0 #96d865; -moz-box-shadow:0 0 1px #d6d6d6, inset 0 1px 0 #96d865; box-shadow:0 0 1px #d6d6d6, inset 0 1px 0 #96d865;}
+button.green:active { background:#7fbf4d; border-color:#53961e; -webkit-box-shadow:0 1px 0 #fff, inset 0 0 5px #53961e; -moz-box-shadow:0 1px 0 #fff, inset 0 0 5px #53961e; box-shadow:0 1px 0 #fff, inset 0 0 5px #53961e;}
+
+/*  Red */
+button.red { background:#e6433d; background:-webkit-gradient(linear, left top, left bottom, from(#f8674b), to(#d54746)); background:-moz-linear-gradient(top, #f8674b, #d54746); border-color:#d1371c #d1371c #9f220d; color:#fff; text-shadow:0 1px 1px #961a07; -webkit-box-shadow:0 1px 2px #d6d6d6, inset 0 1px 0 #ff9573; -moz-box-shadow:0 1px 2px #d6d6d6, inset 0 1px 0 #ff9573; box-shadow:0 1px 2px #d6d6d6, inset 0 1px 0 #ff9573;}
+button.red:hover,
+button.red:focus { background:#dd3a37; background:-webkit-gradient(linear, left top, left bottom, from(#ff7858), to(#cc3a3b)); background:-moz-linear-gradient(top, #ff7858, #cc3a3b); border-color:#961a07; -webkit-box-shadow:0 0 1px #d6d6d6, inset 0 1px 0 #ff9573; -moz-box-shadow:0 0 1px #d6d6d6, inset 0 1px 0 #ff9573; box-shadow:0 0 1px #d6d6d6, inset 0 1px 0 #ff9573;}
+button.red:active { background:#e6433d; border-color:#961a07; -webkit-box-shadow:0 1px 0 #fff, inset 0 0 5px #961a07; -moz-box-shadow:0 1px 0 #fff, inset 0 0 5px #961a07; box-shadow:0 1px 0 #fff, inset 0 0 5px #961a07;}
+
+/*  Orange */
+button.orange { background:#ee8f1f; background:-webkit-gradient(linear, left top, left bottom, from(#f5b026), to(#f48423)); background:-moz-linear-gradient(top, #f5b026, #f48423); border-color:#e6791c #e6791c #d86f15; color:#fff; text-shadow:0 1px 1px #b85300; -webkit-box-shadow:0 1px 2px #d7e9a4, inset 0 1px 0 #f8d898; -moz-box-shadow:0 1px 2px #d7e9a4, inset 0 1px 0 #f8d898; box-shadow:0 1px 2px #d7e9a4, inset 0 1px 0 #f8d898;}
+button.orange:hover,
+button.orange:focus { background:#e38512; background:-webkit-gradient(linear, left top, left bottom, from(#ffbb33), to(#eb7b1a)); background:-moz-linear-gradient(top, #ffbb33, #eb7b1a); border-color:#d0680c; -webkit-box-shadow:0 0 1px #d6d6d6, inset 0 1px 0 #ffdf9e; -moz-box-shadow:0 0 1px #d6d6d6, inset 0 1px 0 #ffdf9e; box-shadow:0 0 1px #d6d6d6, inset 0 1px 0 #ffdf9e;}
+button.orange:active { background:#ee8f1f; border-color:#d0680c; -webkit-box-shadow:0 1px 0 #fff, inset 0 0 5px #d0680c; -moz-box-shadow:0 1px 0 #fff, inset 0 0 5px #d0680c; box-shadow:0 1px 0 #fff, inset 0 0 5px #d0680c;}
+
+/*  Yellow */
+button.yellow { background:#f9e327; background:-webkit-gradient(linear, left top, left bottom, from(#fceb4c), to(#ebd611)); background:-moz-linear-gradient(top, #fceb4c, #ebd611); border-color:#dcc700 #dcc700 #c2b00b; color:#444; text-shadow:0 1px 1px #ffff98; -webkit-box-shadow:0 1px 2px #d7e9a4, inset 0 1px 0 #fee395; -moz-box-shadow:0 1px 2px #d7e9a4, inset 0 1px 0 #fee395; box-shadow:0 1px 2px #d7e9a4, inset 0 1px 0 #fee395;}
+button.yellow:hover,
+button.yellow:focus { background:#ebd611; background:-webkit-gradient(linear, left top, left bottom, from(#fffa58), to(#e1cd00)); background:-moz-linear-gradient(top, #fffa58, #e1cd00); border-color:#cebb10; -webkit-box-shadow:0 0 1px #d6d6d6, inset 0 1px 0 #fee395; -moz-box-shadow:0 0 1px #d6d6d6, inset 0 1px 0 #fee395; box-shadow:0 0 1px #d6d6d6, inset 0 1px 0 #fee395;}
+button.yellow:active { background:#f9e327; border-color:#cebb10; -webkit-box-shadow:0 1px 0 #fff, inset 0 0 5px #cebb10; -moz-box-shadow:0 1px 0 #fff, inset 0 0 5px #cebb10; box-shadow:0 1px 0 #fff, inset 0 0 5px #cebb10;}
+
+/*  Pink */
+button.pink { background:#f87bca; background:-webkit-gradient(linear, left top, left bottom, from(#f87bca), to(#ec56b5)); background:-moz-linear-gradient(top, #f87bca, #ec56b5); border-color:#e54aac #e54aac #cc3695; color:#fff; text-shadow:0 1px 1px #c02589; -webkit-box-shadow:0 1px 2px #eaeaea, inset 0 1px 0 #f1b9dd; -moz-box-shadow:0 1px 2px #eaeaea, inset 0 1px 0 #f1b9dd; box-shadow:0 1px 2px #eaeaea, inset 0 1px 0 #f1b9dd;}
+button.pink:hover,
+button.pink:focus { background:#f075c3; background:-webkit-gradient(linear, left top, left bottom, from(#ff85d3), to(#e34dac)); background:-moz-linear-gradient(top, #ff85d3, #e34dac); border-color:#c02589; -webkit-box-shadow:0 0 1px #d6d6d6, inset 0 1px 0 #f1b9dd; -moz-box-shadow:0 0 1px #d6d6d6, inset 0 1px 0 #f1b9dd; box-shadow:0 0 1px #d6d6d6, inset 0 1px 0 #f1b9dd;}
+button.pink:active { background:#f87bca; border-color:#c02589; -webkit-box-shadow:0 1px 0 #fff, inset 0 0 5px #c02589; -moz-box-shadow:0 1px 0 #fff, inset 0 0 5px #c02589; box-shadow:0 1px 0 #fff, inset 0 0 5px #c02589;}
+
+/*  Purple */
+button.purple { background:#995dc8; background:-webkit-gradient(linear, left top, left bottom, from(#c785e5), to(#995dc8)); background:-moz-linear-gradient(top, #c785e5, #995dc8); border-color:#7c45aa #7c45aa #5d288a; color:#fff; text-shadow:0 1px 1px #370662; -webkit-box-shadow:0 1px 2px #eaeaea, inset 0 1px 0 #ce8ded; -moz-box-shadow:0 1px 2px #eaeaea, inset 0 1px 0 #ce8ded; box-shadow:0 1px 2px #eaeaea, inset 0 1px 0 #ce8ded;}
+button.purple:hover,
+button.purple:focus { background:#8b50ba; background:-webkit-gradient(linear, left top, left bottom, from(#cc8aea), to(#884eb8)); background:-moz-linear-gradient(top, #cc8aea, #884eb8); border-color:#5d288a; -webkit-box-shadow:0 0 1px #d6d6d6, inset 0 1px 0 #ce8ded; -moz-box-shadow:0 0 1px #d6d6d6, inset 0 1px 0 #ce8ded; box-shadow:0 0 1px #d6d6d6, inset 0 1px 0 #ce8ded;}
+button.purple:active { background:#995dc8; border-color:#5d288a; -webkit-box-shadow:0 1px 0 #fff, inset 0 0 5px #5d288a; -moz-box-shadow:0 1px 0 #fff, inset 0 0 5px #5d288a; box-shadow:0 1px 0 #fff, inset 0 0 5px #5d288a;}
+
+/*  Grey */
+button.grey { background:#969696; background:-webkit-gradient(linear, left top, left bottom, from(#ababab), to(#818181)); background:-moz-linear-gradient(top, #ababab, #818181); border-color:#a0a0a0 #7c7c7c #717171; color:#fff; text-shadow:0 1px 1px #444; -webkit-box-shadow:0 1px 2px #eaeaea, inset 0 1px 0 #bebebe; -moz-box-shadow:0 1px 2px #eaeaea, inset 0 1px 0 #bebebe; box-shadow:0 1px 2px #eaeaea, inset 0 1px 0 #bebebe;}
+button.grey:hover,
+button.grey:focus { background:#868686; background:-webkit-gradient(linear, left top, left bottom, from(#b0b0b0), to(#6f6f6f)); background:-moz-linear-gradient(top, #b0b0b0, #6f6f6f); border-color:#666 #666 #606060; -webkit-box-shadow:0 0 1px #d6d6d6, inset 0 1px 0 #bebebe; -moz-box-shadow:0 0 1px #d6d6d6, inset 0 1px 0 #bebebe; box-shadow:0 0 1px #d6d6d6, inset 0 1px 0 #bebebe;}
+button.grey:active { background:#909090; border-color:#606060; -webkit-box-shadow:0 1px 0 #fff, inset 0 0 5px #606060; -moz-box-shadow:0 1px 0 #fff, inset 0 0 5px #606060; box-shadow:0 1px 0 #fff, inset 0 0 5px #606060;}
+
+/*  Black */
+button.black { background:#525252; background:-webkit-gradient(linear, left top, left bottom, from(#5e5e5e), to(#434343)); background:-moz-linear-gradient(top, #5e5e5e, #434343); border-color:#4c4c4c #313131 #1f1f1f; color:#fff; text-shadow:0 1px 1px #2e2e2e; -webkit-box-shadow:0 1px 2px #eaeaea, inset 0 1px 0 #868686; -moz-box-shadow:0 1px 2px #eaeaea, inset 0 1px 0 #868686; box-shadow:0 1px 2px #eaeaea, inset 0 1px 0 #868686;}
+button.black:hover,
+button.black:focus { background:#4b4b4b; background:-webkit-gradient(linear, left top, left bottom, from(#686868), to(#363636)); background:-moz-linear-gradient(top, #686868, #363636); border-color:#313131; -webkit-box-shadow:0 0 1px #d6d6d6, inset 0 1px 0 #868686; -moz-box-shadow:0 0 1px #d6d6d6, inset 0 1px 0 #868686; box-shadow:0 0 1px #d6d6d6, inset 0 1px 0 #868686;}
+button.black:active { background:#525252; border-color:#313131; -webkit-box-shadow:0 1px 0 #fff, inset 0 0 5px #313131; -moz-box-shadow:0 1px 0 #fff, inset 0 0 5px #313131; box-shadow:0 1px 0 #fff, inset 0 0 5px #313131;}
+
+button .sweet-alert .confirm {
+  background: green !important;
+    box-shadow: none !important;
+     border: 1px solid #e9e9e9; 
+     box-shadow: none; 
+     font-size: 17px; 
+    font-weight: 500;
+    -webkit-border-radius: 4px;
+    border-radius: 5px;
+    padding: 10px 32px;
+    margin: 26px 5px 0 5px;
+    cursor: pointer;
+}
+
+button .sweet-alert .cancel {
+  background: red !important;
+    box-shadow: none !important;
+     border: 1px solid #e9e9e9; 
+     box-shadow: none; 
+     font-size: 17px; 
+    font-weight: 500;
+    -webkit-border-radius: 4px;
+    border-radius: 5px;
+    padding: 10px 32px;
+    margin: 26px 5px 0 5px;
+    cursor: pointer;
+}
+.sweet-alert button {
+    background-color: #8CD4F5;
+    color: white;
+    border: none;
+    box-shadow: none;
+    font-size: 17px;
+    font-weight: 500;
+    -webkit-border-radius: 4px;
+    border-radius: 5px;
+    padding: 10px 32px;
+    margin: 26px 5px 0 5px;
+    cursor: pointer;
+    margin-bottom: 15px;
+    font-family: 'Source Sans Pro', sans-serif;    
+}
+
+.sweet-alert p {
+    padding-left:30px;
+    padding-right:30px;
+    font-family: 'Source Sans Pro', sans-serif;
+    line-height: 1.5em;
+}
+
+.sweet-alert fieldset {
+    border: none;
+    position: relative;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.sweet-alert.show-input input {
+    display: block;
+    border: 0px;
+    box-shadow: none;
+    border-bottom: 3px solid #ccc;
+}
+/* CARD UI */
+
+
+.card {
+  background:white;
+  height:100px;
+  border:1px solid rgba(25,25,25,0.05);
+}
+.card-lg {
+  padding-left:10px;
+  background:white;
+  height:200px;
+  border:1px solid rgba(25,25,25,0.05);
+}
+.card-lg:hover {
+  box-shadow:0px 2px 19px rgba(0, 0, 0, 0.1);
+  border-left: 1px solid #e9e9e9;
+  border-top: 1px solid #e9e9e9;
+  border-bottom: 1px solid #e9e9e9;
+  height:200px;
+}
+.card:hover {
+  box-shadow:0px 2px 19px rgba(0, 0, 0, 0.1);
+  border-left: 1px solid #e9e9e9;
+  border-top: 1px solid #e9e9e9;
+  border-bottom: 1px solid #e9e9e9;
+  height:100px;
+}
+
+/*end card ui*/
+
+/* widget */
+.contrast-border {
+  border: 2px solid rgba(255,255,255,0.2);
+}
+/*end widget edit */
+
+/* responsive font */
+
+@media(max-width: 1300px) {
+  .font-responsive {
+    font-size: 10px !important;
+  }
+}
+
+/*end responsive text */
+
+/*table styles */
+
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+     padding: 0px; 
+     padding-left:5px;
+     padding-right: 5px;
+    line-height: 2;
+    vertical-align: top;
+    border-top: 1px solid transparent;
+}
+/* end table style */
+  </style>  
+  <!-- <link rel="stylesheet" href="{{app/style/css/css_default/index_default.css}}">   -->
+  <!-- endinject -->
+  <!-- endbuild -->
+  <link rel="stylesheet" href="app/lib/css/colorpicker.css">
+
+</head>
+<body help-overlay="showHelper" help-overlay-start="showHelp()" help-overlay-stop="stopHelp()">
+<div id="mask">
+  <div class="preloader loading">
+  </div>
+</div>
+<ui-view class="app" id="main"></ui-view>
+<notifications-bar class="notifications"></notifications-bar>
+
+<!-- dev -->
+<!-- <script src="../bower_components/jquery/dist/jquery.js"></script>
+<script src="../bower_components/angular/angular.js"></script>
+<script src="../bower_components/angular-resource/angular-resource.js"></script>
+<script src="../bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="../bower_components/bootstrap-sass/assets/javascripts/bootstrap.js"></script>
+<script src="../bower_components/angular-toastr/dist/angular-toastr.tpls.js"></script>
+<script src="../bower_components/angular-animate/angular-animate.js"></script>
+<script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<script src="../bower_components/Chart.js/Chart.js"></script>
+<script src="../bower_components/ng-chartjs/dist/angular-chartjs.min.js"></script>
+<script src="../bower_components/satellizer/satellizer.js"></script>
+<script src="../bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<script src="../bower_components/bootstrap-switch/dist/js/bootstrap-switch.js"></script>
+<script src="../bower_components/angular-bootstrap-switch/dist/angular-bootstrap-switch.js"></script>
+<script src="../bower_components/angular-mocks/angular-mocks.js"></script>
+<script src="../bower_components/angular-uri/angular-uri.js"></script>
+<script src="../bower_components/uri.js/src/URI.min.js"></script> -->
+<!-- build:js js/lib.js -->
+<!-- prod -->
+
+<script src="app/lib/js/ui/modernizr.js"></script>    
+<script src="app/dist/js/jquery.js"></script>
+<script src="app/dist/js/angular.js"></script>
+<script src="app/dist/js/angular-resource.js"></script>
+<script src="app/dist/js/angular-ui-router.js"></script>
+<script src="app/dist/js/bootstrap.js"></script>
+<script src="app/dist/js/ui-bootstrap-tpls.js"></script>
+
+<script src="app/dist/js/angular-toastr.tpls.js"></script>
+<script src="app/dist/js/angular-animate.js"></script>
+<script src="app/dist/js/Chart.js"></script>
+<script src="../bower_components/ng-chartjs/dist/angular-chartjs.min.js"></script>
+<script src="app/dist/js/satellizer.js"></script>
+<script src="app/dist/js/angular-mocks.js"></script>
+<script src="app/dist/js/angular-uri.js"></script>
+<script src="app/dist/js/URI.min.js"></script>
+<script src="../bower_components/firebase/firebase.js"></script>
+<script src="../bower_components/angularfire/dist/angularfire.js"></script>
+<!-- endbuild -->
+<!-- bower:js -->
+<script src="../bower_components/moment/moment.js"></script>
+<script src="../bower_components/angular-loading-bar/build/loading-bar.js"></script>
+<script src="../bower_components/angular-help-overlay/lib/angular-help-overlay.js"></script>
+<script src="../bower_components/HTML5-Desktop-Notifications2/desktop-notify.js"></script>
+<script src="../bower_components/angular-web-notification/angular-web-notification.js"></script>
+<script src="../bower_components/angular-svg-round-progressbar/build/roundProgress.min.js"></script>
+<script src="../bower_components/blueimp-tmpl/js/tmpl.js"></script>
+<script src="../bower_components/blueimp-load-image/js/load-image.js"></script>
+<script src="../bower_components/blueimp-load-image/js/load-image-ios.js"></script>
+<script src="../bower_components/blueimp-load-image/js/load-image-orientation.js"></script>
+<script src="../bower_components/blueimp-load-image/js/load-image-meta.js"></script>
+<script src="../bower_components/blueimp-load-image/js/load-image-exif.js"></script>
+<script src="../bower_components/blueimp-load-image/js/load-image-exif-map.js"></script>
+<script src="../bower_components/blueimp-canvas-to-blob/js/canvas-to-blob.js"></script>
+<script src="../bower_components/blueimp-file-upload/js/cors/jquery.postmessage-transport.js"></script>
+<script src="../bower_components/blueimp-file-upload/js/cors/jquery.xdr-transport.js"></script>
+<script src="../bower_components/blueimp-file-upload/js/vendor/jquery.ui.widget.js"></script>
+<script src="../bower_components/blueimp-file-upload/js/jquery.fileupload.js"></script>
+<script src="../bower_components/blueimp-file-upload/js/jquery.fileupload-process.js"></script>
+<script src="../bower_components/blueimp-file-upload/js/jquery.fileupload-validate.js"></script>
+<script src="../bower_components/blueimp-file-upload/js/jquery.fileupload-image.js"></script>
+<script src="../bower_components/blueimp-file-upload/js/jquery.fileupload-audio.js"></script>
+<script src="../bower_components/blueimp-file-upload/js/jquery.fileupload-video.js"></script>
+<script src="../bower_components/blueimp-file-upload/js/jquery.fileupload-ui.js"></script>
+<script src="../bower_components/blueimp-file-upload/js/jquery.fileupload-jquery-ui.js"></script>
+<script src="../bower_components/blueimp-file-upload/js/jquery.fileupload-angular.js"></script>
+<script src="../bower_components/blueimp-file-upload/js/jquery.iframe-transport.js"></script>
+<script src="../bower_components/cloudinary_js/js/jquery.cloudinary.js"></script>
+<script src="../bower_components/cloudinary_ng/js/angular.cloudinary.js"></script>
+<script src="../bower_components/ng-file-upload/angular-file-upload.js"></script>
+<script src="../bower_components/angular-hotkeys/build/hotkeys.min.js"></script>
+<!-- endbower -->
+<script src="https://js.stripe.com/v2/stripe.js"></script>
+<script src="../bower_components/angular-stripe/release/angular-stripe.js"></script>
+<script src="../bower_components/chardin.js/chardinjs.js"></script>  
+<script src="../bower_components/sweetalert/dist/sweetalert.min.js"></script>
+<script src="../bower_components/angularPrint/angularPrint.js"></script>
+<script src="../bower_components/angular-sanitize/angular-sanitize.js"></script>
+<script src="../bower_components/ng-csv/build/ng-csv.min.js"></script>
+<script src="../bower_components/ng-notifications-bar/dist/ngNotificationsBar.min.js"></script>  
+<script src="app/lib/js/ui/bootstrap-daterangepicker/daterangepicker.js"></script>
+<script src="../bower_components/angular-daterangepicker/js/angular-daterangepicker.js"></script>
+
+
+<script src="app/modules/global/factories/countries.js"></script>
+<script src="app/modules/global/factories/unitedstates.js"></script>
+<!-- build:js1 js/app.js -->
+<!-- inject:js -->
+<!-- dev -->
+<script src="app/modules/global/profile/profile.module.js"></script>
+<script src="app/modules/global/profile/edit/edit.js"></script>
+<script src="app/modules/global/profile/auth/auth.js"></script>
+<script src="app/modules/entities/organization/organization.module.js"></script>
+<script src="app/modules/entities/organization/list/organization.js"></script>
+<script src="app/modules/entities/organization/edit/edit.js"></script>
+<script src="app/modules/entities/organization/delete_organization_modal.js"></script>
+<script src="app/modules/entities/project/edit/project.js"></script>
+<script src="app/modules/entities/project/edit/project-modal.js"></script>
+<script src="app/modules/entities/project/project.module.js"></script>
+<script src="app/modules/entities/timetracker/timetracker.module.js"></script>
+<script src="app/modules/entities/timetracker/controllers/appController.js"></script>
+<script src="app/modules/entities/timetracker/controllers/trackerController.js"></script>
+<script src="app/modules/entities/timetracker/controllers/logsController.js"></script>
+<script src="app/modules/entities/timetracker/controllers/projectsController.js"></script>
+<script src="app/modules/entities/timetracker/controllers/statisticsController.js"></script>
+<script src="app/modules/entities/timetracker/services/statusFactory.js"></script>
+<script src="app/modules/entities/timetracker/services/logsFactory.js"></script>
+<script src="app/modules/entities/timetracker/services/projectsFactory.js"></script>
+<script src="app/modules/entities/timetracker/services/values.js"></script>
+<script src="app/modules/entities/team/team.module.js"></script>
+<script src="app/modules/entities/team/controllers/teamAppController.js"></script>
+<script src="app/modules/entities/team/controllers/teamTrackerController.js"></script>
+<script src="app/modules/entities/team/controllers/teamLogsController.js"></script>
+<script src="app/modules/entities/team/controllers/teamProjectsController.js"></script>
+<script src="app/modules/entities/team/controllers/teamStatisticsController.js"></script>
+<script src="app/modules/entities/team/services/teamStatusFactory.js"></script>
+<script src="app/modules/entities/team/services/teamLogsFactory.js"></script>
+<script src="app/modules/entities/team/services/teamProjectsFactory.js"></script>
+<script src="app/modules/entities/invoice/js/invoice.js"></script>
+<script src="app/modules/entities/invoice/invoice.module.js"></script>
+<script src="app/modules/entities/customers/js/rb-modal.js"></script>
+<script src="app/modules/entities/customers/js/customer-modal.js"></script>
+<script src="app/modules/entities/customers/js/customers.js"></script>
+<script src="app/modules/entities/customers/customers.module.js"></script>
+<script src="app/modules/entities/billing/js/billing.js"></script>
+<script src="app/modules/entities/billing/billing.module.js"></script>
+<script src="app/modules/entities/receivables/js/receivables.js"></script>
+<script src="app/modules/entities/receivables/receivables.module.js"></script>
+<script src="app/modules/entities/quote/js/quote.js"></script>
+<script src="app/modules/entities/quote/quote.module.js"></script>
+<script src="app/modules/dashboard/dashboard.module.js"></script>
+<script src="app/modules/dashboard/widget-stat/widget.js"></script>
+<script src="app/modules/dashboard/dashboard.js"></script>
+<script src="app/modules/global/core/core.module.js"></script>
+<script src="app/modules/global/core/navigation/navigation.js"></script>
+<script src="app/modules/global/common/common.module.js"></script>
+<script src="app/modules/global/common/widget/widget.js"></script>
+<script src="app/modules/global/common/modal/modal.js"></script>
+<script src="app/modules/global/resource/_data.module.js"></script>
+<script src="app/modules/global/resource/organizations.js"></script>
+<script src="app/modules/global/core/core.js"></script>
+<script src="app/modules/global/core/config.js"></script>
+<script src="app/modules/global/common/notifications.js"></script>
+<script src="app/modules/global/common/common.js"></script>
+<script src="app/modules/global/images/js/config.js"></script>
+<script src="app/modules/global/images/js/controllers.js"></script>
+<script src="app/modules/global/images/js/services.js"></script>
+<script src="app/modules/global/images/images.module.js"></script>
+<script src="app/lib/js/ui/payment/jquery.payment.min.js"></script>
+<script src="app/lib/js/ui/sweet-alert/sweetalertmod.js"></script>
+<script src="app/lib/js/ui/natural-language/angular-natural-language.min.js"></script>
+<script src="app/lib/js/ui/3d-menu/classie.js"></script>
+<script src="app/lib/js/ui/colorpicker/colorpicker.js"></script>
+<script src="app/lib/js/ui/bootstrap-button-loader/dist/spin.min.js"></script>
+<script src="app/lib/js/ui/bootstrap-button-loader/dist/ladda.min.js"></script>
+<script src="https://cdn.plaid.com/link/stable/link-initialize.js"></script>
+<script src="app/app.js"></script>
+<script src="app/index.js"></script>
+<!-- endinject -->
+
+<!-- prod -->
+
+<!-- inject:partials -->
+<!-- angular templates will be automaticaly converted in js and inserted here -->
+<!-- endinject -->
+<!-- endbuild -->
+<script>
+$(window).load(function () {
+    $('#mask').fadeOut(1000);
+});
+</script>
+
+</body>
+</html>

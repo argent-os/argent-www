@@ -1,0 +1,47 @@
+<!--
+  Main sidebar seen on the left. may be static or collapsing depending on selected state.
+
+    * Collapsing - navigation automatically collapse when mouse leaves it and expand when enters.
+    * Static - stays always open.
+-->
+<!-- <nav id="sidebar" class="sidebar" role="navigation" data-ng-include="'app/modules/core/navigation/sidebar.html'"> </nav> -->
+<!-- This is the white navigation bar seen on the top. A bit enhanced BS navbar. See .page-controls in _base.scss. -->
+
+<div class="content-wrap"  nav-collapse-toggler type="swipe">
+    <!-- main page content. the place to put widgets in. usually consists of .row > .col-md-* > .widget.  -->
+<!--     <main role="main" ng-if="vm.user._id && user.verified">
+        <nav class="page-controls navbar navbar-default" data-ng-include="'app/modules/global/core/navigation/navbar.html'"></nav>
+        <ui-view id="content" class="content view-animate fade-up"></ui-view>       
+    </main>   -->
+    <main role="main" ng-if="vm.user._id">
+        <nav class="page-controls navbar navbar-default" data-ng-include="'app/modules/global/core/navigation/navbar.html'"></nav>
+        <ui-view id="content" class="content view-animate fade-up"></ui-view>       
+    </main>  
+    <main role="main" ng-if="!vm.user._id">
+        <div style="margin-top:340px;display:block;margin-left:auto;margin-right:auto;text-align:center;" ng-if="!vm.user._id">
+            <a class="animated fadeIn delay-3 text-darklight" style="font-size:20px;" ui-sref="login">Session expired, Please login to continue&nbsp;&nbsp;&nbsp;&nbsp;<i class="icon ion-log-out ion-2x"></i></a>
+        </div>       
+    </main>      
+
+<!--     <main role="main">
+        <div ng-if="!vm.user.verified || !user.verified  && userLoggedIn" class="animated fadeIn delay-3" style="margin-top:20%;display:block;margin-left:auto;margin-right:auto;text-align:center;">
+            <h1 class="text-darklight">Welcome!</h1><img height="75px" src="app/img/ios_icons/shield.png">
+            <p class="view-animate fade-up delay3 text-darklight" style="font-size:20px;margin-top:10px;">Email verificaton link sent</p>
+        </div>         
+    </main>      -->
+
+    <main role="main" ng-if="showLoader">
+        <div class="responsive-loader" ng-if="showLoader" style="margin-right:auto;display:block;background:rgba(255,255,255,0.9);paddng:30px;padding-top:50px;padding-bottom:50px;border-radius:8px;width:200px;">
+          <div style="margin-left:auto;margin-right:auto;display:block" class="loader loader--size-64 loader--thickness-5"></div>
+        </div>   
+    </main>     
+
+    <footer style="position: fixed;left:15px;bottom: 0;width: 100%;">
+        <p class="text-darklight" style="font-size:1.2rem;display:block">
+        <b>{{vm.organization.name}}</b> © 2016
+        </p>
+    </footer>
+    <div style="position:fixed;bottom:10px;right:15px;"><a class="pull-right btn-invisible btn-ghost" style="pointer:cursor;" ng-click="showHelp()"><i class="ion-ios-help-outline text-darklight"></i></a></div>
+    <p ng-controller="TrackerController" ng-if="vm.user.notificationsEnabled" class="show-timer-notification" show-notifications="true"></p> 
+    
+</div>

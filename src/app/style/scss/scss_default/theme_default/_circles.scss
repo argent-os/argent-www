@@ -1,0 +1,211 @@
+
+ #rings {
+    position: relative;
+    text-align: center;
+    width: 300px;
+    height: 300px;
+    margin:0 auto;
+    -webkit-tap-highlight-color: transparent;
+}
+
+#first-ring {
+    position: absolute;
+    border: 2px dotted #BCCAD9;
+    /*border-right-color: transparent;*/
+    /*border-bottom-color: transparent;    */
+    margin: 7px 1px 9px 5px;
+    text-align: center;
+    width: 280px;
+    height: 280px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    -webkit-animation: turn_clockwise 4s infinite;
+    -moz-animation: turn_clockwise 4s infinite;
+    animation: turn_clockwise 4s infinite;   
+}
+
+#second-ring {
+    position: absolute;
+    border: 2px solid #fff;
+    border-bottom-color: transparent;
+    margin: -15px 0 40px -15px;
+    /*margin: 5px auto;*/
+    width: 320px;
+    height: 320px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    -webkit-animation: turn_clockwise 8s infinite;
+    -moz-animation: turn_clockwise 8s infinite;
+    animation: turn_clockwise 8s infinite;	
+
+}
+
+#third-ring {
+    position: absolute;
+    border: 1px solid #55acee;
+    border-top-color: transparent;
+    /*margin: 21px 0 0 18px;*/
+    margin: 19px 0 0 17px;
+    width: 255px;
+    height: 255px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    -webkit-animation: turn_counter_clockwise 6s infinite;
+    -moz-animation: turn_counter_clockwise 6s infinite;
+    animation: turn_counter_clockwise 6s infinite;
+}   
+
+#sub-ring {
+    position: absolute;
+    border: 1px solid #BCCAD9;
+    border-right-color: transparent;        
+    margin: 25px 0 0 25px;
+    width: 240px;
+    height: 240px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    -webkit-animation: turn_clockwise 2s;
+    -moz-animation: turn_clockwise 2s;
+    animation: turn_clockwise 2s;
+}    
+
+@-webkit-keyframes turn_clockwise {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@-moz-keyframes turn_clockwise {
+    0% {
+        -moz-transform: rotate(0deg);
+    }
+    100% {
+        -moz-transform: rotate(360deg);
+    }
+}
+
+@keyframes turn_clockwise {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes turn_counter_clockwise {
+    0% {
+        -webkit-transform: rotate(360deg);
+    }
+    100% {
+        -webkit-transform: rotate(0deg);
+    }
+}
+
+@-moz-keyframes turn_counter_clockwise {
+    0% {
+        -moz-transform: rotate(360deg);
+    }
+    100% {
+        -moz-transform: rotate(0deg);
+    }
+}
+
+@keyframes turn_counter_clockwise {
+    0% {
+        transform: rotate(360deg);
+    }
+    100% {
+        transform: rotate(0deg);   
+    }   
+}   
+
+#ring-content {
+    position: relative;
+    width: 230px;
+    height: 230px;
+    background-color: #8C9AA9;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: inset 0 0 0 16px rgba(255,255,255,.6),0 1px 2px rgba(0,0,0,.1);
+    transition: all .4s ease-in-out;
+}
+
+#ring-content:hover {
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.1),0 1px 2px rgba(0,0,0,.1);
+}
+
+#ring-content .container {
+    margin-top:-10px;
+    position: relative;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    width: 220px;
+    height: 220px;
+    background-color: #2C3A49;
+    transition: all .7s ease-in-out;
+}
+
+#ring-content .value {
+    font-size: 50px;
+    line-height: 70px;
+    padding-top: 44px;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 0 0 1px #fff,0 1px 2px rgba(0,0,0,.3);
+}
+
+#ring-content .description {
+    font-size: 16px;
+    line-height: 20px;
+    color: #fff;
+    opacity: 0;
+    transition: all 1s ease-in-out .4s;
+}
+
+#ring-content .container.hidden {
+    opacity: 0;
+}
+
+#ring-content .container.active,
+#ring-content .container.active .description {
+    opacity: 1;
+}
+
+#pagination {
+    margin: 12px auto 0;
+    padding: 0;
+    position: absolute;
+    left: 84px;
+    top: 180px;
+}
+
+#pagination li {
+    list-style: none;
+    float: left;
+    margin: 0 2px
+}
+
+#pagination li a {
+    display: block;
+    width: 8px;
+    height: 8px;
+    background: #ccc;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+}
+
+#pagination li a.active {
+    background: #fff;
+}   

@@ -1,0 +1,25 @@
+body {
+  /*default sunset*/
+  background:linear-gradient(to top right, rgba(83, 172, 238, 0) 10%, rgba(255, 124, 157, 0.1) 65%, rgba(255, 192, 26, 0) 125%), url('../../../img/desk.jpg');
+  background:-webkit-linear-gradient(to top right, rgba(83, 172, 238, 0) 10%, rgba(255, 124, 157, 0.1) 65%, rgba(255, 192, 26, 0) 125%), url('../../../img/desk.jpg');
+  background:-moz-linear-gradient(to top right, rgba(83, 172, 238, 0) 10%, rgba(255, 124, 157, 0.1) 65%, rgba(255, 192, 26, 0) 125%), url('../../../img/desk.jpg');
+  background:-ms-linear-gradient(to top right, rgba(83, 172, 238, 0) 10%, rgba(255, 124, 157, 0.1) 65%, rgba(255, 192, 26, 0) 125%), url('../../../img/desk.jpg');
+  background:-o-linear-gradient(to top right, rgba(83, 172, 238, 0) 10%, rgba(255, 124, 157, 0.1) 65%, rgba(255, 192, 26, 0) 125%), url('../../../img/desk.jpg');
+  background-attachment: fixed,             fixed,              fixed;
+  background-position: center center;  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.card-theme {
+
+
+
+
+background: #4b6cb7; /* fallback for old browsers */
+background: -webkit-linear-gradient(to bottom left, #4b6cb7 , #182848); /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to bottom left, #4b6cb7 , #182848); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        
+
+}

@@ -1,0 +1,1 @@
+(function(){'use strict';angular.module('app',['app.core','app.profile','app.organization','app.company','app.dashboard','app.resource','app.common']);})();

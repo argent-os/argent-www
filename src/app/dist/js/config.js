@@ -1,0 +1,1 @@
+(function(){'use strict';var core=angular.module('app.core');var config={name:'Qwello',appTitle:'qwello-app',version:'0.1.1'};core.value('config',config);})();

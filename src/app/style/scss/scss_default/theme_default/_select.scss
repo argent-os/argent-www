@@ -1,0 +1,37 @@
+ select.form-control {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAA1UlEQVRIS+3SMWpCQRSF4e9FTJsyrUX2YGNjYWGTHbgHwcJkJTapQsAUQrBQyBZcQcAUAQtBcAlJZCCPaNA3oyBp3tTnnn/mv5M588nO3K8ERA2Xik5W1MEU62jDb6COb8y2Zw7t4BL3GGCVAGmghqe/2aIlV3GHBywLIE1c43lfJvaLKj+QRyz2FLRwhdGhC8QAYe4CfQzxsVXURlA5LlKYAsghPbzgHbf4xCS2n1RA6AnZLr7whtdYeT6UksszAXKDeerQMS9I7dzJlYCotlLR/yvaAK8IGBnVmkD0AAAAAElFTkSuQmCC) no-repeat right transparent;
+}
+
+ select.navsel {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
+    background:transparent;
+    float:right;
+}
+
+ select.navsel-rtl {
+    direction: rtl;    
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
+    background:transparent;
+    float:right;
+}
+
+input, select {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+
+.caret-icon {
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAA1UlEQVRIS+3SMWpCQRSF4e9FTJsyrUX2YGNjYWGTHbgHwcJkJTapQsAUQrBQyBZcQcAUAQtBcAlJZCCPaNA3oyBp3tTnnn/mv5M588nO3K8ERA2Xik5W1MEU62jDb6COb8y2Zw7t4BL3GGCVAGmghqe/2aIlV3GHBywLIE1c43lfJvaLKj+QRyz2FLRwhdGhC8QAYe4CfQzxsVXURlA5LlKYAsghPbzgHbf4xCS2n1RA6AnZLr7whtdYeT6UksszAXKDeerQMS9I7dzJlYCotlLR/yvaAK8IGBnVmkD0AAAAAElFTkSuQmCC) no-repeat right transparent;
+}

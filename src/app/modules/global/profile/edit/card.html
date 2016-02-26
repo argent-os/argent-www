@@ -1,0 +1,77 @@
+<div class="container">
+  <div class="row">
+    <br><br><br>
+    <!-- <h3 class="col-md-3 text-darklight animated fadeIn delay-4">Credit Card</h3> -->
+    <!-- <h5 class="col-md-5 animated fadeIn delay-4" ng-if="vm.user.stripe.last4"> for card ending with digits {{vm.user.stripe.last4}}</h5> -->
+    <h2 class="col-md-offset-1 text-darklight animated fadeIn delay-4">Linked Card</h2>
+
+    <div class="widget col-md-6 col-md-offset-1 card-theme animated fadeInDown" style="padding:0px;border:1px solid rgba(25,25,25,0.1);box-shadow:0px 10px 30px rgba(25,25,25,0.5);border-radius:16px;">
+    <div style="background-size:70%;background-repeat:no-repeat;background-image:linear-gradient(rgba(25,25,25,0),rgba(25,25,25,00)),url(app/img/cut.png);height:100%;width:100%;position:absolute;"></div>
+    <div style="background-size:65%;background-position: right 10px top 10px;background-repeat:no-repeat;background-image:linear-gradient(rgba(25,25,25,0),rgba(25,25,25,00)),url(app/img/globe-icon-overlay.png);height:100%;width:100%;position:absolute;"></div>
+      <form class="form-group group" id="cardForm" ng-submit="vm.updateBilling(cardNumber, cardMonth, cardYear, cardCVC)">
+          <div class="form-group group">
+              <div class="col-md-12 col-sm-offset-0 col-sm-12 fadeIn animated fadeIn" style="border-top:1px solid rgba(25,25,25,0);padding-top:0px;">
+                <form role="form" id="cardForm" ng-submit="updateBilling(cardNumber, cardMonth, cardYear, cardCVC)" class="form-horizontal">
+                  <div class="form-group">
+                    <label class="col-md-12 control-label text-white" style="margin-left:-16px;">Card Number</label>
+                    <br>
+                    <div class="col-md-12">
+                      <input id="card-num" ng-model="cardNumber" ng-change="validateInput()" type="tel" class="form-control card-input text-white paymentInput" placeholder="•••• •••• •••• {{vm.user.stripe.last4}}">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-md-12 control-label text-white" style="margin-left:-16px">Card Details</label>
+                    <div class="col-md-12">
+                      <div class="row">
+                        <div class="col-md-4">
+                          <input id="card-month" ng-model="cardMonth" type="tel" size="2" maxlength="2" class="form-control card-input text-white" placeholder="MM">
+                        </div>
+                        <div class="col-md-4">
+                          <input id="card-year" ng-model="cardYear" type="tel" size="2" maxlength="2" class="form-control card-input text-white" placeholder="YY">
+                        </div>
+                        <div class="col-md-4">
+                          <input id="card-cvc" ng-model="cardCVC" type="tel" size="3" maxlength="3" class="form-control card-input text-white" placeholder="CVC">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-sm-6" style="margin-top:0px;">
+                      <div id="cardFormError" class="hidden" role="alert">
+                        <p style="margin-top:40px" class="label label-danger">{{error}}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group col-md-12" ng-if="vm.user.stripe.last4">
+                      <button id="updatecardbutton" style="font-size:14px;margin-bottom:10px" type="submit" class="btn btn-success pull-right col-md-12" value="Update Card">Update Card</button>
+                  </div>
+                  <div class="form-group col-md-12" ng-if="!vm.user.stripe.last4">
+                      <button id="addcardbutton" style="font-size:14px;margin-bottom:10px" type="submit" class="button green large pull-right col-md-12" value="Add Card"><i class="icon ion-card"></i>&nbsp;&nbsp;Add Card</button>
+                  </div>                          
+                </form>                                                  
+              </div>
+          </div>                                  
+      </form>    
+    </div>
+    <div class="col-md-offset-1 col-md-3">
+      <div class="widget animated fadeIn delay-3" style="height:362px;border:1px solid rgba(25,25,25,0.1);box-shadow:0px 10px 30px rgba(25,25,25,0.1);
+
+background: #e9e9e9; /* fallback for old browsers */
+background: rgba(255,255,255,0.9);
+        
+        ">
+        <form class="form-group group">
+              <h2 style="margin-top:20px" class="text-center animated fadeInDown delay-3"><span style="font-size:22px">@</span>{{vm.user.username}}</h2>
+              <img ng-if="!vm.user.picture.secureUrl" src="app/img/user.jpg" class="avatar circle text-center" style="height:100px;width:auto;border:2px solid rgba(255,255,255,0.5);margin-left:auto;margin-right:auto;display:block;margin-top:20px;margin-bottom:20px;box-shadow:0px 9px 19px rgba(0, 0, 0, 0.1);">
+              <img class="avatar circle animated fadeIn delay-4" ng-if="vm.user.picture.secureUrl" ng-src="{{vm.user.picture.secureUrl}}" class="avatar circle text-center" style="height:100px;width:100px;border:2px solid rgba(255,255,255,0.5);margin-left:auto;margin-right:auto;display:block;margin-top:20px;margin-bottom:20px;box-shadow:0px 9px 19px rgba(0, 0, 0, 0.1);">
+
+            <div class="text-center" style="border-top:1px solid rgba(25,25,25,0.1);padding-top:10px;padding-left:5px;padding-right:5px;">
+              <h4 class="animated bounceIn delay-6">{{vm.user.email}}</h4>
+              <h4 class="animated bounceIn delay-7" ng-if="vm.user.verified"><i class="icon ion-checkmark-circled"></i>&nbsp;Verified User</h4>
+              <h4 class="animated bounceIn delay-8">Current Plan: {{vm.user.stripe.plan}}</h4>
+            </div>                                
+        </form>   
+      </div>
+    </div>
+  </div>
+</div>

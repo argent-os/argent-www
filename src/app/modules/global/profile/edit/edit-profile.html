@@ -1,0 +1,236 @@
+<div class="row animated fadeIn">
+    <div id="" style="width:100%;">
+    </div>
+    <div class="hidden-xs hidden-sm background-contrast" style="position:absolute;z-index:-5;height:120%;width:53%;left:0;top:0;bottom:0"></div>
+    <div class="container animate-body-content">
+      <div ng-if="vm.user._id" style="margin-top:40px">
+                <div class="col-md-12">
+                        <div style="display:inline"><a ui-sref="app.profile"><h3 class="text-darklight animated fadeInDown delay-3 pull-left"><i class="icon ion-chevron-left ion-2x"></i></h3></a></div>             
+                        <div style="display:inline" ><h3 class="text-darklight animated fadeInDown delay-3 pull-right">Edit Profile</h3></div>             
+                </div>   
+                <br>  
+                <br>  
+                <form class="form-group group animated fadeIn">
+                    <div class="form-group group">
+                        <div class="col-md-6 widget animated fadeIn" style="border:none;border-radius:4px;top:80px;border:1px solid #e9e9e9;">
+<img style="z-index:99999999999;position:absolute;float:right;height:70px;width:auto;top:-70px;right:10px;" src="app/img/ios_icons/settings.png">
+
+                            <div style="border-top-right-radius:2px;border-top-left-radius:2px;height:120px;top:-80px;z-index:-999;position:absolute;width:100.3%;margin-left:-1px;left:0px;background: #fff;border:1px solid #e9e9e9;border-right:none;border-left:none" class="ifwhitetheme"></div>
+
+                            <!-- <div class="hex avatar">                             -->
+                            <!-- <div><p style="float:right;">Click picture to edit</p></div> -->
+                            <div ng-if="!vm.user.picture.id" style="margin-top:-100px;">
+                                <img ng-controller="photoUploadCtrl" ng-file-select resetOnClick="true" ng-model="files" ng-src="{{profilePicSecureUrl}}" class="" style="box-shadow:-5px 2px 9px rgba(0, 0, 0, 0.1);height:100px;width:100px;cursor:pointer;cursor:hand;padding-left:0px;background-size:cover;background-repeat:no-repeat;margin-top:-10px;margin-left:25px;border-radius:50%;">
+                            </div>   
+                            <div ng-if="vm.user.picture.id" style="margin-top:-50px;float:left;">
+                                <div ng-if="vm.user.picture.id" style="cursor:pointer;height:125px;width:125px;margin-top:-25px;margin-left:0px;display:block;" ng-controller="photoUploadCtrl" ng-file-select ng-multiple="true" resetOnClick="true" ng-model="files" >
+                                          <img style="height:80px;width:80px;border:2px solid white;box-shadow:9px 9px 19px rgba(0, 0, 0, 0.05);" ng-if="vm.user.picture.id" ng-src="{{vm.user.picture.secureUrl}}" class="circle" />
+                                </div>
+                            </div>                     
+                            <div class="col-md-12">
+                                    <br> 
+                                    <div class="col-md-12">                               
+                                      <input type="text" placeholder="First Name" class="form-control" name="firstname" ng-model="vm.user.firstname"
+                                              />
+                                        <span class="highlight"></span>
+                                        <span class="bar"></span>
+                                        <label class="pad-input-left">First Name</label>
+                                    </div>  
+                                    <div class="col-md-12">                               
+                                      <input type="text" placeholder="Last Name" class="form-control" name="lastname" ng-model="vm.user.lastname"
+                                              />
+                                        <span class="highlight"></span>
+                                        <span class="bar"></span>
+                                        <label class="pad-input-left">Last Name</label>
+                                    </div>                                                                        
+                                    <div class="col-md-12">                               
+                                      <input type="email" placeholder="Email" class="form-control" name="email" ng-model="vm.user.email"
+                                              />
+                                        <span class="highlight"></span>
+                                        <span class="bar"></span>
+                                        <label class="pad-input-left">Email</label>
+                                      <div ng-show="profileForm.email.$invalid && (profileForm.email.$dirty  || profileForm.$submitted)">
+                                          <small class="error" ng-show="profileForm.email.$error.required">
+                                              Email is required.
+                                          </small>
+                                          <small class="error" ng-show="profileForm.email.$error.email">
+                                              Email is incorrect
+                                          </small>
+                                      </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                      <input type="password" placeholder="Password" name="password" class="form-control" ng-model="vm.user.password"
+                                             required ng-minlength=3 ng-maxlength=20 />
+                                        <span class="highlight"></span>
+                                        <span class="bar"></span>
+                                        <label class="pad-input-left">Password</label> 
+                                    </div>        
+                                    <br>                         
+ <!--                                    <div class="well" style="height:80px;margin-top:170px;padding:25px;border-radius:2px;">
+                                    <button ui-sref="app.integrations">Integrations</button>
+                                      <p class="text-center" style="margin-left:auto;margin-right:auto;display:block;">
+                                        <a ng-if="!code && !stripeConnected && vm.user.env == 'PROD'" href="https://connect.stripe.com/oauth/authorize?response_type=code&client_id=ca_7bhAYW2PBwM3gL2gzmTx68GPyCb2YNpj&scope=read_write" class="stripe-connect"><span>Connect to Stripe</span></a>
+                                        <a ng-if="!code && !stripeConnected && vm.user.env == 'DEV'" href="https://connect.stripe.com/oauth/authorize?response_type=code&client_id=ca_7bhAvDeWw9xWhxZNHB1T1nJFs5WCk6ga&scope=read_write" class="stripe-connect"><span>Connect to Sandbox Stripe</span></a>
+                                        <span ng-if="stripeConnected || user.stripeToken"><i style="color:#2ECC71;font-size:16px;" class="icon ion-android-checkmark-circle"></i>&nbsp;&nbsp;Stripe Account Connected</span>
+                                        <span ng-click="stripeInfo()"><i style="margin-top:-5px;" class="icon ion-ios-help-outline pull-right"></i></span>
+<a ng-if="vm.user.env == 'PROD'" href="https://connect.stripe.com/oauth/authorize?response_type=code&client_id=ca_7bhAYW2PBwM3gL2gzmTx68GPyCb2YNpj&scope=read_write"><span><i style="margin-top:-5px;" class="icon ion-android-refresh pull-left"></i></span></a>
+<a ng-if="vm.user.env == 'DEV'" href="https://connect.stripe.com/oauth/authorize?response_type=code&client_id=ca_7bhAvDeWw9xWhxZNHB1T1nJFs5WCk6ga&scope=read_write"><span><i style="margin-top:-5px;" class="icon ion-android-refresh pull-left"></i></span></a>                                        
+                                      </p>
+                                    </div> 
+                                    <div class="well" style="height:80px;padding:20px;padding-bottom:5px;border-radius:2px;">
+                                      <p class="text-center" style="margin-left:auto;margin-right:auto;display:block;">
+                                              <a style="color:#95a2aa" href tooltip-placement="right" tooltip="Coming soon!"><img alt="Add to Slack" height="40" width="139" src="https://platform.slack-edge.com/img/add_to_slack.png" srcset="https://platform.slack-edge.com/img/add_to_slack.png 1x, https://platform.slack-edge.com/img/add_to_slack@2x.png 2x"></a>                         
+                                      </p>
+                                    </div>   -->                 
+                                    <br>      
+                                    <div class="col-md-12">
+                                      <div style="margin-bottom:70px;">
+                                          <button ng-click="vm.update(vm.user, vm.role)" class="btn btn-success btn-block col-xs-12 col-sm-12 col-md-4 pull-right" style="margin-top:0px;"><i class=""></i>Save</button>
+                                      </div>                                         
+                                    </div>                                                                                   
+                            </div>     
+                        </div>
+                    </div>                               
+                </form>                                                     
+            </div>    
+<div class="widget col-md-5 col-md-offset-1 animated fadeIn delay-3" style="border-bottom-left-radius:4px;border-bottom-right-radius:4px;border-top-left-radius:0px;border-top-right-radius:0px;">
+          <div style="margin-top:20px;margin-bottom:20px;" ng-controller="TrackerController" ng-if="vm.user.email && vm.user.stripe.plan == 'pro' || vm.user.stripe.plan == 'team' " class="animated fadeIn col-md-12 form-group desktop-notif">         
+              <div class="col-md-12">
+            <h3>Theme&nbsp;<i class="icon ion-paintbucket"></i></h3>
+            <div>
+              <br>
+                <div class="" style="margin-top:0px;">
+                  <button class="btn" style="width:30px;height:30px;background:#f5f7fa;border:1px solid #ddd;border-radius:0px;margin-right:-4px;" ng-click="chooseTheme(0)" tooltip-placement="top" tooltip="Snow White"></button>              
+                  <button tooltip-placement="top" tooltip="Space Mountain" class="btn" style="width:30px;height:30px;background:#C2B4B8;border-radius:0px;margin-right:-4px;" ng-click="chooseTheme(1)"></button>
+                  <button tooltip-placement="top" tooltip="Midnight Blue" class="btn" style="width:30px;height:30px;background:#005C97;border-radius:0px;margin-right:-4px;" ng-click="chooseTheme(2)"></button>
+                  <button tooltip-placement="top" tooltip="Golden Purple" class="btn" style="width:30px;height:30px;background:#E6B57D;border-radius:0px;margin-right:-4px;" ng-click="chooseTheme(3)"></button>                
+                  <button class="btn" tooltip-placement="top" tooltip="Beach&nbsp;Lounge" style="width:30px;height:30px;background:#003973;border-radius:0px;margin-right:-4px;" ng-click="chooseTheme(4)"></button>                
+                  <button tooltip-placement="top" tooltip="Lake&nbsp;Breeze" class="btn" style="width:30px;height:30px;background:#4776E6;border-radius:0px;margin-right:-4px;" ng-click="chooseTheme(6)"></button>                
+                  <button tooltip-placement="top" tooltip="London Dusk" class="btn" style="width:30px;height:30px;background:#c2b280;border-radius:0px;margin-right:-4px;" ng-click="chooseTheme(7)"></button>    
+                  <button tooltip-placement="top" tooltip="Sky Blue" tooltip-placement="top" tooltip="Sky Blue" class="btn" style="width:30px;height:30px;background:#00c6ff;border-radius:0px;margin-right:-4px;" ng-click="chooseTheme(8)"></button>                
+                  <button tooltip-placement="top" tooltip="Yellow&nbsp;Field" class="btn" style="width:30px;height:30px;background:#FFCF4B;border-radius:0px;margin-right:-4px;" ng-click="chooseTheme(10)"></button> 
+                  <button tooltip-placement="top" tooltip="Turkish&nbsp;Turquoise" tooltip-placement="top" tooltip="Sky Blue" class="btn" style="width:30px;height:30px;background:#00e5ee;border-radius:0px;margin-right:-4px;" ng-click="chooseTheme(9)"></button>                                               
+                  <button tooltip-placement="top" tooltip="Blue&nbsp;Cherry" class="btn" style="width:30px;height:30px;background:#F5394F;border-radius:0px;margin-right:-4px;" ng-click="chooseTheme(12)"></button>  
+                  <button tooltip-placement="top" tooltip="Bubblegum&nbsp;Pop" class="btn" style="width:30px;height:30px;background:#00dbde;border-radius:0px;margin-right:-4px;" ng-click="chooseTheme(13)"></button>  
+                  <button tooltip-placement="top" tooltip="Royal&nbsp;Purple" class="btn" style="width:30px;height:30px;background:#7a90ff;border-radius:0px;margin-right:-4px;" ng-click="chooseTheme(14)"></button>  
+                  <button tooltip-placement="top" tooltip="Autumn&nbsp;Fall" class="btn" style="width:30px;height:30px;background:#DA7151;border-radius:0px;margin-right:-4px;" ng-click="chooseTheme(15)"></button>  
+                  <button tooltip-placement="top" tooltip="Soft&nbsp;Spring" class="btn" style="width:30px;height:30px;background:#F9F6BC;border-radius:0px;margin-right:-4px;" ng-click="chooseTheme(16)"></button>  
+                  <button tooltip-placement="top" tooltip="Firecracker" class="btn" style="width:30px;height:30px;background:#D54958;border-radius:0px;margin-right:-4px;" ng-click="chooseTheme(17)"></button> 
+                  <button tooltip-placement="top" tooltip="Cool&nbsp;Wind" class="btn" style="width:30px;height:30px;background:#5ACAFD;border-radius:0px;margin-right:-4px;" ng-click="chooseTheme(18)"></button>  
+                  <button tooltip-placement="top" tooltip="Wood" class="btn" style="width:30px;height:30px;background:#A25D40;border-radius:0px;margin-right:-4px;" ng-click="chooseTheme(19)"></button>  
+                  <button tooltip-placement="top" tooltip="Leather&nbsp;Desk" class="btn" style="width:30px;height:30px;background:#212121;border-radius:0px;margin-right:-4px;" ng-click="chooseTheme(20)"></button>  
+                  <button tooltip-placement="top" tooltip="New&nbsp;York" class="btn" style="width:30px;height:30px;background:#3C4A59;border-radius:0px;margin-right:-4px;" ng-click="chooseTheme(21)"></button>  
+                  <button tooltip-placement="top" tooltip="Bokeh&nbsp;City" class="btn" style="width:30px;height:30px;background:#87D37C;border-radius:0px;margin-right:-4px;" ng-click="chooseTheme(22)"></button>  
+                  <button tooltip-placement="top" tooltip="Deep&nbsp;Purple" class="btn" style="width:30px;height:30px;background:#434ACA;border-radius:0px;margin-right:-4px;" ng-click="chooseTheme(23)"></button>  
+                  <button tooltip-placement="top" tooltip="Coffee&nbsp;" class="btn" style="width:30px;height:30px;background:#5E2C0B;border-radius:0px;margin-right:-4px;" ng-click="chooseTheme(24)"></button>  
+                  <button tooltip-placement="top" tooltip="Free&nbsp;Eagle" class="btn" style="width:30px;height:30px;background:#2CC094;border-radius:0px;margin-right:-4px;" ng-click="chooseTheme(25)"></button>  
+
+
+                  <br>       
+                  <br>       
+                </div>
+              </div>
+              </div>      
+            </div>     
+
+            <div style="margin-top:20px;margin-bottom:20px;" ng-controller="TrackerController" ng-if="vm.user.email && vm.user.stripe.plan == 'free' " class="animated fadeIn col-md-12 form-group desktop-notif">
+              <div class="col-md-12">
+                <span style="margin-top:7px;margin-bottom:10px;" class="text-contrast pull-left">Desktop Alerts and more Themes available in a Pro plan</span> 
+              </div>              
+              <div class="col-md-12" ng-if="vm.user.stripe.plan == 'free' " style="border-top:1px solid #eee;padding-top:35px;">
+                <button class="btn" style="width:30px;height:30px;background:#f5f7fa;border:1px solid #ddd;border-radius:0px;margin-right:-4px;" ng-click="chooseTheme(0)" tooltip-placement="top" tooltip="Snow White"></button>              
+                <button class="btn" style="width:30px;height:30px;background:#C2B4B8;border-radius:0px;margin-right:-4px;" ng-click="chooseTheme(1)" tooltip-placement="top" tooltip="Space Mountain"></button>
+                <button class="btn" style="width:30px;height:30px;background:#005C97;border-radius:0px;margin-right:-4px;" ng-click="chooseTheme(2)" tooltip-placement="top" tooltip="Midnight Blue"></button>             
+              </div>              
+            </div>     
+
+
+<!--             <div ng-if="vm.user._id" class="col-md-12" style="border-top:1px solid #e9e9e9;">
+              <div class="col-md-12"> 
+                <br>  
+                <h3 class="text-center">Subscription</h3>                
+                <div ng-if="vm.user.email" class="animated delay-1 fadeIn col-md-12 form-group">
+                    <form class="form-inline" id="planForm" ng-submit="vm.updatePlan()">
+                      <br>                      
+                      <div class="btn-group btn-group-justified" id="plangroup" tooltip-placement="bottom" tooltip="Charged monthly" style="border:1px solid rgba(25,25,25,0.2);border-radius:90px;border:none;box-shadow:none;">
+                        <a href id="btnproplan" class="btn-ghost-light btn btn-success" ng-click="vm.updatePlan('free')">Free - <span>$0</span></a>
+                        <a href id="btnproplan" class="btn-ghost-light btn btn-success" style="" ng-click="vm.updatePlan('pro')">Pro - <span>$9</span></a>
+                        <a href id="btnteamplan" class="btn-ghost-light btn btn-success" style="" ng-click="vm.updatePlan('team')">Team - <span>$19</span></a>                        
+                      </div>
+                      <br>
+                    </form>
+                </div>             
+              </div>                                                    
+            </div>    -->
+
+<!--             <div ng-if="vm.user._id" class="col-md-12" style="border-top:1px solid #e9e9e9;">
+              <div class="col-md-12">                       
+                  <div>
+                    <form class="form-group group" id="cardForm" ng-submit="vm.updateBilling(cardNumber, cardMonth, cardYear, cardCVC)">
+                        <div class="form-group group">                            
+                        <br>
+                        <h3 class="text-center">Credit Card</h3>                
+                            <div class="col-md-12 col-sm-offset-0 col-sm-12 fadeIn animated fadeIn" style="border-top:1px solid rgba(25,25,25,0);padding-top:10px;">   
+                              <form role="form" id="cardForm" ng-submit="updateBilling(cardNumber, cardMonth, cardYear, cardCVC)" class="form-horizontal">
+                                <div class="form-group">
+                                  <label class="col-md-12 control-label" style="margin-left:-16px;">Card Number</label>
+                                  <br>
+                                  <div class="col-md-12">
+                                    <input id="card-num" ng-model="cardNumber" ng-change="validateInput()" type="tel" class="form-control paymentInput" style="border-bottom:3px solid #e9e9e9;" placeholder="•••• •••• •••• {{vm.user.stripe.last4}}">
+                                  </div>
+                                </div>
+                                <div class="form-group">
+                                  <label class="col-md-12 control-label" style="margin-left:-16px">Card Details</label>
+                                  <div class="col-md-12">
+                                    <div class="row">
+                                      <div class="col-md-4">
+                                        <input id="card-month" ng-model="cardMonth" type="tel" size="2" maxlength="2" class="form-control" placeholder="MM" style="border-bottom:3px solid #e9e9e9;">
+                                      </div>
+                                      <div class="col-md-4">
+                                        <input id="card-year" ng-model="cardYear" type="tel" size="2" maxlength="2" class="form-control" placeholder="YY" style="border-bottom:3px solid #e9e9e9;">
+                                      </div>
+                                      <div class="col-md-4">
+                                        <input id="card-cvc" ng-model="cardCVC" type="tel" size="3" maxlength="3" class="form-control" placeholder="CVC" style="border-bottom:3px solid #e9e9e9;">
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="form-group">
+                                  <div class="col-sm-6" style="margin-top:0px;">
+                                    <div id="cardFormError" class="hidden" role="alert">
+                                      <p style="margin-top:40px" class="label label-danger">{{error}}</p>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="form-group col-md-12" ng-if="vm.user.stripe.last4">
+                                    <button id="updatecardbutton" style="font-size:14px;margin-bottom:10px" type="submit" class="btn btn-success btn-block pull-right col-md-12" value="Update Card"><i class=""></i>Update Card</button>
+                                </div>
+                                <div class="form-group col-md-12" ng-if="!vm.user.stripe.last4">
+                                    <button id="addcardbutton" style="font-size:14px;margin-bottom:10px" type="submit" class="btn btn-success btn-block pull-right col-md-12" value="Add Card"><i class=""></i>Add Card</button>
+                                </div>                          
+                              </form>                                                  
+                            </div>
+                        </div>                                  
+                    </form>                    
+                  </div>            
+              </div>                                                    
+            </div>   -->
+
+            <div ng-if="vm.user._id" class="col-md-12" style="border-top:1px solid #e9e9e9;">
+              <div class="col-md-12"> 
+                <br>  
+                <h3 class="text-center">Close Account</h3>                
+                <div ng-if="vm.user.email" class="animated delay-1 fadeIn col-md-12 form-group">
+                  <div class="col-md-12">
+                    <br>
+                    <button ng-click="vm.closeAccount(vm.user)" class="btn btn-danger btn-block col-xs-12 col-sm-12 col-md-12 pull-left" style="margin-top:0px;"><i class=""></i>Continue</button>  
+                  </div>
+                </div>             
+              </div>                                                    
+            </div>               
+</div>
+
+        </div>
+    </div>
+</div>
+

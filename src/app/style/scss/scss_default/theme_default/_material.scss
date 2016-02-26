@@ -1,0 +1,115 @@
+/* form starting stylings ------------------------------- */
+.group        { 
+  position:relative; 
+  margin-bottom:45px; 
+}
+
+.form-control {
+  border-bottom:3px solid #eee;
+}
+
+.negative-input-margin {
+  margin-left:-9px;
+}
+
+@media(max-width:991px) {
+  .form-control, input {
+    margin-top: 50px;
+  }
+  .btn,.btn-ghost {
+    margin-top:10px;
+  }
+}
+
+@media(min-width:991px) {
+  .form-control {
+    margin-bottom: 50px;
+  }  
+}
+
+.login-input>.form-control {
+    margin-bottom: none;  
+    margin-top: none;  
+}
+input {
+  font-size:14px;
+  padding:10px 10px 10px 5px;
+  display:block;
+  width:100%;
+  border:none;
+  border-bottom:3px solid #eee;
+}
+input:focus     { outline:none; }
+
+
+/* LABEL ======================================= */
+label {
+  color:#bbb; 
+  font-size:14px;
+  font-weight:normal;
+  position:absolute;
+  pointer-events:none;
+  left:20px;
+  top:10px;
+  transition:0.2s ease all; 
+}
+
+/* active state */
+input:focus ~ label, input:valid ~ label {
+  top:-20px;
+  font-size:14px;
+  color:#0079FF;
+}
+
+/* BOTTOM BARS ================================= */
+.bar  { position:relative; display:block; width:auto; padding-top:-50px; }
+.bar:before, .bar:after   {
+  padding-top:-50px;
+  content:'';
+  height:1px; 
+  width:0;
+  bottom:1px; 
+  /*position:absolute;*/
+  background:#95a2aa; 
+  transition:0.2s ease all; 
+}
+.bar:before {
+  left:50%;
+}
+.bar:after {
+  right:50%; 
+}
+
+/* active state */
+input:focus ~ .bar:before, input:focus ~ .bar:after {
+  width:50%;
+}
+
+/* HIGHLIGHTER ================================== */
+/*.highlight {
+  position:absolute;
+  height:60%; 
+  width:100px; 
+  top:25%; 
+  left:0;
+  pointer-events:none;
+  opacity:0.5;
+}*/
+
+/* active state */
+input:focus ~ .highlight {
+  animation:inputHighlighter 0.3s ease;
+}
+
+/* ANIMATIONS ================ */
+@keyframes inputHighlighter {
+  from  { background:#95a2aa; }
+  to    { width:0; background:transparent; }
+}
+
+/* active state */
+input:focus ~ label, input:valid ~ label {
+  top:-20px;
+  font-size:14px;
+  color:#0079FF;
+}

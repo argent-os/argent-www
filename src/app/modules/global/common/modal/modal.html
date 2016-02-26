@@ -1,0 +1,14 @@
+<div class="modal-style" style="margin-top:-20px;">
+	<div class="modal-header text-center">
+	    <h3>{{modalOptions.headerText}}</h3>
+	</div>
+	<div class="modal-body text-center">
+	    <p>{{modalOptions.bodyText}}</p>
+	</div>
+	<div class="modal-footer">
+	    <button type="button" class="btn btn-primary col-md-5 col-md-offset-1 col-sm-offset-1 col-xs-offset-1 col-sm-5 col-xs-5"
+	            data-ng-click="modalOptions.close()"><i class="icon ion-ios-arrow-left ion-2x"></i>&nbsp;&nbsp;&nbsp;{{modalOptions.closeButtonText}}</button>
+	    <button class="btn btn-danger col-md-5 col-sm-5 col-xs-5 col-sm-offset-1 col-xs-offset-1 "
+	            data-ng-click="modalOptions.ok();"><i class="icon ion-android-checkmark-circle ion-2x"></i>&nbsp;&nbsp;&nbsp;{{modalOptions.actionButtonText}}</button>
+	</div>	
+</div>

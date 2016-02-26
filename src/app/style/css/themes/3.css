@@ -1,0 +1,18 @@
+body {
+	/*candy gradient*/
+    background: -webkit-radial-gradient(circle farthest-corner at right bottom, rgba(255,208,138,0.9) 0, rgba(255,163,118,0.9) 28%, rgba(210,101,120,0.9) 52%, rgba(104,42,132,0.9) 79%, rgba(36,22,104,0.9) 100%), url('../../../img/bg.jpg');
+    background: -moz-radial-gradient(circle farthest-corner at right bottom, rgba(255,208,138,0.9) 0, rgba(255,163,118,0.9) 28%, rgba(210,101,120,0.9) 52%, rgba(104,42,132,0.9) 79%, rgba(36,22,104,0.9) 100%), url('../../../img/bg.jpg');
+    background: -o-radial-gradient(circle farthest-corner at right bottom, rgba(255,208,138,0.9) 0, rgba(255,163,118,0.9) 28%, rgba(210,101,120,0.9) 52%, rgba(104,42,132,0.9) 79%, rgba(36,22,104,0.9) 100%), url('../../../img/bg.jpg');
+    background: -ms-radial-gradient(circle farthest-corner at right bottom, rgba(255,208,138,0.9) 0, rgba(255,163,118,0.9) 28%, rgba(210,101,120,0.9) 52%, rgba(104,42,132,0.9) 79%, rgba(36,22,104,0.9) 100%), url('../../../img/bg.jpg');
+    background: radial-gradient(circle farthest-corner at right bottom, rgba(255,208,138,0.9) 0, rgba(255,163,118,0.9) 28%, rgba(210,101,120,0.9) 52%, rgba(104,42,132,0.9) 79%, rgba(36,22,104,0.9) 100%), url('../../../img/bg.jpg');
+}
+        
+
+.card-theme {
+
+
+    background: #232526; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #232526 , #414345); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #232526 , #414345); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        
+}

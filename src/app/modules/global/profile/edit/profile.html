@@ -1,0 +1,206 @@
+<div class="row animated fadeIn">
+    <div id="" style="width:100%;">
+    </div>
+    <div class="hidden-xs hidden-sm background-contrast" style="position:absolute;z-index:-5;height:120%;width:53%;left:0;top:0;bottom:0"></div>
+    <div class="container animate-body-content">
+        <div ng-if="vm.user._id" style="margin-top:40px">
+                <div style="display:inline" ><h1 class="text-shadow text-darklight animated fadeIn">Welcome {{vm.user.firstname}}</h1></div>   
+                <div style="display:inline" class="text-shadow text-darklight">Today's date is {{ date | date }}</div>     
+                <span class="text-darklight"><button tooltip-placement="left" tooltip="Edit&nbsp;Profile" ui-sref="app.editprofile" class="text-darklight button animated fadeIn pull-right text-shadow" style="display:inline;float:right;margin-top:-50px;background:transparent;border:none;"><i class="icon ion-edit"></i></button></span>        
+                <form class="form-group group animated fadeIn">
+                    <div class="form-group group">
+
+                        <div class="col-md-6 widget animated fadeIn" style="border:none;border-radius:4px;top:80px;border:1px solid #e9e9e9;padding-bottom:40px;">
+                            <div style="border-top-right-radius:8px;border-top-left-radius:8px;height:120px;top:-80px;z-index:-999;position:absolute;width:100.3%;margin-left:-1px;left:0px;background: #fff;border:1px solid #e9e9e9;border-right:none;border-left:none" class="ifwhitetheme"></div>
+
+                            <!-- <div class="hex avatar">                             -->
+
+                            <div ng-if="!vm.user.picture.id" style="margin-top:-50px;">
+                                <img ng-controller="photoUploadCtrl" ng-file-select resetOnClick="true" ng-model="files" ng-src="{{profilePicSecureUrl}}" class="" style="box-shadow:-5px 2px 9px rgba(0, 0, 0, 0.1);height:100px;width:100px;cursor:pointer;cursor:hand;padding-left:-49px;background-size:cover;background-repeat:no-repeat;margin-top:-15px;margin-bottom:20px;border-radius:50%;">
+                            </div>   
+                            <div ng-if="vm.user.picture.id" style="margin-top:-50px;">
+                                <div ng-if="vm.user.picture.id" style="cursor:pointer;height:125px;width:125px;margin-top:-30px;margin-right:auto;display:block;" ng-controller="photoUploadCtrl" ng-file-select ng-multiple="true" resetOnClick="true" ng-model="files" >
+                                          <img style="height:100px;width:100px;border:2px solid white;box-shadow:9px 9px 19px rgba(0, 0, 0, 0.2);" ng-if="vm.user.picture.id" ng-src="{{vm.user.picture.secureUrl}}" class="circle" />
+                                </div>
+                            </div>                     
+                            <div class="col-md-12" ng-init="showEdit=false">
+                                    <h2 ng-mouseover="showEdit=!showEdit" ng-mouseout="showEdit=false" style="background:rgba(255,255,255,0);font-weight:300;font-size;12px;float:right;padding-left:20px;padding-right:0px;padding-top:0px;padding-bottom:15px;margin-top:-100px;color:#95a2aa;" ng-if="vm.user.email" class="pull-right animated bounceIn delay-3" ui-sref="app.editprofile"><span ng-show="showEdit">Edit </span>Profile Information&nbsp;<i ng-show="showEdit" class="icon ion-edit"></i></h2>   
+                                    <br> 
+                                    <div class="col-md-12">                                    
+                                    <div class="col-md-12 border-bottom">
+                                        <div class="">
+                                            <h4 style="display:inline" class="animated bounceIn delay-4 font-weight-thin flat-grey responsive-center">Email</h4>
+                                            <p style="display:inline" class="pull-right responsive-center animated bounceIn delay-4">{{vm.user.email}}</p>
+                                        </div>
+                                    </div>    
+                                    <div class="col-md-12 border-bottom">
+                                        <div class="" style="padding-top:15px;">
+                                            <h4 style="display:inline" class="animated bounceIn delay-4 font-weight-thin flat-grey responsive-center">Name</h4>
+                                            <p style="display:inline" class="pull-right responsive-center animated bounceIn delay-4">{{vm.user.firstname}} {{vm.user.lastname}}</p>
+                                            <p ng-if="!vm.user.firstname && !vm.user.lastname" style="display:inline" class="pull-right responsive-center animated bounceIn delay-4"><sub style="color:white;">.</sub></p>
+                                        </div>
+                                    </div>                                        
+                                    <div class="col-md-12 border-bottom">
+                                        <div class="" style="padding-top:15px;">
+                                            <h4 style="display:inline" class="animated bounceIn delay-4 font-weight-thin flat-grey responsive-center">Username</h4>
+                                            <p style="display:inline" class="pull-right responsive-center animated bounceIn delay-4">@{{vm.user.username}}</p>
+                                        </div>
+                                    </div>   
+                                    <div class="col-md-12 border-bottom">
+                                        <div class="" style="padding-top:15px;">
+                                            <h4 style="display:inline" class="animated bounceIn delay-4 font-weight-thin flat-grey responsive-center">Subscription</h4>
+                                            <p style="display:inline" class="pull-right responsive-center animated bounceIn delay-4">{{plan}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 border-bottom">
+                                        <div class="" style="padding-top:15px;">
+                                            <h4 style="display:inline" class="animated bounceIn delay-4 font-weight-thin flat-grey responsive-center">Notifications</h4>
+                                            <p style="display:inline" class="pull-right responsive-center animated bounceIn delay-4"><span ng-if="vm.user.notificationsEnabled">yes</span><span ng-if="!vm.user.notificationsEnabled"><a ui-sref="app.plans">no</a></span></p>
+                                        </div>
+                                    </div>                                    
+                                    <div class="col-md-12">
+                                        <div class="" style="padding-top:15px;">
+                                            <h4 style="display:inline" class="animated bounceIn delay-4 font-weight-thin flat-grey responsive-center">Verified</h4>
+                                            <p style="display:inline" class="pull-right responsive-center animated bounceIn delay-4"><span ng-if="vm.user.verified">yes</span></p>
+                                        </div>
+                                    </div>                                                                                                       
+                                    <div class="col-md-12" style="margin-top:30px;">              
+                                      <button class="btn-block btn btn-success" ui-sref="app.editprofile">Edit Profile</button>
+                                    </div>   
+                                    <br>                                      
+                                    <br>                                                                                        
+                            </div>     
+                     
+                        </div>
+                    </div>    
+
+<!--                     <div class="col-md-5 col-md-offset-1 widget animated fadeInUp delay-5 integrations-bg" style="background-size:cover;border-color:transparent;border-width:0px;border-bottom-left-radius:0px;border-bottom-right-radius:0px;margin-bottom:0px;border-top-right-radius:8px;border-top-left-radius:8px;border-bottom:0px;padding-top:20px;padding-right:40px;">
+                      <p class="text-center">
+                        <button ui-sref="app.integrations" style="color:white" class="h4 col-md-5 col-md-offset-1 button blue large pull-right">View Integrations</button>
+                      </p>
+                    </div>    -->
+                    <!-- <div class="col-md-offset-1 col-md-5 widget" ng-if="!vm.user.facebook">
+                        <button class="btn btn-block btn-primary"><i class="fa fa-facebook" style="color:white"></i>&nbsp;&nbsp;&nbsp;Connect to Facebook</button>
+                    </div> -->    
+
+<!--                <div class="form-group">
+                      <div ng-repeat="role in roles">
+                            <div class="col-md-4" style="box-shadow:none;border-left:1px solid #dadada;border-bottom:1px solid #dadada;">            
+                                <h3 class="font-weight-thin text-center">{{role.title}}
+                                </h3>           
+                                <h4 class="text-center">
+                                <input
+                                    bs-switch
+                                    ng-model="vm.user.role[$index].enabled"
+                                    switch-off-color="danger"              
+                                    type="checkbox" />  
+                                </h4>
+                                <br>
+                            </div>                    
+                      </div>                                      
+                    </div>   -->                                
+                </form>                                                     
+            </div>    
+<div class="widget col-md-5 col-md-offset-1 animated fadeIn delay-3" style="border-bottom-left-radius:4px;border-bottom-right-radius:4px;border-top-left-radius:0px;border-top-right-radius:0px;padding-bottom:20px;">
+          <div style="margin-top:20px;margin-bottom:20px;" ng-controller="TrackerController" ng-if="vm.user.email && vm.user.stripe.plan == 'pro' || vm.user.stripe.plan == 'team' " class="animated fadeIn col-md-12 form-group desktop-notif">         
+
+              <div class="col-md-12">
+                <span style="margin-top:15px;margin-bottom:0px;" class="pull-left"><b>Desktop Notifications</b></span>            
+                <div style="position:absolute;right:20px;top:25px;">
+                  <div class="toggle">
+                        <input type="checkbox" class="check"
+                        ng-change="toggleNotifications(user)"
+                        ng-model="vm.user.notificationsEnabled"
+                        name="checkbox" value="checked" id="" /><label for="test1"><span class="ui"></span></label>
+                  <b class="b switch"></b>
+                  <b class="b track"></b>
+                </div>     
+                </div>           
+                <span style="margin-top:13px" class="pull-right">
+                </span>
+              </div>       
+            </div>     
+            <div style="margin-top:20px;margin-bottom:0px;" ng-controller="TrackerController" ng-if="vm.user.email && vm.user.stripe.plan == 'free' " class="animated fadeIn col-md-12 form-group desktop-notif">
+              <div class="col-md-12">
+                <span style="margin-top:7px;margin-bottom:10px;" class="text-contrast pull-left"><img height="30px" src="app/img/ios_icons/check-circle.png">Desktop Alerts and more Themes available in Pro plan</span> 
+              </div>                      
+            </div>     
+
+<!--             <div ng-controller="TrackerController" ng-if="vm.user.email && vm.user.stripe.plan == 'free' " class="animated fadeInUp col-md-offset-1 col-md-5 widget form-group desktop-notif">
+              <div>
+                <timepicker ng-model="mytime" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></timepicker>
+                <pre class="alert alert-info">Time is: {{mytime | date:'shortTime' }}</pre>
+                <div class="row">
+                  <div class="col-xs-6">
+                      Hours step is:
+                    <select class="form-control" ng-model="hstep" ng-options="opt for opt in options.hstep"></select>
+                  </div>
+                  <div class="col-xs-6">
+                      Minutes step is:
+                    <select class="form-control" ng-model="mstep" ng-options="opt for opt in options.mstep"></select>
+                  </div>
+                </div>
+                <hr>
+                <button class="btn btn-info" ng-click="toggleMode()">12H / 24H</button>
+                <button class="btn btn-default" ng-click="update()">Set to 14:00</button>
+                <button class="btn btn-danger" ng-click="clear()">Clear</button>
+              </div>           
+            </div>      -->
+
+            <div ng-if="vm.user._id" class="col-md-12" style="padding-top:30px;margin-top:20px;border-top:1px solid #e9e9e9;">
+              <div class="col-md-11 col-md-offset-1" ng-init="showCreditCard=false">
+                  <div>
+                      <span class="btn btn-ghost btn-primary col-md-5" ui-sref="app.integrations">Integrations</span>
+                  </div>    
+                  <div>
+                      <span ng-if="vm.user.stripe.last4 && vm.user.stripe.plan == 'free' "  class="btn btn-ghost btn-success col-md-5 col-md-offset-1 robin-green" ui-sref="app.plans"><span class="robin-green">Upgrade plan</span></span>
+
+                      <span ng-if=" vm.user.stripe.plan == 'free' && !vm.user.stripe.last4 " class="btn btn-ghost btn-primary col-md-5 col-md-offset-1" ui-sref="app.plans">Plans</span>
+                      <span ng-if=" vm.user.stripe.plan !== 'free' " class="btn btn-ghost btn-primary col-md-5 col-md-offset-1" ui-sref="app.plans">Plans</span>
+                  </div>  
+ <br><br>
+                  <div>
+                      <span class="btn btn-ghost btn-primary col-md-5" ui-sref="app.card">View Card</span>
+                  </div>                                                        
+                  <div>
+                      <span class="btn btn-ghost btn-primary col-md-5 col-md-offset-1" ng-click="showCreditCard=!showCreditCard">Linked Card</span>
+                  </div>               
+
+                  <div ng-if="showCreditCard">
+                    <form class="form-group group" id="cardForm" ng-submit="vm.updateBilling(cardNumber, cardMonth, cardYear, cardCVC)">
+                        <div class="form-group group">
+                            <div class="col-md-12 col-sm-offset-0 col-sm-12 fadeIn animated fadeIn" style="border-top:1px solid rgba(25,25,25,0);padding-top:10px;">                     
+                              <form role="form" id="cardForm" ng-submit="updateBilling(cardNumber, cardMonth, cardYear, cardCVC)" class="form-horizontal">
+                                <div ng-if="vm.user.stripe.last4">Account linked with card ending in {{vm.user.stripe.last4}}</div>
+                                <div ng-if="!vm.user.stripe.last4">No credit card linked <button ui-sref="app.card" class="btn btn-ghost btn-primary pull-right">Add credit card</button></div> 
+                              </form>                                                  
+                            </div>
+                        </div>                                  
+                    </form>                    
+                  </div>            
+              </div>                                                    
+            </div>   
+            <div ng-if="vm.user.email" style="padding-top:10px;margin-top:0px;margin-bottom:10px;" class="animated fadeIn col-md-12 form-group">
+            </div>     
+</div>
+
+
+<!--        <div class="animated delay-2 fadeInUp col-md-offset-1 col-md-5 widget">
+                <span style="margin-top:7px" class="pull-left">API Key</span>
+                <span class="pull-right">
+                    <button class="btn-ghost btn-info" type="submit" ng-click="generateApiKey(vm.user)">Generate API Key</button>
+                </span>
+                <br>
+                <br>
+                <br>                                        
+                <pre class="api-key" ng-if="!vm.user.apiKey">
+                    {{apiKey}}
+                </pre>
+                <pre class="api-key" ng-if="vm.user.apiKey">
+                    {{vm.user.apiKey}}
+                </pre>
+            </div>   -->
+        </div>
+    </div>
+</div>
+

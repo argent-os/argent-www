@@ -1,0 +1,82 @@
+</div>    
+    <div id="perspective" class="perspective effect-airbnb" style="z-index:-999999">
+      <div class="container">
+        <div class="wrapper"><!-- wrapper needed for scroll -->
+          <div class="main">
+            <div class="column">
+              <p><button class="button blue large" style="text-shadow:none;background:transparent;position:absolute;left:0;top:0;border:none;z-index:9999999999" id="showMenu"><i class="text-darklight icon ion-navicon-round ion-2x"></i></button></p>
+            </div>
+            <div style="background:transparent;border-radius:8px;" class="col-md-12 animated fadeIn">
+              <div class="" style="width:100%;float:right;" id="invoice" >
+                <div class="row infos">
+                  <div style="background:transparent;border-radius:8px;margin-top:-325px;" class="col-md-12">
+                      <h1 class="text-darklight col-md-12 col-md-offset-1">My Quotes
+                          <span style="float:right;"><a href ui-sref="app.createquote" tooltip-placement="top" tooltip="Create&nbsp;Quote" class="pull-right col-md-1 text-darklight" style="margin-top:5px;text-align:right;display:inline;"><i class="icon ion-plus-round"></i></a> 
+                          </span>
+                      </h1>
+                      <br>
+                      <br>
+                      <br>
+                      <br>                      
+                      <div class="widget col-md-12 col-md-offset-1">
+                        <h2 class="text-center col-md-12">Quotes</h2>
+                        <br>
+                        <br>
+                        <br>
+                        <p class="text-center col-md-12"><img style="margin-bottom:15px;" height="75px" style="margin-top:20px;" src="app/img/round_icons/mail.png">  </p> 
+                        <br>
+                        <div ng-if="showLoader" style="margin-top:15px;margin-left:15px;margin-right:auto;display:block;" class="loader loader--thickness-5 loader--size-48"></div> 
+                        <br>  
+                        <div ng-if="quotes.length==0"><span><h4 class="text-center" >Looks like you don't have any quotes yet</h4></span><p class="text-center"><button ui-sref="app.createquote" class="button blue centered margin-top margin-bottom">Create a quote</button></p></div>
+                        <form ng-show="quotes">
+                          <div class="form-group">
+                            <div class="input-group">
+                              <div class="input-group-addon" style="border:none;border-radius:0px;"><i class="icon ion-search"></i></div>
+                              <input style="border:3px solid #eee;" type="text" class="form-control" placeholder="Search Quotes" ng-model="searchQuotes">
+                            </div>      
+                          </div>
+                        </form>                  
+                        <table ng-if="quotes.length>0" class="table table-responsive" id="searchTextResults">
+                          <thead>
+                            <tr>
+                              <th>Name</th>
+                              <th>Date Created</th>
+                              <th>Approved?</th>
+                              <th>Project Start Date</th>
+                              <th>Project End Date</th>
+                              <th>Grand Total</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr ng-repeat="quote in quotes | filter: searchQuotes">
+                              <td>{{ quote.name}}</td>
+                              <td>{{ quote.dateCreated | date}}</td>
+                              <td ng-if="quote.status == null">Waiting for approval</td>
+                              <td ng-if="quote.status == true">Approved</td>
+                              <td ng-if="quote.status == false">Rejected</td>
+                              <td>{{ quote.startDate | date }}</td>
+                              <td>{{ quote.endDate | date }}</td>
+                              <td>{{ quote.calculatedGrandTotal | currency }}</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>            
+                  </div>
+                </div>
+            </div>  
+          </div>
+          </div><!-- /main -->
+        </div><!-- wrapper -->
+      </div><!-- /container -->
+      <nav class="outer-nav side left vertical" style="z-index:-998898;border-bottom:transparent;">
+        <a href ui-sref="app.invoice"><i class="icon ion-home ion-1x"></i>&nbsp;&nbsp;Add Customer</a>
+        <a href ng-csv="quotes" filename="invoice.csv"><i class="icon ion-ios-download ion-1x"></i>&nbsp;&nbsp;Export CSV</a>
+        <a href><i class="icon ion-upload ion-1x"></i>&nbsp;&nbsp;Upload to Dropbox</a>
+        <a href print-btn><i class="icon ion-printer ion-1x"></i>&nbsp;&nbsp;Print</a>
+        <a href ng-click="clearLocalStorage()"><i class="icon ion-star ion-1x"></i>&nbsp;&nbsp;Reset</a>
+        <a href ng-hide="printMode" ng-click="printMode = true;"><i class="icon ion-email ion-1x"></i>&nbsp;&nbsp;View Print Mode</a>
+        <a href ng-click="printMode = false;"><i class="icon ion-locked ion-1x"></i>&nbsp;&nbsp;Hide Print Mode</a>     
+      </nav>
+    </div><!-- /perspective -->
+
+

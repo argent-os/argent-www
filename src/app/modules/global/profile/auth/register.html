@@ -1,0 +1,101 @@
+<div class="" style="     background: #00396f;
+      background:linear-gradient(to top right, rgba(83, 172, 238, 0.1) 10%, rgba(255, 124, 157, 0.1) 65%, rgba(255, 192, 26, 0.1) 125%), url('app/img/desk.jpg');
+  background-position: center center;  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;height:100%;">
+  <a style="font-size:20px;position:absolute;padding:15px;top:0px;left:10px;z-index:9999;" href="/login" class="text-darklight"><i style="color:white;padding-right:10px;" class="ion ion-ios-arrow-back ion-3x"></i>Back to Login</a>
+  <div class="inner-container">
+  <div class="hidden-xs text-center">
+    <!-- <img height="30" style="margin-left=auto;margin-right:auto;display:block;margin-bottom:10px;display:inline-block;" src="app/img/fuel.png" /> -->
+    <span style="color:white;text-shadow:-1px 2px #333;letter-spacing:4px;font-size:24px;padding-left:3px;"></span>
+    <p style="color:white;display:inline-block;font-size:28px;"> <span style="text-transform:none;font-family:'Source Sans Pro';font-weight:500;letter-spacing:2px;font-size:24px;padding-left:3px;text-shadow:-1px 2px #333;">Sign Up</span></p>  
+  </div>
+    <div class="visible-xs" style="margin-top:85px;"></div>  
+    <div class="widget">
+      <!-- <h2 class="font-weight-thin text-center"><i class="icon ion-ios-unlocked-outline ion-3x"></i></h2> -->
+      <br>
+
+                  <div ng-if="showLoader" style="margin-left:15px;margin-top:15px;margin-right:auto;display:block;" class="visible-sm visible-xs hidden-lg loader loader--thickness-5 loader--size-48"></div> 
+
+                  <form role="form" novalidate name="loginForm" style="margin-top:-20px;" class="mt-lg" ng-submit="loginForm.$valid && vm.register(username,email,password,role)">
+                  <div class="">
+                    <h4 class="text-center visible-xs margin-bottom">Sign Up</h4>                    
+                  </div>
+                    <div class="alert alert-danger" role="alert" ng-show="vm.responseErrorMsg">
+                      {{vm.responseErrorMsg}}
+                    </div>
+                    <div class="form-group group" style="margin-top:0px;">
+                      <input style="font-size:18px;width:100%;height:60px;margin-top:20px;" type="text" class="form-control login-input" required ng-minlength=3 ng-maxlength=20
+                             ng-model="vm.user.username" name="username" placeholder="Username"
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                      <div ng-show="loginForm.username.$invalid && (loginForm.username.$dirty || loginForm.$submitted)">
+                        <small class="error" ng-show="loginForm.username.$error.required">
+                          username is required.
+                        </small>
+                        <small class="error" ng-show="loginForm.username.$error.minlength">
+                          username is required to be at least 3 characters
+                        </small>
+                        <small class="error" ng-show="loginForm.username.$error.maxlength">
+                          username cannot be longer than 20 characters
+                        </small>
+                      </div>
+                    </div>                    
+                    <div class="form-group group">
+                      <input style="font-size:18px;width:100%;height:60px;" type="email" class="form-control login-input" required ng-minlength=3 ng-maxlength=40
+                             ng-model="vm.user.email" name="email" placeholder="Email">
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                      <div ng-show="loginForm.email.$invalid && (loginForm.email.$dirty || loginForm.$submitted)">
+                        <small class="error" ng-show="loginForm.email.$error.required">
+                          email is required.
+                        </small>
+                        <small class="error" ng-show="loginForm.email.$error.minlength">
+                          email is required to be at least 3 characters
+                        </small>
+                        <small class="error" ng-show="loginForm.email.$error.maxlength">
+                          email cannot be longer than 40 characters
+                        </small>
+                      </div>
+                    </div>
+                    <div class="form-group group">
+                      <input style="font-size:18px;width:100%;height:60px;" class="form-control login-input" required ng-minlength=3 ng-maxlength=20
+                             ng-model="vm.user.password" name="password" type="password" placeholder="Password" >
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                      <div ng-show="loginForm.password.$invalid && (loginForm.password.$dirty || loginForm.$submitted)">
+                        <small class="error" ng-show="loginForm.password.$error.required">
+                          Password is required.
+                        </small>
+                        <small class="error" ng-show="loginForm.password.$error.minlength">
+                          Password is required to be at least 3 characters
+                        </small>
+                        <small class="error" ng-show="loginForm.password.$error.maxlength">
+                          Password cannot be longer than 20 characters
+                        </small>
+                      </div>
+                    </div>
+                    <div class="clearfix">
+                      <div class="btn-toolbar col-md-12">
+                        <button style="font-size:14px;margin-bottom:-20px;" ng-dblclick="false" type="submit" class="btn btn-primary col-md-12 col-md-offset-4 col-sm-12 col-xs-12 text-center text-contrast" ng-disabled="flag">Sign Up</button>
+                        <!-- <br>
+                        <a class="pull-left" href="/register">Create an account</a>
+                        <a class="pull-right" href="#">Recover Password</a> -->                    
+                      </div>
+                    </div>
+                  </form>
+                  <br>
+    </div>
+  </div>
+  <div style="position:absolute;bottom:10px;" class="hidden-xs">
+    <ul style="display:inline-block;list-style-type:none;">
+      <li>
+        <a href="/home" class="text-darklight" style="font-weight:500">Home</a>
+        <!-- <a href="/investors" class="text-darklight" style="padding-left:40px;font-weight:500">Investors</a> -->
+        <a href="/press" class="text-darklight" style="padding-left:40px;font-weight:500">Press</a>
+        <a href="/faq" class="text-darklight" style="padding-left:40px;font-weight:500">FAQ</a>
+      </li>
+    </ul>
+  </div>
+</div>

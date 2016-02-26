@@ -1,0 +1,58 @@
+<div class="" style="     background: #00396f;
+      background:linear-gradient(to top right, rgba(83, 172, 238, 0.1) 10%, rgba(255, 124, 157, 0.1) 65%, rgba(255, 192, 26, 0.1) 125%), url('app/img/desk.jpg');
+  background-position: center center;  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;height:100%;">
+  <a style="font-size:20px;position:absolute;padding:15px;top:0px;left:10px;" href="/login" class="text-darklight"><i style="color:white;padding-right:10px;" class="ion ion-ios-arrow-back ion-3x"></i>Back to Login</a>
+  <a style="font-size:20px;position:absolute;padding:15px;top:0px;left:10px;" href="/login" target="self" class="text-darklight"><i style="color:white;padding-right:10px;" class="ion ion-ios-arrow-back ion-3x"></i></a>
+  <div class="inner-container text-center" style="height:100%">
+    <span class="margin-bottom" style="color:white;text-shadow:none;font-family:'Nunito', 'Source Sans Pro';letter-spacing:1px;font-size:24px;padding-left:3px;text-shadow:-1px 2px #333;">Remind Password</span>
+    <div style="margin-top:15px;"></div>      
+    <div class="widget" >
+      <br>
+                  <form style="margin-top:20px;" role="form" novalidate name="loginForm" class="mt-lg" ng-submit="loginForm.$valid && vm.remindPassword(vm.user.email)">
+                    <p class="text-center visible-xs"><img height="50px" src="app/img/badge2.png"></p>
+                    <h4 class="text-center font-weight-thin visible-xs">Remind Password</h4>                  
+                    <div class="alert alert-danger" role="alert" ng-show="vm.responseErrorMsg">
+                      {{vm.responseErrorMsg}}
+                    </div>
+                    <div class="form-group group">
+                      <input style="font-size:18px;width:100%;height:60px;" type="email" class="form-control login-input" required ng-minlength=3 ng-maxlength=20 ng-model="vm.user.email" name="email" placeholder="Email">
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                      <div ng-show="loginForm.email.$invalid && (loginForm.email.$dirty || loginForm.$submitted)">
+                        <small class="error" ng-show="loginForm.email.$error.required">
+                          <!-- email is required. -->
+                        </small>
+                        <small class="error" ng-show="loginForm.email.$error.minlength">
+                          <!-- email is required to be at least 3 characters -->
+                        </small>
+                        <small class="error" ng-show="loginForm.email.$error.maxlength">
+                          <!-- email cannot be longer than 20 characters -->
+                        </small>
+                      </div>
+                    </div>
+                    <div class="clearfix">    
+                      <div class="btn-toolbar col-md-12">
+                        <button style="font-size:14px;margin-bottom:10px;" type="submit" ui.sref="app.dashboard" class="btn btn-primary col-md-12 col-md-offset-1 col-sm-12 col-xs-12 text-center text-contrast">Send password</button>
+                        <!-- <br>
+                        <a class="pull-left" href="/register">Create an account</a>
+                        <a class="pull-right" href="#">Recover Password</a> -->                    
+                      </div>
+                      <br>
+                    </div>
+                  </form>
+    </div>
+  </div>
+  <div style="position:absolute;bottom:10px;" class="hidden-xs">
+    <ul style="display:inline-block;list-style-type:none;">
+      <li>
+        <a href="/home" class="text-darklight" style="font-weight:500" href="">Home</a>
+        <!-- <a href="/investors" class="text-darklight" style="padding-left:40px;font-weight:500" href="">Investors</a> -->
+        <a href="/press" class="text-darklight" style="padding-left:40px;font-weight:500" href="">Press</a>
+        <a href="/faq" class="text-darklight" style="padding-left:40px;font-weight:500" href="">FAQ</a>
+      </li>
+    </ul>
+  </div>
+</div>

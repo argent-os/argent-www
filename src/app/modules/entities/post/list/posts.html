@@ -1,0 +1,36 @@
+<ol class="breadcrumb">
+  <li><span class="text-muted">Home</span></li>
+  <li class="active">Posts</li>
+</ol>
+<div class="row">
+    <div class="col-md-12">
+        <widget>
+            <header>
+              <button type="button" class="btn btn-sm btn-primary mt-n-xs pull-right" ui-sref="app.editPost({id: null})">Create new post &nbsp;<i class="fa fa-pencil"></i></button>
+              <h4 class="widget-title">Posts</h4>
+            </header>
+            <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="post in vm.posts">
+                    <td>{{post._id}}</td>
+                    <td>{{post.title}}</td>
+                    <td><span>{{post.description}}</span></td>
+                    <td class="text-right">
+                        <button type="button" class="btn btn-info" ui-sref="app.editPost({id: post._id})"><i class="fa fa-edit"></i></button>
+                        <button type="button" class="btn btn-danger" ng-click="vm.delete(post)"><i class="fa fa-close"></i></button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            </div>
+        </widget>
+    </div>
+</div>

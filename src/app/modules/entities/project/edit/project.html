@@ -1,0 +1,178 @@
+<div class="container animated fadeIn" ng-controller="TimeTrackerController" ng-cloak class="ng-cloak" style="padding: 40px 30px;" ng-init="add_task = false; add_project=false;"> 
+  <div class="row">   
+    <div class="col-md-12 animated fadeIn"> 
+      <div ng-controller="TrackerController"> 
+        <div ng-controller="ProjectsController">
+            <div class="col-md-6" style="margin-bottom:24px;">
+              <div class="text-center text-darklight"  style="font-size:24px;">
+                <div style="padding-top:33px;">
+                  <i class="icon ion-android-add-circle"></i><span>&nbsp;&nbsp;<a href class="text-darklight" ng-click="openCreateProjectModal('sm')">Add Project</a></span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6" style="margin-bottom:24px;">
+              <div class="text-center text-darklight"  style="font-size:24px;">
+                <div style="padding-top:33px;">
+                  <i class="icon ion-android-add-circle"></i><span>&nbsp;&nbsp;<a href class="text-darklight" ng-click="openCreateTaskModal('sm')">Add Task</a></span>
+                </div>
+              </div>
+            </div>   
+<!--             <form class="form-group group animated fadeIn delay-1" ng-submit="addProject(projectName)" ng-if="add_project" name="project_form">
+              <div class="col-md-6">
+                <div class="col-md-6">
+                  <span>
+                    <input data-intro="1) Enter a project" data-position="bottom" type="text" id="name" name="name" class="form-control" data-ng-model="projectName" required ng-maxlength=20 />
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label class="pad-input-left text-center" style="font-weight:100;">Project Name</label>
+                  </span>                                         
+                </div>  
+                <span class="col-md-6">
+                  <button type="submit" class="btn btn-block btn-success ladda-button" data-style="zoom-in"><span class="ladda-label">Add Project</span></button>
+                </span>
+              </div>
+            </form>
+            <form class="form-group group animated fadeIn delay-2" ng-submit="addTask(taskName)" ng-if="add_task" name="task_form">
+              <div class="col-md-6">
+                <div class="col-md-6">
+                  <span>
+                    <input data-intro="2) Create a task" data-position="bottom"  type="text" id="task" name="task" class="form-control" ng-model="taskName" required ng-maxlength=20 />
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label class="pad-input-left text-center" style="font-weight:100;">Task Name</label>
+                  </span>                                         
+                </div>  
+
+                <span class="col-md-6">
+                  <button type="submit" class="btn btn-block btn-success ladda-button" data-style="zoom-in"><span class="ladda-label">Add Task</span></button>
+                </span>
+              </div>
+            </form>  -->                     
+        </div>   
+      </div>
+    </div>  
+  </div>
+  <div class="row">       
+      <div class="widget col-md-12" ng-controller="ProjectsController">
+          <div class="col-md-12">
+                  <br>  
+                  <button class="col-md-2 col-md-offset-5 btn btn-success btn-ghost btn-lg" style="margin-bottom:0px;font-size:14px;border:1px solid #ddd;" ui-sref="app.dashboard">Return to time tracker</button>      
+          </div>           
+          <div class="col-md-6" style="padding-left:60px;padding-right:60px;padding-top:20px;">
+              <h3 class="text-center" style="padding-bottom:15px;">Projects</h3>
+              <form>
+                <div class="form-group">
+                  <div class="input-group">
+                    <div class="input-group-addon" style="border:none;"><i class="icon ion-search"></i></div>
+                    <input style="border:3px solid #eee;" type="text" class="form-control" placeholder="Search Projects" ng-model="searchProjects">
+                  </div>      
+                </div>
+              </form>                        
+              <table ng-if="projects.length>0" class="table" id="searchProjectsResults">
+                  <thead>
+                    <tr>
+                      <!-- <th>ID</th> -->
+                      <th>Name</th>
+                      <th class="text-right">Delete</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr ng-repeat="project in projects | filter:searchProjects">
+                      <!-- <td>{{project.$id}}</td> -->
+                      <td><a class="robin-green" ng-href="/app/project/{{project.name}}">{{project.name}}</a></td>
+                      <td class="text-right">
+                          <span style="display:inline;;padding-right:13px;margin-top:-5px;"><i tooltip-placement="top" tooltip="Delete&nbsp;Project" ng-click="deleteProject(project)" class="icon ion-trash-b"></i></span>                                
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>                         
+          </div>
+          <div class="col-md-6 pull-right"  style="padding-left:60px;padding-right:60px;padding-top:20px;border-left:1px solid #eee;">
+              <h3 class="text-center" style="padding-bottom:15px;">Tasks</h3>            
+              <form>
+                <div class="form-group">
+                  <div class="input-group">
+                    <div class="input-group-addon" style="border:none;"><i class="icon ion-search"></i></div>
+                    <input style="border:3px solid #eee;" type="text" class="form-control" placeholder="Search Tasks" ng-model="searchTasks">
+                  </div>      
+                </div>
+              </form>                        
+              <table ng-if="projects.length>0" class="table" id="searchProjectsResults">
+                  <thead>
+                    <tr>
+                      <!-- <th>ID</th> -->
+                      <th>Name</th>
+                      <th class="text-right">Delete</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr ng-repeat="task in tasks | filter:searchTasks">
+                      <!-- <td>{{task.$id}}</td> -->
+                      <td><a class="robin-green" ng-href="/app/task/{{task.name}}">{{task.name}}</a></td>
+                      <td class="text-right">
+                          <span style="display:inline;padding-right:13px;margin-top:-5px;"><i tooltip-placement="top" tooltip="Delete&nbsp;Task" ng-click="deleteTask(task)" class="icon ion-trash-b"></i></span>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>                               
+          </div>
+      </div>        
+   </div>   
+</div>
+
+
+    <script type="text/ng-template" id="createProject.html">
+      <div class="modal-image-wrapper"><img height="75px" class="modal-image" src="app/img/round_icons/bird.png"><img height="75px" class="modal-image-overlay" src="app/img/mini-cut.png">
+      </div>         
+      <div>
+          <button style="position:absolute;left:5px;top:5px;" class="btn-ghost btn-invisible text-darklight" type="button" ng-click="cancel()"><img src="app/img/res/close.png" height="25px"></button>  
+          <div class="modal-header">
+              <h4 class="modal-title">Create new project</h4>
+          </div>
+          <div class="modal-body" style="height:20px;">
+              <form class="form-group group animated fadeIn delay-1" name="project_form">
+                  <div class="col-md-12 modal-input">
+                    <input type="text" required ng-model="projectName"/>
+                      <span class="highlight"></span>
+                      <span class="bar"></span>
+                      <label class="pad-input-left">Project Name</label>                              
+                  </div>
+              </form>                                              
+          </div>
+          <div class="modal-footer">
+              <button type="submit" class="btn btn-block btn-success ladda-button" ng-dblclick="false" data-style="zoom-in" ng-click="addProject(projectName)"><span class="ladda-label">Create Project</span></button>
+          </div>    
+      </div>
+    </script>  
+
+
+    <script type="text/ng-template" id="createTask.html">
+      <div class="modal-image-wrapper"><img height="75px" class="modal-image" src="app/img/round_icons/tools.png"><img height="75px" class="modal-image-overlay" src="app/img/mini-cut.png">
+      </div>         
+      <div>
+          <button style="position:absolute;left:5px;top:5px;" class="btn-ghost btn-invisible text-darklight" type="button" ng-click="cancel()"><img src="app/img/res/close.png" height="25px"></button>  
+          <div class="modal-header">
+              <h4 class="modal-title">Create new task</h4>
+          </div>
+          <div class="modal-body" style="height:20px;">
+              <form class="form-group group animated fadeIn delay-1" name="project_form">
+                  <div class="col-md-12 input-container modal-input" style="height:50px;">
+                      <select class="" style="width:100%;height:40px;" ng-model="project">
+                        <option ng-repeat="project in projects">{{project.name}}</option>
+                      </select>                            
+                  </div>              
+                  <div class="col-md-12 modal-input">
+                    <input type="text" required ng-model="taskName"/>
+                      <span class="highlight"></span>
+                      <span class="bar"></span>
+                      <label class="pad-input-left">Task Name</label>                              
+                  </div>
+              </form>                                              
+          </div>
+          <div class="modal-footer">
+              <button type="submit" class="btn btn-block btn-success ladda-button" ng-dblclick="false" data-style="zoom-in" ng-click="addTask(taskName)"><span class="ladda-label">Create Task</span></button>
+          </div>    
+      </div>
+    </script>  
+  
+  

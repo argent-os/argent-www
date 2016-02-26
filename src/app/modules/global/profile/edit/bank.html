@@ -1,0 +1,42 @@
+<div class="row animated fadeIn">
+    <div class="container animate-body-content">
+      <div ng-if="vm.user._id" style="margin-top:40px">
+            <div class="col-md-12">
+              <div class="col-md-11">
+                  <h1 class="text-darklight" style="display:inline-block;">Bank Accounts</h1>                
+              </div>    
+<!--               <div class="col-md-4 card-lg">
+                  <img src="app/img/ios_icons/bank.png" height="70px" style="margin-top:5px;margin-right:-10px;float:right;">
+                  <div style="display:inline" ng-repeat="bank in bankInfo">
+                    <h4 class="text-contrast" style="margin-left:10px;margin-top:20px;">{{ bank.bank_name }}</h4>  
+                    <p class="text-contrast" style="display:inline-block;margin-left:10px;">For account ending in {{ bank.last4 }}</p>  
+                    <br>
+                    <p class="text-contrast" style="display:inline-block;margin-left:10px;">{{ bank.name }}</p> 
+                    <br> 
+                    <h5 class="text-contrast" style="position:absolute;bottom:0px;left:20px;display:inline-block">Routing # {{ bank.routing_number }}</h5>  
+                    <p class="btn btn-success robin-green-button" disabled style="position:absolute;bottom:15px;right:15px;padding:5px;display:inline-block;">{{ bank.status }}</p>  
+                  </div>              
+              </div>  -->
+
+              <div class="col-md-4 card-lg" ng-repeat="account in plaidInfo.accounts">
+                  <img src="app/img/ios_icons/bank.png" height="70px" style="margin-top:5px;margin-right:-10px;float:right;">
+                  <div style="display:inline">
+                    <h4 class="text-contrast" style="margin-left:10px;margin-top:20px;">{{ account.meta.name }}</h4>  
+                    <p class="text-contrast" style="display:inline-block;margin-left:10px;">For account ending in {{ account.meta.number }}</p>  
+                    <br>
+                    <p class="robin-green" style="display:inline-block;margin-left:10px;"><span class="text-contrast">Available</span> {{ account.balance.available | currency }}</p> 
+                    <p class="robin-green" style="display:inline-block;margin-left:10px;"><span class="text-contrast">Current</span> {{ account.balance.current | currency }}</p> 
+                    <br>                     
+                    <h5 class="text-contrast" style="position:absolute;bottom:0px;left:20px;display:inline-block">Routing # {{ account.numbers.routing }}</h5>  
+                    <p class="btn btn-success robin-green-button" disabled style="position:absolute;bottom:15px;right:15px;padding:5px;display:inline-block;">{{ bank.type }}</p>  
+                  </div>              
+              </div> 
+
+              <!-- <div class="col-md-4 card-lg" style="padding-top:70px">
+                  <a href="" class="text-center"><h4>Link new bank account</h4></a>
+                  <span ng-if="showLoader" class="loader loader--thickness-5 loader--size-48 pull-right" style="position:absolute;display:inline;right:15px;top:15px;float:right;" ></span>                           
+              </div>      -->                              
+            </div>
+        </div>
+    </div>
+</div>

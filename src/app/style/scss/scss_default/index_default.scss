@@ -1,0 +1,30 @@
+@import "theme_default/variables";
+@import "../../../../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap";
+@import "../../../../../bower_components/angular-toastr/dist/angular-toastr.min.css";
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600,800,300);
+
+@import "theme_default/navigation";
+@import "theme_default/layout";
+@import "theme_default/login";
+@import "theme_default/override-bootstrap";
+@import "theme_default/dashboard";
+@import "theme_default/animations";
+@import "theme_default/validation";
+@import "theme_default/utils";
+@import "theme_default/material";
+@import "theme_default/toast";
+@import "theme_default/circles";
+@import "theme_default/pills";
+@import "theme_default/timetracker";
+@import "theme_default/modal";
+@import "theme_default/select";
+@import "theme_default/checkbox";
+@import "theme_default/upload";
+@import "theme_default/blur";
+@import "theme_default/stripe";
+@import "theme_default/creditcard";
+@import "theme_default/pricing";
+
+// injector
+
+// endinjector

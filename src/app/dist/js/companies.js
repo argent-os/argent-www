@@ -1,0 +1,1 @@
+(function(){'use strict';angular.module('app.resource').factory('companyResource',companyResource);companyResource.$inject=['$resource','$rootScope'];function companyResource($resource,$rootScope){return $resource('/api/v1/company/:id',{id:'@id'},{update:{method:'PUT'},delete:{method:'DELETE'}});}})();

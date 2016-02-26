@@ -1,0 +1,141 @@
+</div>    
+    <div id="perspective" class="perspective effect-airbnb" style="z-index:-999999;">
+      <div class="container">
+        <div class="wrapper"><!-- wrapper needed for scroll -->
+          <div class="main">
+            <div class="column">
+              <p><button class="text-darklight" style="visibility:hidden;background:transparent;position:absolute;left:0;top:0px;border:none;z-index:9999999999" id="showMenu"><i class="icon ion-navicon-round ion-2x"></i></button></p>
+            </div>
+            <div id="quoteform" style="background:transparent;border-radius:20px;" class="col-md-12 animated fadeIn">
+              <div class="" style="width:100%;float:right;" id="quote" >
+                <div class="row infos">
+                  <div style="background:transparent;border-radius:20px;margin-top:-280px;" class="col-md-12">
+                      <div class="col-md-12 col-md-offset-2">
+                          <h2 class="text-darklight">Create a Quote</h2>
+                      </div>                       
+                      <br>
+                      <br>
+                      <br>       
+                      <div class="widget col-md-8 col-md-offset-2" style="border:1px solid rgba(25,25,25,0.2);border-radius:10px;">
+                          <div style="border:1px solid black;border-top-left-radius:8px;border-top-right-radius:8px;margin-left:-20px;margin-top:-15px;position:absolute;background:linear-gradient(rgba(25,25,25,.7),rgba(25,25,25,.8)),url(app/img/mountain2.jpg);background-size:cover;background-repeat:no-repeat;width:100%;height:300px;"></div>                              
+
+                          <div class="col-md-12">
+                        <!-- <p class="text-center col-md-12"><img height="100px" style="margin-top:20px;" src="app/img/res/flow-orders.png">  </p>  -->
+                              <br>
+                              <span class="pull-left col-md-6">
+                              <input id="quote-name" type="text" required class="form-control" ng-model="quote.name"/>
+                                <span class="highlight"></span>
+                                <span class="bar"></span>
+                                <label class="label-darklight">Quote Name</label>                                   
+                              </span>
+                              <span><h4 class="pull-right" style="margin-right:20px;">{{ date | date }}</h4></span>                        
+                          </div>
+                          <br>
+                          <br>
+                          <br>
+                          <br>
+                          <div class="col-md-12">
+                            <div class="col-md-3 input-container">
+                              <input type="text" required class="form-control" ng-model="quote.customer.firstname"/>
+                                <span class="highlight"></span>
+                                <span class="bar"></span>
+                                <label class="label-darklight pad-input-left">First Name</label>                              
+                            </div>
+                            <div class="col-md-3 input-container">
+                              <input type="text" required class="form-control" ng-model="quote.customer.lastname"/>
+                                <span class="highlight"></span>
+                                <span class="bar"></span>
+                                <label class="label-darklight pad-input-left">Last Name</label>                              
+                            </div>                            
+                            <div class="col-md-6 input-container">
+                              <input type="text" required class="form-control" ng-model="quote.customer.email"/>
+                                <span class="highlight"></span>
+                                <span class="bar"></span>
+                                <label class="label-darklight pad-input-left">Customer Email</label>                              
+                            </div>
+                            <div class="col-md-6 input-container" data-ng-hide='printMode'>
+                                  <input required date-range-picker class="form-control date-picker" type="text" ng-model="datePicker" />
+                                    <span class="highlight"></span>
+                                    <span class="bar"></span>
+                                    <label class="label-darklight pad-input-left">Project Range</label>                                     
+                            </div>                            
+                            <div class="col-md-6 input-container" data-ng-hide='printMode'>
+                                  <select class="form-control" required ng-model="currencySymbol" ng-options='currency.symbol as currency.name for currency in availableCurrencies'></select>                                      
+                            </div>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <div class="items-table col-md-12" id="innerquoteform">
+                              <div class="row header">
+                                <div class="col-xs-1">&nbsp;</div>
+                                <div class="col-xs-4 col-md-offset-1"><b>Description</b></div>
+                                <div class="col-xs-2"><b>Quantity</b></div>
+                                <div class="col-xs-2"><b>Cost</b> {{currencySymbol}}</div>
+                                <div class="col-xs-2 text-right"><b>Total</b></div>
+                              </div>
+                              <div style="border-top:1px solid #eee;padding-bottom:20px;"></div>
+                              <div class="row invoice-item" ng-repeat="quote in quote.lineItems" ng-animate="'slide-down'">
+                                <div class="col-xs-1 remove-item-container" tooltip-placement="left" tooltip="Delete line item">
+                                  <button style="background:transparent;border:none;padding-top:13px;" ng-hide="printMode" ng-click="removeItem(item)" class="button robin-red"><i class="icon ion-close-round"></i></button>
+                                </div>
+                                <div class="col-md-4 col-md-offset-1 input-container">
+                                  <input ng-model="quote.description"  style="padding-left:2px" class="form-control no-margin" placeholder="Description" />
+                                </div>
+                                <div class="col-xs-2 input-container">
+                                  <input ng-model="quote.qty" value="1"  style="padding-left:2px" class="form-control no-margin" size="4" ng-required ng-validate="integer" placeholder="Qty" />
+                                </div>
+                                <div class="col-xs-2 input-container">
+                                  <input ng-model="quote.cost" style="padding-left:2px" value="0.00" class="form-control no-margin" ng-required ng-validate="number" size="6" placeholder="Cost" />
+                                </div>
+                                <div class="col-xs-2 text-right robin-green input-container" style="padding-top:8px">
+                                  {{quote.cost * quote.qty | currency: currencySymbol}}
+                                </div>
+                              </div>
+                              <div class="row invoice-item">
+                                <div class="col-xs-12" ng-hide="printMode" tooltip-placement="left" tooltip="Add line item">
+                                  <button style="background:transparent;border:none;" class="button robin-green" ng-click="addItem()" ><i class="icon ion-plus-round ion-1x"></i></button>
+                                </div>
+                              </div>
+                              <div class="row" style="border-bottom:1px solid #e9e9e9;">
+                                <div class="col-sm-10 col-md-10 text-right">Sub Total</div>
+                                <div class="col-sm-2 text-right robin-green">{{quoteSubTotal() | currency: currencySymbol}}</div>
+                              </div>
+                              <div class="row" style="border-bottom:1px solid #e9e9e9;padding-top:0px;bottom:0px;">
+                                <div class="col-md-4 col-md-offset-2">Quoted Sales Tax % </div>
+                                <div class="col-sm-2 col-md-2">
+                                  <input class="form-control" style="border-color:#ddd;color:#95a2aa;border-width:1px;height:inherit;padding:2px;" placeholder="#" ng-model="quote.tax" ng-validate="number">                                  
+                                </div>
+                                <div class="col-sm-2 col-md-2 text-left" style="margin-left:-2px;margin-right:2px;">Tax ({{ quote.tax }}%)</div>
+                                <div class="col-sm-2 col-md-2 text-right robin-green">{{calculateTax() | currency: currencySymbol}}</div>
+                              </div>
+                              <div class="row">
+                                <div class="col-md-6 col-sm-6"><h1 class="font-weight-thin">Grand Total</h1></div>
+                                <div class="col-md-6 col-sm-6 text-right" style="margin-bottom:50px;"><h1 class="robin-green">{{calculateGrandTotal() | currency: currencySymbol}}</h1></div>
+                              </div>
+                            </div>   
+                            <button ng-dblclick="false" class="btn btn-block btn-success col-md-12" style="margin-bottom:20px;" ng-click="createQuote(user, quote)"><i class=""></i>Send Quote</button>   
+                          </div>
+                      </div>                                    
+                  </div>
+                </div>
+            </div>  
+          </div>
+          </div><!-- /main -->
+        </div><!-- wrapper -->
+      </div><!-- /container -->
+      <nav class="outer-nav side left vertical" style="z-index:-998898;border-bottom:none;visibility:hidden;">
+        <a href ui-sref="app.quote"><i class="icon ion-home ion-1x"></i>&nbsp;&nbsp;Add Customer</a>
+        <a href ng-csv="getArray()" filename="quote.csv"><i class="icon ion-ios-download ion-1x"></i>&nbsp;&nbsp;Export CSV</a>
+        <a href><i class="icon ion-upload ion-1x"></i>&nbsp;&nbsp;Upload to Dropbox</a>
+        <a href print-btn><i class="icon ion-printer ion-1x"></i>&nbsp;&nbsp;Print</a>
+        <a href ng-click="clearLocalStorage()"><i class="icon ion-star ion-1x"></i>&nbsp;&nbsp;Reset Quote</a>
+        <a href ng-hide="printMode" ng-click="printMode = true;"><i class="icon ion-email ion-1x"></i>&nbsp;&nbsp;View Print Mode</a>
+        <a href ng-click="printMode = false;"><i class="icon ion-locked ion-1x"></i>&nbsp;&nbsp;Hide Print Mode</a>     
+      </nav>
+    </div><!-- /perspective -->
+

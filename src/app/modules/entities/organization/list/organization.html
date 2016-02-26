@@ -1,0 +1,94 @@
+<div class="row" style="padding: 40px 30px;">
+    <div class="container">
+        <div class="col-md-12 animated fadeIn">           
+                <button class="btn btn-invisible pull-right text-darklight" ui-sref="app.editorganization({id: vm.organization._id})" ><i class="icon ion-edit pull-right"></i></button>
+                <header>                 
+                    <h1 ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()" style="display:inline;margin-left:0px;" class="font-weight-thin "><a type="button" class="text-darklight animated bounceIn delay-3"><a class="text-darklight" ng-href="http://{{organization.website}}" target="_blank">{{organization.name}}&nbsp;&nbsp;</a><i ng-show="hoverEdit" style="font-size:.7em" class="icon ion-link ion-2x"></i></a>&nbsp;
+                    </h1>
+                    <br>
+                </header>
+             <div ng-if="organization.name">
+                <form novalidate role="form" name="vm.organizationForm" class="form-horizontal mt" ng-submit="vm.organizationForm.$valid && (vm.organization.name ? vm.update() : vm.save())" >
+                    <div class="form-group group">
+                        <div class="row">
+                          <div class="container">
+                            <div class="col-md-3 widget" > 
+                                <header class="text-center animated bounceIn delay-3" style="margin-top:20px;"><a class="h2 font-weight-thin">Contact</a></header>
+                                <br>
+                                <div class="col-md-12 border-bottom">
+                                    <div class=" animated">
+                                        <h4 style="display:inline" class="animated bounceIn delay-4 font-weight-thin flat-grey responsive-center">Name</h4>
+                                        <p style="display:inline" class="pull-right responsive-center animated bounceIn delay-4">{{organization.contact}}</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 border-bottom">
+                                    <div class="" style="margin-top:15px;">
+                                        <h4 style="display:inline" class="animated bounceIn delay-4 font-weight-thin flat-grey responsive-center">Email</h4>
+                                        <p style="display:inline" class="pull-right responsive-center animated bounceIn delay-4">{{organization.email}}</p>
+                                    </div>
+                                </div>      
+                                <div class="col-md-12">
+                                    <div class="" style="margin-top:15px;">
+                                        <h4 style="display:inline" class="animated bounceIn delay-4 font-weight-thin flat-grey responsive-center">Phone</h4>
+                                        <p style="display:inline" class="pull-right responsive-center animated bounceIn delay-4">{{organization.phone}}</p>
+                                    </div>
+                                </div>                                                          
+                            </div>
+                            <div class="col-md-4 widget col-md-offset-1">
+                                <header class="text-center animated bounceIn delay-3" style="margin-top:20px;"><a target="_blank" ng-href="https://maps.google.com/maps?q={{organization.address.city}}&{{organization.address.state}}{{organization.address.zip}}" class="h2 font-weight-thin">Location</a></header>
+                                <br>
+                                <div class="col-md-12 border-bottom">
+                                    <div class=" animated">
+                                        <h4 style="display:inline" class="animated bounceIn delay-4 font-weight-thin flat-grey responsive-center">Street</h4>
+                                        <p style="display:inline" class="pull-right responsive-center animated bounceIn delay-4">{{organization.address.street}}</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 border-bottom">                                
+                                    <div class="" style="margin-top:15px;"> 
+                                        <h4 style="display:inline;" class="animated bounceIn delay-4 font-weight-thin flat-grey responsive-center">City</h4>
+                                        <p style="display:inline;" class="responsive-center pull-right animated bounceIn delay-4">{{organization.address.city}}</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 border-bottom">                                
+                                    <div class="" style="margin-top:15px;"> 
+                                        <h4 style="display:inline;" class="animated bounceIn delay-4 font-weight-thin flat-grey responsive-center">State</h4>
+                                        <p style="display:inline;" class="responsive-center pull-right animated bounceIn delay-4">{{organization.address.state}}</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 border-bottom">                                
+                                    <div class="" style="margin-top:15px;"> 
+                                        <h4 style="display:inline;" class="animated bounceIn delay-4 font-weight-thin flat-grey responsive-center">Country</h4>
+                                        <p style="display:inline;" class="responsive-center pull-right animated bounceIn delay-4">{{organization.address.country}}</p>
+                                    </div>
+                                </div>                               
+                                <div class="col-md-12">                                
+                                    <div class="" style="margin-top:15px;"> 
+                                        <h4 style="display:inline;" class="animated bounceIn delay-4 font-weight-thin flat-grey responsive-center">Zip</h4>
+                                        <p style="display:inline;" class="responsive-center pull-right animated bounceIn delay-4">{{organization.address.zip}}</p>
+                                    </div>
+                                </div>                                                                                              
+                            </div> 
+                            <div class="col-md-3 col-md-offset-1 widget">
+                                <div>
+                                <header class="animated bounceIn delay-3 text-center" style="margin-top:20px;"><a class="h2 font-weight-thin">Biography</a></header>
+                                    <br>
+                                    <p class="text-center animated fadeIn delay-4">{{organization.biography}}</p>
+                                </div>
+                            </div>                                                                                     
+                          </div>
+                        </div>
+                    </div>            
+                </form>         
+            </div>  
+        </div>   
+                <div ng-if="!orgFound"> 
+                    <h1 class="font-weight-thin text-center text-darklight" style="margin-left:20px;">Create an Organization</h1>                  
+                    <br>
+                    <br>
+                    <p class="text-center"><a href ui-sref="app.editorganization({id: null})"><i class="icon ion-ios-plus-outline ion-7x text-darklight"></i></a></p>
+                </div>    
+                <div ng-if="organization.name" class="col-md-12">
+                    <!-- <button class="button blue large col-xs-12 col-sm-12 col-md-2 col-md-offset-5" style="margin-bottom:5px;margin-right:5px" ><i class="icon ion-android-checkmark-circle ion-2x"></i>&nbsp;&nbsp;&nbsp;Update</button> -->
+                </div>          
+    </div>
+</div>

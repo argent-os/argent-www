@@ -1,0 +1,119 @@
+    <div id="perspective" class="perspective effect-airbnb" style="z-index:-999999">
+      <div class="container">
+        <div class="wrapper"><!-- wrapper needed for scroll -->
+          <div class="main">
+            <div class="column">
+              <p><button class="button blue large" style="text-shadow:none;background:transparent;position:absolute;left:0;top:0;border:none;" id="showMenu"><i class="text-darklight icon ion-navicon-round ion-2x"></i></button></p>
+            </div>
+            <div style="background:transparent;border-radius:8px;margin-top:-200px;" class="col-md-12 animated fadeIn">
+              <div print-section class="widget" style="width:100%;padding:40px;float:right;" id="invoice" >
+                <div class="row branding">
+                  <div class="col-xs-6">
+                    <div class="invoice-number-container form-group group">
+                                Invoice # <input type="text" id="invoice-number" class="form-control" placeholder="Invoice Number" ng-model="invoice.invoice_number" />
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <img style="margin-left:auto;margin-right:auto;display:block;padding:10px;text-align:right;float:right;" ng-hide="logoRemoved" id="company_logo" ng-src="{{ logo }}" alt="your image" height="100" />            
+                  </div>
+                  <div class="col-xs-6 col-md-12 logo-container" style="margin-bottom:40px;"> 
+                    <input type="file" ng-hide="printMode" id="imgInp" style="margin-bottom:0px;" />
+                    <label for="file-upload" class="custom-file-upload" print-hide ng-hide="printMode">
+                        <i class="icon ion-upload"></i> Upload Company Logo
+                    </label>
+                    <div>
+                      <div class="noPrint col-md-12" ng-hide="printMode" style="text-align:right;" print-hide>
+                        <a class="btn-ghost btn-success btn-sm" ng-click="editLogo()" href >Edit Logo</a>
+                        <a class="btn-ghost btn-success btn-sm" ng-click="toggleLogo()" id="remove_logo" href >{{ logoRemoved ? 'Show' : 'Hide' }} logo</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row infos">
+                  <div class="col-xs-6">
+                    <div class="input-container"><input type="text" class="form-control" placeholder="Customer Name" ng-model="invoice.customer_info.name"/></div>
+                    <div class="input-container"><input type="text" class="form-control" placeholder="Customer Website Link" ng-model="invoice.customer_info.web_link"/></div>
+                    <div class="input-container"><input type="text" class="form-control" placeholder="Customer Address 1" ng-model="invoice.customer_info.address1"/></div>
+                    <div class="input-container"><input type="text" class="form-control" placeholder="Customer Address 2" ng-model="invoice.customer_info.address2"/></div>
+                    <div class="input-container"><input type="text" class="form-control" placeholder="Customer Postal Code" ng-model="invoice.customer_info.postal"/></div>
+                    <div class="input-container" data-ng-hide='printMode'>
+                          <select class="form-control"  ng-model="currencySymbol" ng-options='currency.symbol as currency.name for currency in availableCurrencies'></select>    
+                    </div>
+                  </div>
+                  <div class="col-xs-6 right">
+                    <div class="input-container"><input type="text" class="form-control" placeholder="Organization Name" ng-model="vm.organization.name"/></div>
+                    <div class="input-container"><input type="text" class="form-control" placeholder="Organization Website" ng-model="vm.organization.website"/></div>
+                    <div class="input-container"><input type="text" class="form-control" placeholder="Organization Address 1" ng-model="vm.organization.address"/></div>
+                    <div class="input-container"><input type="text" class="form-control" placeholder="Organization Address 2" ng-model="invoice.company_info.address2"/></div>
+                    <div class="input-container"><input type="text" class="form-control" placeholder="Organiztaion Postal Code" ng-model="vm.organization.address.zip"/></div>
+                  </div>
+                </div>
+                <div print-hide ng-hide="printMode">
+                  <h1 class="col-md-12">Line Items</h1>
+                </div>
+                <div class="col-md-12" style="border-bottom:1px solid rgba(25,25,25,0.1);"></div>
+                <br><br>
+                <br><br>        
+                <div class="items-table">
+                  <div class="row header">
+                    <div class="col-xs-1">&nbsp;</div>
+                    <div class="col-xs-5">Description</div>
+                    <div class="col-xs-2">Quantity</div>
+                    <div class="col-xs-2">Cost {{currencySymbol}}</div>
+                    <div class="col-xs-2 text-right">Total</div>
+                  </div>
+                  <div class="row invoice-item" ng-repeat="item in invoice.items" ng-animate="'slide-down'">
+                    <div class="col-xs-1 remove-item-container">
+                      <a href tooltip-placement="left" tooltip="Delete line item" ng-hide="printMode" ng-click="removeItem(item)" style="background:none;color:#F27474" class="btn-invisible btn-lg btn-danger"><i class="icon ion-close"></i></a>
+                    </div>
+                    <div class="col-xs-5 col-md-5 input-container">
+                      <input ng-model="item.description" class="form-control" placeholder="Description" />
+                    </div>
+                    <div class="col-xs-2 input-container">
+                      <input ng-model="item.qty" value="1" class="form-control" size="4" ng-required ng-validate="integer" placeholder="Quantity" />
+                    </div>
+                    <div class="col-xs-2 input-container">
+                      <input ng-model="item.cost" value="0.00" class="form-control" ng-required ng-validate="number" size="6" placeholder="Cost" />
+                    </div>
+                    <div class="col-xs-2 text-right input-container">
+                      {{item.cost * item.qty | currency: currencySymbol}}
+                    </div>
+                  </div>
+                  <div class="row invoice-item">
+                    <div class="col-xs-12 add-item-container" ng-hide="printMode">
+                      <a tooltip-placement="left" tooltip="Add line item" class="btn-ghost btn-success btn-lg" href ng-click="addItem()" ><i class="icon ion-plus"></i></a>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-xs-10 text-right">Sub Total</div>
+                    <div class="col-xs-2 text-right">{{invoiceSubTotal() | currency: currencySymbol}}</div>
+                  </div>
+                  <div class="row">
+                    <div class="col-xs-10 text-right">Tax(%): <input class="form-control pull-right" style="text-align:right;" ng-model="invoice.tax" ng-validate="number"></div>
+                    <div class="col-xs-2 text-right">{{calculateTax() | currency: currencySymbol}}</div>
+                  </div>
+                  <div class="row">
+                    <div class="col-xs-10 text-right">Grand Total:</div>
+                    <div class="col-xs-2 text-right">{{calculateGrandTotal() | currency: currencySymbol}}</div>
+                  </div>
+                </div>
+                <div class="row noPrint actions">
+              </div>
+
+              <div ng-hide="printMode" class="copy noPrint"></div>
+            </div>  
+          </div>
+          </div><!-- /main -->
+        </div><!-- wrapper -->
+      </div><!-- /container -->
+      <nav class="outer-nav side left vertical" style="z-index:-998898">
+        <a href ui-sref="app.invoice"><i class="icon ion-home ion-1x"></i>&nbsp;&nbsp;Exit Menu</a>
+        <a href ng-csv="getArray()" filename="invoice.csv"><i class="icon ion-ios-download ion-1x"></i>&nbsp;&nbsp;Export CSV</a>
+        <a href><i class="icon ion-upload ion-1x"></i>&nbsp;&nbsp;Upload to Dropbox</a>
+        <a href print-btn><i class="icon ion-printer ion-1x"></i>&nbsp;&nbsp;Print</a>
+        <a href ng-click="clearLocalStorage()"><i class="icon ion-star ion-1x"></i>&nbsp;&nbsp;Reset</a>
+        <a href ng-hide="printMode" ng-click="printMode = true;"><i class="icon ion-email ion-1x"></i>&nbsp;&nbsp;View Print Mode</a>
+        <a href ng-click="printMode = false;"><i class="icon ion-locked ion-1x"></i>&nbsp;&nbsp;Hide Print Mode</a>     
+      </nav>
+    </div><!-- /perspective -->
+

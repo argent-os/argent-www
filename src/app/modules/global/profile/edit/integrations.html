@@ -1,0 +1,65 @@
+<div class="row animated fadeIn">
+  <div class="container">
+    <br><br>
+    <div class="col-md-12" style="border-radius:0px;">
+        <h2 class="text-center text-darklight animated fadeInUp delay-4">Integrations</h2>
+        <br>
+        <div class="card col-md-3 animated fadeIn delay-1">
+            <img tooltip-placement="top" tooltip="Enables&nbsp;recurring&nbsp;billing, customers, and receivables" ng-click="stripeInfo()" height="70px" style="padding-top:30px;cursor:pointer;" src="app/img/stripe.png">
+            <div style="position:absolute;right:40px;top:50px;" ng-if="vm.user.env == 'DEV'">
+              <div class="toggle">
+                    <input
+                    type="checkbox" class="check"
+                    ng-change="toggleStripe(vm.user, 'https://connect.stripe.com/oauth/authorize?response_type=code&client_id=ca_7bhAvDeWw9xWhxZNHB1T1nJFs5WCk6ga&scope=read_write')"
+                    ng-model="vm.user.stripeEnabled"
+                    name="checkbox" value="checked" id="connectstripe" /><label for="connectstripedev"><span class="ui"></span></label>
+                <b class="b switch"></b>
+                <b class="b track"></b>
+              </div>     
+            </div>  
+            <div style="position:absolute;right:40px;top:50px;" ng-if="vm.user.env == 'PROD'">
+              <div class="toggle">
+                    <input
+                    type="checkbox" class="check"
+                    ng-change="toggleStripe(vm.user, 'https://connect.stripe.com/oauth/authorize?response_type=code&client_id=ca_7bhAYW2PBwM3gL2gzmTx68GPyCb2YNpj&scope=read_write')"
+                    ng-model="vm.user.stripeEnabled"
+                    name="checkbox" value="checked" id="connectstripe" /><label for="connectstripeprod"><span class="ui"></span></label>
+                <b class="b switch"></b>
+                <b class="b track"></b>
+              </div>     
+            </div>                                                     
+        </div>
+        <div class="card col-md-3 animated fadeIn delay-3">
+            <img tooltip-placement="top" tooltip="Coming soon!" tooltip-placement="top" tooltip="Coming soon!" height="80px" style="padding-top:22px" src="app/img/slack_color.png">            
+            <div style="position:absolute;right:40px;top:50px;">
+              <div class="toggle">
+                    <input type="checkbox" class="check"
+                    disabled="" 
+                    ng-change="toggleSlack(user)"
+                    ng-model="vm.user.slackEnabled"
+                    name="checkbox" value="checked" id="" /><label for="test1"><span class="ui"></span></label>
+              <b class="b switch"></b>
+              <b class="b track"></b>
+            </div>     
+            </div>                  
+        </div>
+        <div class="card col-md-3 animated fadeIn delay-4">
+            <img tooltip-placement="top" tooltip="Enables ACH payments and bank account" height="70px" style="padding-top:31px" src="app/img/plaid.png">            
+            <div style="position:absolute;right:40px;top:50px;">
+              <div class="toggle">
+                    <input type="checkbox" class="check"
+                    ng-change="togglePlaid(user)"
+                    ng-model="vm.user.plaidEnabled"
+                    name="checkbox" value="checked" id='linkButton' /><label for="test1"><span class="ui"></span></label>
+              <b class="b switch"></b>
+              <b class="b track"></b>
+            </div>     
+            </div>           
+            <!-- <button >Open Plaid Link</button> -->
+        </div>
+        <div class="card col-md-3 animated fadeIn delay-5">
+            <button ng-click="getPlaid()" style="margin-top: 27px;margin-left: auto;margin-right: auto;display: block;" ng-show="confirmPlaid" ui-sref="app.bank" class="btn btn-success">Confirm Plaid Account</button>
+        </div>                        
+    </div>  
+  </div>    
+</div>

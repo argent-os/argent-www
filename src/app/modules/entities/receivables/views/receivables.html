@@ -1,0 +1,26 @@
+<div class="row animated fadeIn">
+    <div class="container animate-body-content">
+      <div ng-if="vm.user._id" style="margin-top:40px">
+            <div class="col-md-12">
+              <div class="col-md-12 text-center">
+                  <!-- <h2 class="text-darklight text-center " style="display:inline-block;">Receivables</h2> -->
+                  <br>                
+              </div>                    
+              <div class="col-md-5 card-lg">                 
+                  <div style="display:inline" ng-repeat="balance in balanceInfo.available">
+                    <h2 class="robin-green" style="margin-left:10px;margin-top:20px;"><span class="text-contrast">Upcoming Transfer</span> <span class="pull-right">{{ balance.amount/100 | currency }}</span></h2>  
+                    <br>
+                    <p class="btn btn-success robin-green-button" disabled style="position:absolute;bottom:15px;right:15px;padding:5px;display:inline-block;">{{ bank.status }}</p>  
+                  </div>              
+              </div>     
+              <div class="col-md-5 card-lg col-md-offset-2">              
+                  <div style="display:inline" ng-repeat="pending in balanceInfo.pending">
+                    <h2 class="robin-green" style="margin-left:10px;margin-top:20px;"><span class="text-contrast">Balance</span> <span class="pull-right">{{ pending.amount/100 | currency }}</span></h2>  
+                    <br>
+                    <p class="btn btn-info robin-green-button" disabled style="position:absolute;bottom:15px;right:15px;padding:5px;display:inline-block;"></p>  
+                  </div>              
+              </div>                                            
+            </div>
+        </div>
+    </div>
+</div>

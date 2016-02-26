@@ -1,0 +1,208 @@
+<!-- <ol class="breadcrumb">
+  <li><span class="text-muted">Home</span></li>
+  <li class="active">{{vm.organization._id ? 'Edit organization' : 'Create new'}}</li>
+</ol> -->
+<div class="row" style="padding: 40px 30px;">   
+    <div class="container animated fadeIn">
+        <br>
+        <button ng-if="vm.showReturnBtn" type="button" class="btn btn-invisible text-darklight" ng-click="vm.return()" style="margin-right:10px;display:inline-block;"><i class="icon ion-ios-arrow-left ion-2x"></i></button>
+        <h2 class="mt-0 font-weight-thin text-darklight pull-right" style="display:inline-block;">{{orgFound ? 'Edit Organization' : 'Create New Organization'}} </h2> 
+        <br>       
+<!--         <div class="alert alert-danger" role="alert" ng-if="vm.error">
+          {{vm.error}}
+        </div>      -->  
+        <br>  
+        <widget>
+            <form novalidate role="form" name="organizationForm" class="form-horizontal mt" ng-submit="organizationForm.$valid && (vm.organization._id ? vm.update() : vm.save())" >
+                <div class="form-group group">                        
+                    <div class="row">
+                        <br>
+                      <div class="container col-md-offset-1">
+                        <div class="col-md-5">
+                            <input type="text" id="name" name="name" class="form-control" ng-model="vm.organization.name"
+                                    ng-maxlength=100 />
+                                <span class="highlight"></span>
+                                <span class="bar"></span>
+                                <label class="pad-input-left">Organization Name</label>
+<!--                             <div ng-show="organizationForm.name.$invalid && (organizationForm.name.$dirty || organizationForm.$submitted)">
+                                <small class="error" ng-show="organizationForm.name.$error.">
+                                    Name is .
+                                </small>
+                                <small class="error" ng-show="organizationForm.name.$error.minlength">
+                                    Name is  to be at least 3 characters
+                                </small>
+                                <small class="error" ng-show="organizationForm.name.$error.maxlength">
+                                    Name cannot be longer than 100 characters
+                                </small>
+                            </div> -->
+                        </div>
+                        <div class="col-md-5">
+                            <input type="text" id="name" name="name" class="form-control" ng-model="vm.organization.contact"
+                                    ng-minlength=3 ng-maxlength=100 />
+                                <span class="highlight"></span>
+                                <span class="bar"></span>
+                                <label class="pad-input-left">Organization Contact</label>
+<!--                             <div ng-show="organizationForm.name.$invalid && (organizationForm.name.$dirty || organizationForm.$submitted)">
+                                <small class="error" ng-show="organizationForm.name.$error.">
+                                    Name is .
+                                </small>
+                                <small class="error" ng-show="organizationForm.name.$error.minlength">
+                                    Name is  to be at least 3 characters
+                                </small>
+                                <small class="error" ng-show="organizationForm.name.$error.maxlength">
+                                    Name cannot be longer than 100 characters
+                                </small>
+                            </div> -->
+                        </div> 
+                        <div class="col-md-5">
+                            <input type="email" id="name" name="name" class="form-control" ng-model="vm.organization.email"
+                                    ng-minlength=3 ng-maxlength=100 />
+                                <span class="highlight"></span>
+                                <span class="bar"></span>
+                                <label class="pad-input-left">Email</label>
+<!--                             <div ng-show="organizationForm.name.$invalid && (organizationForm.name.$dirty || organizationForm.$submitted)">
+                                <small class="error" ng-show="organizationForm.name.$error.">
+                                    Name is .
+                                </small>
+                                <small class="error" ng-show="organizationForm.name.$error.minlength">
+                                    Name is  to be at least 3 characters
+                                </small>
+                                <small class="error" ng-show="organizationForm.name.$error.maxlength">
+                                    Name cannot be longer than 100 characters
+                                </small>
+                            </div> -->
+                        </div>     
+                        <div class="col-md-5">
+                            <input type="tel" id="name" name="name" class="form-control" ng-model="vm.organization.phone"
+                                    ng-minlength=3 ng-maxlength=100 />
+                                <span class="highlight"></span>
+                                <span class="bar"></span>
+                                <label class="pad-input-left">Phone</label>
+<!--                             <div ng-show="organizationForm.name.$invalid && (organizationForm.name.$dirty || organizationForm.$submitted)">
+                                <small class="error" ng-show="organizationForm.name.$error.">
+                                    Name is .
+                                </small>
+                                <small class="error" ng-show="organizationForm.name.$error.minlength">
+                                    Name is  to be at least 3 characters
+                                </small>
+                                <small class="error" ng-show="organizationForm.name.$error.maxlength">
+                                    Name cannot be longer than 100 characters
+                                </small>
+                            </div> -->
+                        </div>
+                        <div class="col-md-10">
+                            <input type="text" id="name" name="name" class="form-control" ng-model="vm.organization.address.street"
+                                    ng-minlength=3 ng-maxlength=100 />
+                                <span class="highlight"></span>
+                                <span class="bar"></span>
+                                <label class="pad-input-left">Street</label>
+<!--                             <div ng-show="organizationForm.name.$invalid && (organizationForm.name.$dirty || organizationForm.$submitted)">
+                                <small class="error" ng-show="organizationForm.name.$error.">
+                                    Name is .
+                                </small>
+                                <small class="error" ng-show="organizationForm.name.$error.minlength">
+                                    Name is  to be at least 3 characters
+                                </small>
+                                <small class="error" ng-show="organizationForm.name.$error.maxlength">
+                                    Name cannot be longer than 100 characters
+                                </small>
+                            </div> -->
+                        </div>   
+                        <div class="col-md-3">
+                            <input type="text" id="name" name="name" class="form-control" ng-model="vm.organization.address.city"
+                                    ng-minlength=3 ng-maxlength=100 />
+                                <span class="highlight"></span>
+                                <span class="bar"></span>
+                                <label class="pad-input-left">City</label>
+<!--                             <div ng-show="organizationForm.name.$invalid && (organizationForm.name.$dirty || organizationForm.$submitted)">
+                                <small class="error" ng-show="organizationForm.name.$error.">
+                                    Name is .
+                                </small>
+                                <small class="error" ng-show="organizationForm.name.$error.minlength">
+                                    Name is  to be at least 3 characters
+                                </small>
+                                <small class="error" ng-show="organizationForm.name.$error.maxlength">
+                                    Name cannot be longer than 100 characters
+                                </small>
+                            </div> -->
+                        </div>     
+                        <div class="col-md-2">
+                            <select class="form-control" ng-model="vm.organization.address.state">
+                              <option ng-repeat="state in us_states">{{state.name}}</option>
+                            </select>
+
+<!--                             <div ng-show="organizationForm.name.$invalid && (organizationForm.name.$dirty || organizationForm.$submitted)">
+                                <small class="error" ng-show="organizationForm.name.$error.">
+                                    Name is .
+                                </small>
+                                <small class="error" ng-show="organizationForm.name.$error.minlength">
+                                    Name is  to be at least 3 characters
+                                </small>
+                                <small class="error" ng-show="organizationForm.name.$error.maxlength">
+                                    Name cannot be longer than 100 characters
+                                </small>
+                            </div> -->
+                        </div>
+                        <div class="col-md-3">
+                            <input type="text" id="name" name="name" class="form-control" ng-model="vm.organization.address.zip"
+                                    ng-minlength=3 ng-maxlength=100 />
+                                <span class="highlight"></span>
+                                <span class="bar"></span>
+                                <label class="pad-input-left">Zip Code</label>
+<!--                             <div ng-show="organizationForm.name.$invalid && (organizationForm.name.$dirty || organizationForm.$submitted)">
+                                <small class="error" ng-show="organizationForm.name.$error.">
+                                    Name is .
+                                </small>
+                                <small class="error" ng-show="organizationForm.name.$error.minlength">
+                                    Name is  to be at least 3 characters
+                                </small>
+                                <small class="error" ng-show="organizationForm.name.$error.maxlength">
+                                    Name cannot be longer than 100 characters
+                                </small>
+                            </div> -->
+                        </div>
+                        <div class="col-md-2">
+                            <select class="form-control" ng-model="vm.organization.address.country">
+                                <option ng-repeat="country in countries">{{country.name}}</option>
+                            </select>
+<!--                             <div ng-show="organizationForm.name.$invalid && (organizationForm.name.$dirty || organizationForm.$submitted)">
+                                <small class="error" ng-show="organizationForm.name.$error.">
+                                    Name is .
+                                </small>
+                                <small class="error" ng-show="organizationForm.name.$error.minlength">
+                                    Name is  to be at least 3 characters
+                                </small>
+                                <small class="error" ng-show="organizationForm.name.$error.maxlength">
+                                    Name cannot be longer than 100 characters
+                                </small>
+                            </div> -->
+                        </div>                       
+                        <div class="col-md-10">
+                            <input type="text" id="name" name="name" class="form-control" ng-model="vm.organization.website"
+                                    ng-minlength=3 ng-maxlength=100 />
+                                <span class="highlight"></span>
+                                <span class="bar"></span>
+                                <label class="pad-input-left">Website</label>
+                        </div>
+                        <div class="col-md-10">
+                            <textarea type="text" id="name" name="name" placeholder="Biography" class="form-control" ng-model="vm.organization.biography"
+                                    ng-minlength=3 />
+                                <span class="highlight"></span>
+                                <span class="bar"></span>
+                                <label class="pad-input-left"></label>
+                        </div>                        
+                        <br><br>
+                      </div>
+                    </div><br><br>
+                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-success col-xs-12 col-sm-12 col-md-2 col-md-offset-5"><i class=""></i>Save</button>                          
+                    </div>
+              
+                </div>              
+            </form>
+        </widget>     
+        <div ng-if="vm.organization._id" class="col-md-12 col-md-offset-5" style="padding-left:4px;" >
+            <button class="btn btn-danger col-xs-12 col-sm-12 col-md-2" ng-click="vm.delete(vm.organization)"><i class=""></i>&nbsp;&nbsp;&nbsp;Delete&nbsp;&nbsp;&nbsp;</button>
+        </div>                    
+    </div>        
+</div>
