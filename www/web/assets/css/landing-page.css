@@ -30,14 +30,18 @@ h4, .h4 {
 }
 
 h5, .h5 {
-  font-size: 18px;
+  font-family: sans-serif;
+  font-weight: thin;
+  font-family: 'Open Sans';
+  letter-spacing: 1px;
+  font-size: 16px;
   margin-bottom: 15px;
 }
 
 h6, .h6 {
   font-size: 14px;
-  font-weight: 200;
-  font-family: 'Nunito';
+  font-weight: 300;
+  font-family: 'Open Sans';
   letter-spacing: 1px;
 }
 
@@ -46,9 +50,28 @@ p {
   line-height: 1.5;
 }
 
+.pretty-font {
+  font-family: 'Open Sans';  
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+
+.big-font {
+  font-size: 24px;
+}
+
+.giga-font {
+  font-size:36px;
+}
+
 .brand-style {
   font-family:'Nunito', sans-serif;
   letter-spacing: 2px;
+}
+
+.font-style {
+  font-family:'Nunito', sans-serif;
+  font-size: 14px;
 }
 
 /*     General overwrite     */
@@ -66,6 +89,18 @@ a:hover, a:focus {
 
 a:focus, a:active {
   outline: 0;
+}
+
+.white, a.white:hover {
+  color:white;
+}
+
+.slate {
+  color: #424b5d;
+}
+
+.gray {
+  color:gray;
 }
 
 .navbar {
@@ -1041,9 +1076,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#de8e0009', e
 
 .landing-page .parallax .description h5 {
   line-height: 1.4;
-  font-weight: 400;
   /*text-shadow: 0 1px 5px rgba(0,0,0,0.5);*/
-  font-size: 18px;
 }
 
 .landing-page .parallax .buttons{
@@ -1183,6 +1216,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#de8e0009', e
         border-radius: 10px;
         margin-top: 30px;
         text-align: center;
+        background: black;
+        color:white;
+        background:linear-gradient(to bottom, rgba(23, 152, 251, 1), rgba(30, 102, 239, 1));
    }
    .landing-page .section-features .card .icon i{
         font-size: 63px;
@@ -1408,7 +1444,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#de8e0009', e
 }
 
 .fixed-plugin h5{
-    font-size: 1em;
+    /*font-size: 1em;*/
 }
 .fixed-plugin .dropdown-menu li{
     display: block;

@@ -62,17 +62,13 @@
                         positionClass: 'toast-bottom-left'                        
                     });     
                 } else {
-                    notificator.info('Welcome ' + $rootScope.user.username + '!', {
-                        timeOut: 2000,
-                        positionClass: 'toast-bottom-left'                                                
-                    });  
-                    notificator.success('Protip: You can control the time tracker with the spacebar!', {
-                        timeOut: 20000,
-                        positionClass: 'toast-bottom-left'                                          
-                    });    
-                    notificator.success('Click help on the bottom right side for information about TimeKloud usage', {
+                    notificator.info('Click help on the bottom right side for information about PayKloud usage', {
                         timeOut: 20000,
                         positionClass: 'toast-bottom-right'                                          
+                    });  
+                    notificator.info('Welcome ' + $rootScope.user.username + '!', {
+                        timeOut: 6000,
+                        positionClass: 'toast-bottom-left'                                                
                     });                                                              
                 }              
             },1000);
