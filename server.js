@@ -10,6 +10,8 @@ var port           = process.env.PORT || 5000;
 
 // Setup API routes
 var home           = require('./www/routes/home');
+var terms           = require('./www/routes/terms');
+var privacy           = require('./www/routes/privacy');
 
 // Mongo
 var uriUtil        = require('mongodb-uri');
@@ -50,6 +52,8 @@ app.use(express.static('src'));
 app.use('/bower_components',  express.static(__dirname + '/bower_components'));
 
 app.use('/home', home);
+app.use('/terms', terms);
+app.use('/privacy', privacy);
 
 app.all('/*', function(req, res, next) {
     // Send the index.html for other files to support HTML5Mode
