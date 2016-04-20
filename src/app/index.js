@@ -6,8 +6,8 @@
     ])
     // DEFAULT USED AT LOGIN ** EDIT THIS BEFORE RELEASING PRODUCTION // EDIT IP TO RUN LOCALLLY OVER NETWORK
     .value('appconfig',{
-            apiRoot: 'http://192.168.1.182:5001',
-            firebaseUrl: 'https://demosandbox.firebaseio.com/api/v1'
+            apiRoot: 'http://proton-api-dev.us-east-1.elasticbeanstalk.com/',
+            firebaseUrl: ''
     })
     .config(['stripeProvider', 'notificationsConfigProvider', function (stripeProvider, notificationsConfigProvider) {
         // ***CHANGE STRIPE KEY BEFORE RELEASING PRODUCTIONS***
@@ -28,11 +28,11 @@
     .run(['$http', '$rootScope','appconfig', 'UserFactory', function($http, $rootScope, appconfig, UserFactory) {
         UserFactory.getProfile().then(function (res) {
             if(res.data.env == 'DEV') {
-                appconfig.apiRoot = 'http://192.168.1.182:5001';
-                appconfig.firebaseUrl = 'https://demosandbox.firebaseio.com/api/v1'
+                appconfig.apiRoot = 'http://proton-api-dev.us-east-1.elasticbeanstalk.com/';
+                appconfig.firebaseUrl = ''
             } else if(res.data.env == 'PROD') {
-                appconfig.apiRoot = 'http://paykloud-api-dev.us-east-1.elasticbeanstalk.com';
-                appconfig.firebaseUrl = 'https://paykloud.firebaseio.com/api/v1'
+                appconfig.apiRoot = 'http://proton-api-dev.us-east-1.elasticbeanstalk.com/';
+                appconfig.firebaseUrl = ''
             }
         })
     }])

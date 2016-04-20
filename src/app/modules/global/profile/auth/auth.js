@@ -13,7 +13,7 @@
     $rootScope.$broadcast('$userInit');    
     var store = $window.localStorage;
     var vm = this;
-    var ref = new Firebase(config.firebaseUrl);
+    // var ref = new Firebase(config.firebaseUrl);
     vm.user = {};
     vm.responseErrorMsg = '';
     // $rootScope.stylePath = 'app/style/css/css_default/index_default.css';
@@ -36,13 +36,13 @@
       UserFactory.login(email,password).then(
         function(response) {
           $scope.showLoader=false;          
-          ref.authWithCustomToken(response.data.auth.token, function(error, authData) {
-            if (error) {
-              // console.log("Authentication Failed!", error);
-            } else {
-              // console.log("Authenticated successfully with payload:", authData);
-            }
-          });                   
+          // ref.authWithCustomToken(response.data.auth.token, function(error, authData) {
+          //   if (error) {
+          //     // console.log("Authentication Failed!", error);
+          //   } else {
+          //     // console.log("Authenticated successfully with payload:", authData);
+          //   }
+          // });                   
           vm.user = response.data.user; 
         }, 
         function(err) {
@@ -62,7 +62,7 @@
     var vm = this;
     vm.user = {};
     vm.responseErrorMsg = '';
-    var ref = new Firebase(config.firebaseUrl);
+    // var ref = new Firebase(config.firebaseUrl);
 
     $scope.roles = [
       { title: 'admin',     enabled: true },
@@ -82,14 +82,6 @@
       role = $scope.roles;      
       UserFactory.register(username, email, password, role)
         .then(function(response) {
-          ref.authWithCustomToken(response.data.auth.token, function(error, authData) {
-            if (error) {
-              // console.log("Authentication Failed!", error);
-              notifications.showError('Error: ' + error);                                        
-              $scope.flag=false;
-              $scope.showLoader=false;              
-
-            } else {
               $scope.flag=false;
               $scope.showLoader=false;              
               // console.log("Authenticated successfully with payload:", authData);
@@ -101,8 +93,10 @@
                 showLoaderOnConfirm: true, 
                 confirmButtonText: "Close" 
               })  
-              }
-          });             
+          // For firebase
+          // ref.authWithCustomToken(response.data.auth.token, function(error, authData) {
+
+          // });             
         }, 
         function(err) {
           // console.log(err);

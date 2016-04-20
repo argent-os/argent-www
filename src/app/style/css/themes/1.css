@@ -1,10 +1,10 @@
 body {
   /*default sunset*/
-  background:linear-gradient(to top right, rgba(83, 172, 238, 0) 10%, rgba(255, 124, 157, 0.1) 65%, rgba(255, 192, 26, 0) 125%), url('../../../img/desk.jpg');
-  background:-webkit-linear-gradient(to top right, rgba(83, 172, 238, 0) 10%, rgba(255, 124, 157, 0.1) 65%, rgba(255, 192, 26, 0) 125%), url('../../../img/desk.jpg');
-  background:-moz-linear-gradient(to top right, rgba(83, 172, 238, 0) 10%, rgba(255, 124, 157, 0.1) 65%, rgba(255, 192, 26, 0) 125%), url('../../../img/desk.jpg');
-  background:-ms-linear-gradient(to top right, rgba(83, 172, 238, 0) 10%, rgba(255, 124, 157, 0.1) 65%, rgba(255, 192, 26, 0) 125%), url('../../../img/desk.jpg');
-  background:-o-linear-gradient(to top right, rgba(83, 172, 238, 0) 10%, rgba(255, 124, 157, 0.1) 65%, rgba(255, 192, 26, 0) 125%), url('../../../img/desk.jpg');
+  background:linear-gradient(to top right, rgba(83, 172, 238, 0) 10%, rgba(255, 124, 157, 0.1) 65%, rgba(255, 192, 26, 0) 125%), url('../../../img/proton-bg.png');
+  background:-webkit-linear-gradient(to top right, rgba(83, 172, 238, 0) 10%, rgba(255, 124, 157, 0.1) 65%, rgba(255, 192, 26, 0) 125%), url('../../../img/proton-bg.png');
+  background:-moz-linear-gradient(to top right, rgba(83, 172, 238, 0) 10%, rgba(255, 124, 157, 0.1) 65%, rgba(255, 192, 26, 0) 125%), url('../../../img/proton-bg.png');
+  background:-ms-linear-gradient(to top right, rgba(83, 172, 238, 0) 10%, rgba(255, 124, 157, 0.1) 65%, rgba(255, 192, 26, 0) 125%), url('../../../img/proton-bg.png');
+  background:-o-linear-gradient(to top right, rgba(83, 172, 238, 0) 10%, rgba(255, 124, 157, 0.1) 65%, rgba(255, 192, 26, 0) 125%), url('../../../img/proton-bg.png');
   background-attachment: fixed,             fixed,              fixed;
   background-position: center center;  background-position: center center;
   background-repeat: no-repeat;

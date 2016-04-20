@@ -1,7 +1,7 @@
 <div class="container-fluid" >
   <!-- .navbar-header contains links seen on xs & sm screens -->
   <div class="navbar-header" >
-    <ul class="nav navbar-nav" ng-controller="TrackerController" >
+    <ul class="nav navbar-nav" >
       <li class="pull-right">
         <!-- shown on xs & sm screen. collapses and expands navigation -->
         <a style="z-index:100" href="#" class="visible-xs navbar-toggle collapsed" data-toggle="collapse" type="click" aria-expanded="false" title="Show/hide navbar" data-tooltip data-target="#togglenav">
@@ -10,19 +10,8 @@
         </a>
       </li>
           <!--xs & sm screen logo -->
-        <li style="margin-top:32px" class="pull-left visible-xs">
-          <a>
-            <div ng-init="showproject=false" >          
-              <span ng-if="status.active" class="fadein">
-                  <select ng-controller="ProjectsController" class="navsel " style="border:none;padding:none;" ng-model="status.activeProjectId" ng-change="status.$save(status)" ng-disabled="status.active" ng-class="{ disabled: status.active }">
-                  <option ng-selected="{{project.id == status.activeProjectId}}" ng-repeat="project in projectsConverted" value="{{project.id}}">Working on: {{project.name}}</option>
-                  </select>
-              </span>                
-            </div> 
-          </a>    
-        </li>
         <li ng-if="!status.active" style="margin-top:25px;left:-20px;" class="fadein visible-xs">
-            <!-- <img width="50" height="auto" ui-sref="app.dashboard" class="visible-xs" style="display:block;padding-top:10px;" src="app/img/timekloudlogo-light.png"></img>     -->     <span>PayKloud</span>    
+            <!-- <img width="50" height="auto" ui-sref="app.dashboard" class="visible-xs" style="display:block;padding-top:10px;" src="app/img/timekloudlogo-light.png"></img>     -->     <img height="20px" src="app/img/logo-light.png"><span>ProtonPay</span>    
             <!-- <h4 class="font-weight-thin" ui-sref="app.dashboard" ui-sref-active="active">{{vm.organization.name}}</h4> -->
         </li>          
     </ul>
@@ -44,7 +33,7 @@
           <!-- <a style="font-weight:bold;" class="navbar-brand hidden-xs" ui-sref="app.dashboard" ui-sref-active="active">{{app.name}}</a> -->
         </li>
         <li style="margin-top:-1px;"> 
-          <a class="hidden-xs" ui-sref="app.dashboard" ui-sref-active="active" style="margin-left:-27px;color:#fff;"><span style="letter-spacing:2px;font-size:18px;font-weight:bold;font-family:'Nunito'">PayKloud</span> 
+          <a class="hidden-xs" ui-sref="app.dashboard" ui-sref-active="active" style="margin-left:-27px;color:#fff;"><span style="letter-spacing:2px;font-size:18px;font-weight:bold;font-family:'Nunito'"><img height="45px" src="app/img/logo-light.png"></span> 
         </li>        
         <li>
           <a class="hidden-lg hidden-md hidden-sm visible-xs" style="margin-top:-20px" ui-sref="app.dashboard" ui-sref-active="active">Tracker</a>
@@ -92,9 +81,9 @@
                 </li>                                                          
               </ul>
         </li>
-        <li dropdown class="hidden-xs">
+<!--         <li dropdown class="hidden-xs">
              <a ui-sref="app.dashboard" style="text-transform:none;font-weight:600;padding-top:0px;" ><i class="icon ion-android-time" style="font-size:12px;"></i>&nbsp;&nbsp;Timer</a>
-        </li>           
+        </li>        -->    
         <li dropdown class="hidden-sm hidden-xs hidden-md">
              <a href="#" dropdown-toggle style="text-transform:none;font-weight:600;" ><i class="icon ion-paper-airplane" style="font-size:12px;"></i>&nbsp;&nbsp;Overview &nbsp;<i style="font-size:14px" class="icon ion-ios-arrow-down"></i></a>
               <ul class="dropdown-menu animated-drop">
@@ -163,19 +152,7 @@
           <a ui-sref="app.organization({id: organization._id})">Organization</a>
         </li>                    
       </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li ng-controller="TrackerController" class="text-white" style="margin-top:35px;" ng-click="toggleState(state_counter)">
-          <span ng-if="status.active">
-            <div ng-init="showproject=false">          
-              <span ng-if="status.active">
-                  <select ng-if="state_counter" data-intro="Project and task (click to toggle)" data-position="left"  ng-controller="ProjectsController" class="navsel-rtl  hidden-xs" style="border:none;margin-right:28px;margin-top:8px;" ng-model="status.activeProjectId" ng-change="status.$save(status)" ng-disabled="status.active" ng-class="{ disabled: status.active }">
-                  <option ng-selected="{{project.id == status.activeProjectId}}" ng-repeat="project in projectsConverted" value="{{project.id}}">Working on Project {{project.name}} {{status.notes}}</option>
-                  </select>
-                <span ng-if="!state_counter" data-intro="Time spent on project/task (click to toggle)" data-position="left" ><i class="icon ion-android-time ion-1x"></i>&nbsp;&nbsp;&nbsp;&nbsp;{{ counter }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              </span>  
-            </div> 
-          </span>       
-        </li>                
+      <ul class="nav navbar-nav navbar-right">            
         <li dropdown class="hidden-xs" ng-if="!user.facebook">
              <a href="#" dropdown-toggle><i ng-if="!vm.user.picture.id" class="icon ion-gear-a ion-1x" style="padding-top:3px;"></i>
              <img ng-if="vm.user.picture.id" ng-src="{{vm.user.picture.secureUrl}}" class="image circle" height="30" width="30"></img>&nbsp;&nbsp;<i style="font-size:14px" class="icon ion-ios-arrow-down"></i></a>
@@ -219,12 +196,6 @@
 </div>
 <span class="animated fadeIn slow">
 <nav class="subnav">
-<!--       <ul class="nav container" ng-controller="TrackerController" >
-        <li style="margin-top:10px;margin-bottom:10px;" class="pull-right visible-xs">
-          <span ng-if="!status.active" ng-class="{ active: navIsActive('/') }" class="text-center timerctrls"><a ng-click="startTracker();"><i class="icon ion-ios-play-outline icon-contrast" style=""> </i>&nbsp;&nbsp;Start Timer</a></span>
-          <span ng-if="status.active" ng-class="{ active: navIsActive('/statistics') }" class="text-center timerctrls"><a ng-click="stopTracker();"><i class="icon ion-stop icon-contrast" style=""> </i>&nbsp;&nbsp;Stop Timer</a></span>
-        </li>        
-      </ul> -->
 </nav> 
 </span>
 
