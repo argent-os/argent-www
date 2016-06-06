@@ -6,7 +6,7 @@
     ])
     // DEFAULT USED AT LOGIN ** EDIT THIS BEFORE RELEASING PRODUCTION // EDIT IP TO RUN LOCALLLY OVER NETWORK
     .value('appconfig',{
-            apiRoot: 'http://proton-api-dev.us-east-1.elasticbeanstalk.com/',
+            apiRoot: 'http://192.168.1.232:5001',
             firebaseUrl: ''
     })
     .config(['stripeProvider', 'notificationsConfigProvider', function (stripeProvider, notificationsConfigProvider) {
@@ -28,7 +28,7 @@
     .run(['$http', '$rootScope','appconfig', 'UserFactory', function($http, $rootScope, appconfig, UserFactory) {
         UserFactory.getProfile().then(function (res) {
             if(res.data.env == 'DEV') {
-                appconfig.apiRoot = 'http://proton-api-dev.us-east-1.elasticbeanstalk.com/';
+                appconfig.apiRoot = 'http://192.168.1.232:5001';
                 appconfig.firebaseUrl = ''
             } else if(res.data.env == 'PROD') {
                 appconfig.apiRoot = 'http://proton-api-dev.us-east-1.elasticbeanstalk.com/';
