@@ -206,6 +206,25 @@ To correctly provision the SSL it is recommended to use a service such as Expedi
 - Once the third-party SSL Service has been installed, edit your www CNAME to point to the SSL endpoint (e.g. ```https://floatingbreeze8293.herokuapp.com```)
 
 ------------------------------
+
+------------------------------
+###AWS DEPLOYMENT
+
+Initialize
+<br />```eb init```
+<br />```eb create"```
+
+Afterwards
+<br />```eb deploy```
+
+Fix npm install issue | run command last before bower install
+<br />```env:
+      "PATH": "/usr/bin"
+  05_bower_install:
+    command: "bower update --allow-root"```
+
+------------------------------
+
 ###QUESTIONS?
 
 For any questions please email [support](mailto:support@timekloud.com)

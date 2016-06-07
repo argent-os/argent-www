@@ -1707,6 +1707,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#de8e0009', e
 }
 
 @media (max-width: 767px){
+  .navbar-header {
+    background: #7b8999;
+  }
+  .navbar-collapse .push-down .collapse .in {
+    background: #7b8999;
+  }
   .fixed-plugin{
     position: absolute;
   }
@@ -1721,16 +1727,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#de8e0009', e
     background: white;
   }
   .navbar-toggle{
-    padding: 16px 10px;
+    padding: 20px 10px;
   }
   .logo-container .logo{
     margin-left: 20px;
   }
   .landing-page .wrapper{
     text-align: center;
-  }
-  .landing-page .navbar-top{
-    background: rgba(0, 0, 0, 0.75);
   }
   .landing-page .parallax {
     height: 550px;

@@ -48,12 +48,12 @@
 //     ])
 //     // DEFAULT USED AT LOGIN ** EDIT THIS BEFORE RELEASING PRODUCTION
 //     // API endpoints
-//     // http://api.paykloud.com
-//     // http://dev.paykloud.com
-//     // http://paykloud-api-dev.us-east-1.elasticbeanstalk.com
+//     // http://api.argentapp.com
+//     // http://dev.argentapp.com
+//     // https://api.argent.cloud
 //     .value('appconfig',{
-//             apiRoot: 'http://paykloud-api-dev.us-east-1.elasticbeanstalk.com',
-//             firebaseUrl: 'https://paykloud.firebaseio.com/api/v1'
+//             apiRoot: 'https://api.argent.cloud',
+//             firebaseUrl: 'https://argentapp.firebaseio.com/api/v1'
 //     })
 //     .config(['stripeProvider', 'notificationsConfigProvider', function (stripeProvider, notificationsConfigProvider) {
 //         // ***CHANGE STRIPE KEY BEFORE RELEASING PRODUCTIONS***
@@ -75,8 +75,8 @@
 //                 appconfig.apiRoot = 'http://localhost:5001';
 //                 appconfig.firebaseUrl = 'https://demosandbox.firebaseio.com/api/v1'
 //             } else if(res.data.env == 'PROD') {
-//                 appconfig.apiRoot = 'http://paykloud-api-dev.us-east-1.elasticbeanstalk.com';
-//                 appconfig.firebaseUrl = 'https://paykloud.firebaseio.com/api/v1'
+//                 appconfig.apiRoot = 'https://api.argent.cloud';
+//                 appconfig.firebaseUrl = 'https://argentapp.firebaseio.com/api/v1'
 //             }
 //         })
 //     }])

@@ -32,3 +32,12 @@ function sendMessage() {
         }
     });
 }
+
+function showTextAlert() {
+    //console.log("submitting")
+    swal({   
+        title: "🇺🇸 +1-202-800-1060 ",   
+        text: "Text APP to the number above to receive a link to our app",   
+        confirmButtonText: "Sweet" 
+    });
+}
