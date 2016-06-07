@@ -653,6 +653,7 @@ a:focus, a:active {
   color: #7b8999;
 }
 .footer .copyright {
+  font-family: "Helvetica Neue", "Open Sans", sans-serif;
   color: #7b8999;
   padding: 10px 15px;
   margin: 15px 3px;
