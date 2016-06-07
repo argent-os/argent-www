@@ -16,6 +16,7 @@
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400,300' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Nunito:300italic,400,300' rel='stylesheet' type='text/css'>
         <link href="../assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
+        <link href="../assets/css/sweetalert.css" rel="stylesheet" />
         <link href="../assets/css/override.css" rel="stylesheet" />
     </head>
     <body class="landing-page landing-page1">
@@ -29,11 +30,13 @@
                             </a>
                         </div>
                         <div class="desktop-visitor">
-                            <input type="phone" class="phone-number" placeholder="(123) 456-7890">
+                        <form id="phoneNumberForm">
+                            <input type="phone" class="phone-number" name="PhoneNumber" id="phone_number" placeholder="(123) 456-7890">
                             <br>        
-                            <a href="#" title="Download Argent" onclick="sendSMS()">
+                            <a href="#" title="Download Argent" onclick="sendMessage()">
                                 <div class="btn btn-lg button">Send app to phone</div>
-                            </a>        
+                            </a>   
+                        </form>
                         </div>
                     
                         <div class="header-image" style="display: none">
@@ -379,4 +382,8 @@
     <script src="/assets/js/bootstrap.js"></script>
     <script src="/assets/js/app.js"></script>
     <script src="/assets/js/awesome-landing-page.js"></script>
+    <script src="/assets/js/sweetalert.min.js"></script>
+    <script>
+        var _0x6e13=["\x23\x70\x68\x6F\x6E\x65\x4E\x75\x6D\x62\x65\x72\x46\x6F\x72\x6D","\x76\x61\x6C","\x69\x6E\x70\x75\x74\x5B\x6E\x61\x6D\x65\x3D\x22\x50\x68\x6F\x6E\x65\x4E\x75\x6D\x62\x65\x72\x22\x5D","","\x72\x65\x70\x6C\x61\x63\x65","\x2B\x31","\x50\x4F\x53\x54","\x68\x74\x74\x70\x73\x3A\x2F\x2F\x61\x70\x69\x2E\x61\x72\x67\x65\x6E\x74\x2E\x63\x6C\x6F\x75\x64\x2F\x76\x31\x2F\x74\x77\x69\x6C\x69\x6F","\x6A\x73\x6F\x6E","\x61\x70\x70\x6C\x69\x63\x61\x74\x69\x6F\x6E\x2F\x6A\x73\x6F\x6E\x3B\x20\x63\x68\x61\x72\x73\x65\x74\x3D\x55\x54\x46\x2D\x38","\x73\x74\x72\x69\x6E\x67\x69\x66\x79","\x53\x75\x63\x63\x65\x73\x73\x21","\x41\x70\x70\x20\x6C\x69\x6E\x6B\x20\x69\x73\x20\x6F\x6E\x20\x69\x74\x27\x73\x20\x77\x61\x79","\x73\x75\x63\x63\x65\x73\x73","\x53\x77\x65\x65\x74","\x45\x72\x72\x6F\x72","\x41\x70\x70\x20\x63\x6F\x75\x6C\x64\x20\x6E\x6F\x74\x20\x62\x65\x20\x73\x65\x6E\x74\x20\x74\x6F\x20\x70\x68\x6F\x6E\x65\x20\x3A\x28","\x65\x72\x72\x6F\x72","\x4F\x6B","\x61\x6A\x61\x78"];function sendMessage(){var _0x67d7x2=$(_0x6e13[0]);var _0x67d7x3=$(_0x6e13[2])[_0x6e13[1]]();var _0x67d7x4=_0x67d7x3[_0x6e13[4]](/\D/g,_0x6e13[3]);var _0x67d7x5=_0x6e13[5]+_0x67d7x4;$[_0x6e13[19]]({type:_0x6e13[6],url:_0x6e13[7],dataType:_0x6e13[8],contentType:_0x6e13[9],data:JSON[_0x6e13[10]]({"\x70\x68\x6F\x6E\x65":_0x67d7x5}),success:function(_0x67d7x6){swal({title:_0x6e13[11],text:_0x6e13[12],type:_0x6e13[13],confirmButtonText:_0x6e13[14]})},failure:function(_0x67d7x7){swal({title:_0x6e13[15],text:_0x6e13[16],type:_0x6e13[17],confirmButtonText:_0x6e13[18]})}})}
+    </script>
 </html>
