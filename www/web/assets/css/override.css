@@ -42,6 +42,9 @@
     color: #1aa1e6;
 }
    
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px #f5f7fa inset;
+}
 
 /*           Font Smoothing      */
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6, p, .navbar, .brand, .btn-simple, a, .td-name, td {
@@ -3070,17 +3073,19 @@ hr {
   position: absolute;
 }
 
-input.phone-number {
+input.email-entry {
+  text-align: center;
   margin-top: 1.5em;
   background: 0 0;
   outline: 0;
   border: none;
+  border-radius: 10;
   height: 3.6em;
   font-size: 1.6em;
   font-family: inherit;
   color: #00b5ff;
   padding: 1em 1em;
-  width: 100%;
+  padding-top: 2em;
   margin-bottom: 1em;
   -webkit-transition: color .3s 0s ease-in-out,border-color .3s 0s ease-in-out;
   -moz-transition: color .3s 0s ease-in-out,border-color .3s 0s ease-in-out;
@@ -3088,7 +3093,7 @@ input.phone-number {
   border-bottom: 0.05em solid rgba(123, 137, 153, 0.4);
   border-top: 0.05em solid rgba(123, 137, 153, 0.4);
   box-sizing: border-box;
-  width: 9em;
+  width: 15em;
 }
 
 #toast-container {

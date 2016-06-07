@@ -33,18 +33,18 @@
                             </a>
                         </div>
                         <div class="desktop-visitor">
-                        <form id="phoneNumberForm" class="">
-                            <!-- <input type="phone" class="phone-number" name="PhoneNumber" id="phone_number" placeholder="(123) 456-7890"> -->
+                        <form id="emailForm" class="">
+                            <input type="email" class="email-entry" name="Email" id="email_input" placeholder="john@doe.com">
                             <br>        
                             <br>        
                             <br>        
                             <br>        
                             <a href="https://itunes.apple.com/us/app/argent/id1110084542?mt=8" title="Download Argent" target="_blank">
-                                <div class="btn btn-lg button pretty-font" style="text-transform:none;">Download on the App Store</div>
+                                <div class="btn btn-lg button pretty-font" style="text-transform:none;">Go to App Store</div>
                             </a>   
-<!--                             <a href="#" title="Download Argent" onclick="showTextAlert()">
-                                <div class="btn btn-lg button">Send app to phone</div>
-                            </a>    -->
+                            <a href="#" title="Download Argent" onclick="sendEmail()">
+                                <div class="btn btn-lg button" style="text-transform:none;">Send to Email</div>
+                            </a>   
                         </form>
                         </div>
                     
@@ -395,14 +395,37 @@
     <script src="/assets/js/awesome-landing-page.js"></script>
     <script src="/assets/js/sweetalert.min.js"></script>
     <script>
-        // function showTextAlert() {
-        //     //console.log("submitting")
-        //     swal({   
-        //         title: "🇺🇸 +1-202-800-1060",   
-        //         text: "Text APP to the number above to receive a link to our app!",  
-        //         imageUrl: "assets/img/icons/icon-notification.png", 
-        //         confirmButtonText: "Ok!" 
-        //     });
-        // }
+        function sendEmail() {
+            //console.log("submitting")
+            var form = $('#emailForm');
+            var email = $('input[name="Email"]').val()
+            // console.log("phone number is", "+1" + rawPhoneNumber);
+            // console.log(form)
+            $.ajax({
+                type: "POST",
+                url: "http://192.168.1.182:5001/v1/email",
+                dataType: "json",  
+                contentType: 'application/json; charset=UTF-8', // This is the money shot
+                data: JSON.stringify({
+                    "email": email
+                }),
+                success: function (data) {
+                    swal({   
+                        type:"success",
+                        title: "🎉 Success",   
+                        text: "The app link is on it's way!",  
+                        confirmButtonText: "Ok!" 
+                    });
+                },
+                failure: function(err) {
+                    swal({   
+                        title: "Error",   
+                        text: "App could not be sent to phone :(",   
+                        type: "error",   
+                        confirmButtonText: "Ok" 
+                    });
+                }
+            });
+        }
     </script>
 </html>
