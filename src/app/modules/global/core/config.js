@@ -4,8 +4,8 @@
   var core = angular.module('app.core');
 
   var coreConfig = {
-    name: 'TimeKloud',
-    appTitle: 'timekloud-app',
+    name: 'Argent',
+    appTitle: 'argent-app',
     version: '0.1.1'
   };
 

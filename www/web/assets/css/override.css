@@ -158,6 +158,10 @@ a:focus, a:active {
   transition: all 300ms linear;
 }
 
+.nav > li > a:hover, .nav > li > a:focus {
+    text-decoration: none;
+    background-color: #fff;
+}
 .btn-hover, i {
   -webkit-transition: all 150ms linear;
   -moz-transition: all 150ms linear;
@@ -1711,7 +1715,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#de8e0009', e
 
 @media (max-width: 767px){
   .navbar-header {
-    background: #7b8999;
+    background: #fff;
   }
   .navbar-collapse .push-down .collapse .in {
     background: #7b8999;
@@ -1727,7 +1731,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#de8e0009', e
     text-align: center;
   }
   .navbar-toggle .icon-bar{
-    background: white;
+    background: #7b8999;
   }
   .navbar-toggle{
     padding: 20px 10px;
@@ -2057,10 +2061,10 @@ body, html {
 }
 
 a {
-  color: #000000;
+  color: #7b8999;
 }
 a:focus, a:hover {
-  color: #000000;
+  color: #6c7888;
 }
 
 .btn {
@@ -3074,6 +3078,7 @@ hr {
 }
 
 input.email-entry {
+  letter-spacing: 1.2px;
   text-align: center;
   margin-top: 1.5em;
   background: 0 0;
