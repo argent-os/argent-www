@@ -25,27 +25,14 @@
                     <h2 class="push-down pretty-font"></h2>
                     
                         <div class="mobile-visitor">
-                            <a target="_blank" href="https://itunes.apple.com/us/app/argent/id1110084542?mt=8" class="download-app biller-redirect-link" title="Download Argent">
+                            <a>
                             <br><br><br>
-                            <h3 class="pretty-font">Welcome to Argent</h3>
+                            <h3 class="pretty-font">Our Company</h3>
                             <br>
-                                <!-- <div class="btn btn-primary btn-lg button push-down">Download</div> -->
                             </a>
                         </div>
                         <div class="desktop-visitor">
-                        <form id="emailForm" class="">
-                            <input type="email" class="email-entry" name="Email" id="email_input" placeholder="you@example.com">
-                            <br>        
-                            <br>        
-                            <br>        
-                            <br>        
-                            <a href="https://itunes.apple.com/us/app/argent/id1110084542?mt=8" title="Download Argent" target="_blank">
-                                <div class="btn btn-lg button email-entry" style="text-transform:none;letter-spacing: 1.2px;font-weight:lighter;font-family:'Open Sans'"">Go to App Store</div>
-                            </a>   
-                            <a href="#" title="Download Argent" onclick="sendEmail()">
-                                <div class="btn btn-lg button" style="text-transform:none;letter-spacing: 1.2px;font-weight:lighter;font-family:'Open Sans'"">Send to Email</div>
-                            </a>   
-                        </form>
+
                         </div>
                     
                         <div class="header-image" style="display: none">
@@ -389,47 +376,4 @@
     <script src="/assets/js/app.js"></script>
     <script src="/assets/js/awesome-landing-page.js"></script>
     <script src="/assets/js/sweetalert.min.js"></script>
-    <script>
-        function sendEmail() {
-            //console.log("submitting")
-            var form = $('#emailForm');
-            var email = $('input[name="Email"]').val()
-            if (email === "") {
-                swal({   
-                    title: "Error",   
-                    text: "Email field cannot be empty",   
-                    type: "error",   
-                    confirmButtonText: "Ok" 
-                });
-                return;
-            }
-            // console.log("phone number is", "+1" + rawPhoneNumber);
-            // console.log(form)
-            $.ajax({
-                type: "POST",
-                url: "https://www.argentapp.com/v1/email",
-                dataType: "json",  
-                contentType: 'application/json; charset=UTF-8', // This is the money shot
-                data: JSON.stringify({
-                    "email": email
-                }),
-                success: function (data) {
-                    swal({   
-                        type:"success",
-                        title: "🎉 Success",   
-                        text: "The app link is on it's way!",  
-                        confirmButtonText: "Ok!" 
-                    });
-                },
-                failure: function(err) {
-                    swal({   
-                        title: "Error",   
-                        text: "App could not be sent to phone :(",   
-                        type: "error",   
-                        confirmButtonText: "Ok" 
-                    });
-                }
-            });
-        }
-    </script>
 </html>
