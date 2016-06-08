@@ -12,15 +12,33 @@
         <link href="../assets/css/bootstrap.css" rel="stylesheet" />
         <link href="../assets/css/landing-page.css" rel="stylesheet"/>
         <!--     Fonts and icons     -->
-        <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-        <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400,300' rel='stylesheet' type='text/css'>
-        <link href='http://fonts.googleapis.com/css?family=Nunito:300italic,400,300' rel='stylesheet' type='text/css'>
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400,300' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Nunito:300italic,400,300' rel='stylesheet' type='text/css'>
         <link href="../assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
         <link href="../assets/css/sweetalert.css" rel="stylesheet" />
         <link href="../assets/css/override.css" rel="stylesheet" />
+        <style type="text/css">
+            .bs-example{
+                margin: 20px;
+            }
+        </style>        
     </head>
     <body class="landing-page landing-page1">
     <div class="hero fullscreen section-one">
+                <div class="bs-example">                    
+                    <!-- Modal HTML -->
+                    <div id="modal" class="modal fade">
+                        <div class="modal-dialog"  width="560" height="316">
+                            <div class="modal-content" style="background:white;-webkit-box-shadow:none;box-shadow:none;border-radius:10px;">
+                                <button type="button" class="close" style="margin-top:-20px;margin-right:-20px;color:white;" data-dismiss="modal" aria-hidden="true">×</button>
+                                <div class="modal-body">
+                                    <iframe src="https://player.vimeo.com/video/8704977" width="560" height="320" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>      
                 <div class="pay-with-biller">
                     <h2 class="push-down pretty-font"></h2>
                     
@@ -113,7 +131,7 @@
                                 </a>
                             </li>  
                             <li>
-                                <a class="font-style" href="#"> 
+                                <a class="font-style" href="#modal" class="btn btn-lg btn-primary" data-toggle="modal"> 
                                     <span>Video</span>
                                 </a>
                             </li>                                                                         
@@ -295,19 +313,19 @@
                         <div class="carousel-inner" role="listbox">
                             <div class="item">
                                 <div class="mask">
-                                    <img src="assets/img/faces/face-3.png">
+                                    <img src="assets/img/mom.jpg">
                                 </div>
                                 <div class="carousel-testimonial-caption">
-                                    <p>Bob John, Real Estate Agent</p>
+                                    <p>Anne Smith, Consultant</p>
                                     <h5 class="slate">"I absolutely love your app! It's truly amazing and looks awesome!"</h5>
                                 </div>
                             </div>
                             <div class="item active">
                                 <div class="mask">
-                                    <img src="assets/img/faces/face-2.png">
+                                    <img src="assets/img/sis.jpg">
                                 </div>
                                 <div class="carousel-testimonial-caption">
-                                    <p>John Deere, Farmer</p>
+                                    <p>Melissa Brooke, Designer</p>
                                     <h5 class="slate">"This is one of the most awesome apps I've ever seen! Wish you luck!"</h5>
                                 </div>
                             </div>
@@ -316,7 +334,7 @@
                                     <img src="assets/img/faces/face-1.png">
                                 </div>
                                 <div class="carousel-testimonial-caption">
-                                    <p>Beach Bro, Accountant</p>
+                                    <p>Kurt Johnson, Entrepreneur</p>
                                     <h5 class="slate">"Loving this! Just picked it up the other day. Thank you for the work you put into this."</h5>
                                 </div>
                             </div>
@@ -442,4 +460,23 @@
             });
         }
     </script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            /* Get iframe src attribute value i.e. YouTube video url
+            and store it in a variable */
+            var url = $("#video").attr('src');
+            
+            /* Assign empty url value to the iframe src attribute when
+            modal hide, which stop the video playing */
+            $("#modal").on('hide.bs.modal', function(){
+                $("#video").attr('src', '');
+            });
+            
+            /* Assign the initially stored url back to the iframe src
+            attribute when modal is displayed again */
+            $("#modal").on('show.bs.modal', function(){
+                $("#video").attr('src', url);
+            });
+        });
+    </script>      
 </html>

@@ -18,8 +18,54 @@
         <link href="../assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
         <link href="../assets/css/sweetalert.css" rel="stylesheet" />
         <link href="../assets/css/override.css" rel="stylesheet" />
+        <style type="text/css">
+            #header, .icon, nav.li {
+                /*margin-top: 25px;*/
+                /*font-size: 26px;*/
+                /*text-align: center;*/
+
+                -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
+                   -moz-animation: fadein 2s; /* Firefox < 16 */
+                    -ms-animation: fadein 2s; /* Internet Explorer */
+                     -o-animation: fadein 2s; /* Opera < 12.1 */
+                        animation: fadein 2s;
+                }
+
+                @keyframes fadein {
+                    from { opacity: 0; }
+                    to   { opacity: 1; }
+                }
+
+                /* Firefox < 16 */
+                @-moz-keyframes fadein {
+                    from { opacity: 0; }
+                    to   { opacity: 1; }
+                }
+
+                /* Safari, Chrome and Opera > 12.1 */
+                @-webkit-keyframes fadein {
+                    from { opacity: 0; }
+                    to   { opacity: 1; }
+                }
+
+                /* Internet Explorer */
+                @-ms-keyframes fadein {
+                    from { opacity: 0; }
+                    to   { opacity: 1; }
+                }
+
+                /* Opera < 12.1 */
+                @-o-keyframes fadein {
+                    from { opacity: 0; }
+                    to   { opacity: 1; }
+                }
+                .hero.fullscreen {
+                    height: 800px;
+                    position: relative;
+                }                
+        </style>
     </head>
-    <body class="landing-page landing-page1">
+    <body class="landing-page landing-page1">       
     <div class="hero fullscreen section-one">
                 <div class="pay-with-biller">
                     <h2 class="push-down pretty-font"></h2>
@@ -32,31 +78,36 @@
                             </a>
                         </div>
                         <div class="desktop-visitor">
-
+                            <br><br><br><br><br>
+                            <h3 id="header" class="pretty-font" style="line-height:2">We are a dedicated team of entrepreneurs <br> who hope to change how payments are <br>globally handled and processed</h3>
+                            <br>
+                                <!-- <div class="btn btn-primary btn-lg button push-down">Download</div> -->
+                            </a>
                         </div>
-                    
-                        <div class="header-image" style="display: none">
-
-                            <div class="biller-phone-logo">
-                                <div class="background">
-                                    <p class="biller-name"></p>
-                                    <div class="background-overlay"></div>
-                                </div>
-                                <div class="logo">
-                                    <span></span>
-                                    <img>
-                                </div>
-                            </div>
-                            
-                            <img src="assets/images/phone-biller-blank.png" class="push-down phone-image">
-
-                        </div>
-                        <div class="absolute-image bill-assistant">
-                            <img src="assets/img/mocks/iphone-animated.gif?rand=<?=rand(1,1000);?" id="animated-phone" class="push-down phone-image">
-                        </div>              
-                    
                 </div>
+                <br>
+                <br>
+                <br>
+                <br>
+                <div class="row">
+                    <div class="col-md-3 col-md-offset-2">
+                        <a href="#" class="thumbnail" style="border:none;">
+                             <img height="120px" width="120px" src="assets/img/sis.jpg" class="icon img-responsive" style="border-radius:50%">
+                        </a>
+                    </div>
+                     <div class="col-md-2">
+                        <a href="#" class="thumbnail" style="border:none;">
+                             <img height="120px" width="120px" src="assets/img/mom.jpg" class="icon img-responsive" style="border-radius:50%">
+                        </a>
+                    </div>
+                    <div class="col-md-3">
+                        <a href="#" class="thumbnail" style="border:none;">
+                             <img height="120px" width="120px" src="assets/img/faces/face-1.png" class="icon img-responsive" style="border-radius:50%">
+                        </a>
+                    </div>
+                </div>                 
             </div>
+           
             <nav class="navbar navbar-light navbar-top" role="navigation">
                 <div class="container">
                     <!-- Brand and toggle get grouped for better mobile display -->
@@ -89,14 +140,14 @@
                                     <span></span>
                                 </a>
                             </li> 
-                            <li class="hidden-xs">
-                                <a class="font-style" href="#"> 
-                                    <span></span>
-                                </a>
-                            </li>                              
                             <li>
-                                <a class="font-style" href="/about"> 
-                                    <span>About</span>
+                                <a class="font-style" href="/home"> 
+                                    <span>Home</span>
+                                </a>
+                            </li>                         
+                            <li>
+                                <a class="font-style" href="/company"> 
+                                    <span>Company</span>
                                 </a>
                             </li>  
                             <li>
@@ -119,216 +170,7 @@
                     <!-- /.navbar-collapse -->
                 </div>
             </nav>
-            <div class="section section-gray section-clients">
-                <div class="container text-center">
-                    <div class="icon">
-                        <!-- <img src="assets/img/icon-rocket.png" height="60px" width="60px" /> -->
-                    </div>
-                    <!-- <h3 style="color:#7b8999">Preparing thrusters...</h3> -->
-                    <br>
-                    <div class="">
-                        <a href><img height="50px" src="assets/img/icons/icon-app-store.png"></a>
-                        <!-- <button class="btn btn-simple btn-neutral"> -->
-                        <!-- <i class="fa fa-android"><span class="font-style">&nbsp;&nbsp;Coming Soon</span></i> -->
-                        <!-- </button> -->
-                    </div>
-                    <p>
-                        <!-- Build customer confidence by listing your users! Anyone who has used your service and has been pleased with it should have a place here! From Fortune 500 to start-ups, all your app enthusiasts will be glad to be featured in this section. Moreover, users will feel confident seing someone vouching for your product!<br> -->
-                    </p>
-<!--                <div class="logos">
-                        <ul class="list-unstyled">
-                            <li ><img src="assets/img/logos/adobe.png"/></li>
-                            <li ><img src="assets/img/logos/zendesk.png"/></li>
-                            <li ><img src="assets/img/logos/ebay.png"/></i>
-                            <li ><img src="assets/img/logos/evernote.png"/></li>
-                            <li ><img src="assets/img/logos/airbnb.png"/></li>
-                            <li ><img src="assets/img/logos/zappos.png"/></li>
-                        </ul>
-                    </div> -->
-                </div>
-            </div>
-            <div class="section section-presentation">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-6" style="margin-top:300px;height:500px;">
-                            <div class="description">
-                                <h4 class="pretty-font giga-font slate">Light, Fast, Beautiful</h4>
-                                <p class="slate">With Argent you can solve the problem of continually managing monthly, bi-annual, and yearly recurring billing issues with our simple to use iOS app.  Start accepting payments through either our recurring billing system, or point of sale solution today.</p>
-                                <p>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="col-md-5 col-md-offset-1 hidden-xs">
-                            <img src="assets/img/mocks/iphones.png"/ style="top:50px">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="hero light section-three push-down">
-                <h2 class="push-down"></h2>
-                <div class="absolute-image-watch">
-                    <img src="assets/img/mocks/apple-watch-dark.gif" id="apple-watch" class="push-down">
-                </div>      
-            </div>
-            <div class="section section-features">
-                <div class="container" style="margin-top:100px;">
-                    <h4 class="pretty-font giga-font slate text-center">Features</h4>
-                    <br><br>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="card card-orange">
-                                <br>
-                                <div class="icon">
-                                    <img width="75" height="75" src="assets/img/icons/icon-recurring.png" />
-                                </div>
-                                <div class="text">
-                                    <h4 class="pretty-font"><b>Recurring Payments</b></h4>
-                                    <p class="pretty-font"><span>Create a recurring payment plan for your customers, clients, tenants, or members and get paid. Whether you are looking to create monthly, quarterly, or yearly subscriptions, we’ve got you covered. </span></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card card-orange">
-                                <br>                            
-                                <div class="icon">
-                                    <img width="75" height="75" src="assets/img/apple-pay/Apple_Pay_mark_large_@3x.png" />
-                                </div>
-                                <h4 class="pretty-font"><b>Apple Pay®</b></h4>
-                                <p class="pretty-font"><span>The world's most secure payment infrastructure at your fingertips.  Utilize Apple Pay to pay other Argent users or sign up for recurring payments.  Credit card data is always handled in a PCI compliant manner.</span></p>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card card-orange">
-                                <br>                            
-                                <div class="icon">
-                                    <img width="75" height="75" src="assets/img/icons/icon-bitcoin.png" />
-                                </div>
-                                <h4 class="pretty-font"><b>Bitcoin</b></h4>
-                                <p class="pretty-font"><span>Accept the leading global cryptocurrency at your Point of Sale.  Any Bitcoin mobile wallet can now transfer money directly from your POS system to your bank account.  No configuration needed. </span></p>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card card-orange">
-                                <br>
-                                <div class="icon">
-                                    <img width="75" height="75" src="assets/img/icons/icon-risk.png" />
-                                </div>
-                                <div class="text">
-                                    <h4 class="pretty-font"><b>Risk Profiling</b></h4>
-                                    <p class="pretty-font"><span>Receive a score of 1-100 based on proprietary risk calculation algorithms.  All risk profiling data is confidential unless otherwise requested.   </span></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card card-orange">
-                                <br>                            
-                                <div class="icon">
-                                    <img width="75" height="75" src="assets/img/icons/icon-pulse.png" />
-                                </div>
-                                <h4 class="pretty-font"><b>Dashboard</b></h4>
-                                <p class="pretty-font"><span>View all your account information in an easy-to-use dashboard.  See pending and available account balances, as well as interval transfer history.</span></p>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card card-orange">
-                                <br>                            
-                                <div class="icon">
-                                    <img width="75" height="75" src="assets/img/icons/icon-bank.png" />
-                                </div>
-                                <h4 class="pretty-font"><b>Bank Authentication</b></h4>
-                                <p class="pretty-font"><span>Directly connect to any bank account in the US or Canada.  No more waiting for small deposits to clear.  We currently support over 1,000+ institutions. </span></p>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card card-orange">
-                                <br>
-                                <div class="icon">
-                                    <img width="75" height="75" src="assets/img/icons/icon-notification.png" />
-                                </div>
-                                <div class="text">
-                                    <h4 class="pretty-font"><b>Push Notifications</b></h4>
-                                    <p class="pretty-font"><span>Get notified on all account activity with push notifications. From charges created to customers added and transfers paid.  We keep you up to date and moving in real-time.</span></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card card-orange">
-                                <br>                            
-                                <div class="icon">
-                                    <img width="75" height="75" src="assets/img/icons/icon-touch.png" />
-                                </div>
-                                <h4 class="pretty-font"><b>Touch ID®</b></h4>
-                                <p class="pretty-font"><span>Utilize the power of biometrics to keep your account secure.  We use Touch ID as the default security configuration with a fallback to PIN codes for older iPhone models.</span></p>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card card-orange">
-                                <br>                            
-                                <div class="icon">
-                                    <img width="75" height="75" src="assets/img/icons/icon-alipay.png" />
-                                </div>
-                                <h4 class="pretty-font"><b>Alipay & ACH <h6>(coming soon)<h6></b></h4>
-                                <p class="pretty-font"><span>We are diligently working to add Alipay POS support as well as direct ACH money transfers from peer-to-peer and peer-to-merchant. </span></p>
-                            </div>
-                        </div>                                                
-                    </div>
-                </div>
-            </div>
-            <div class="section section-testimonial">
-                <div class="container" style="margin-top:200px;margin-bottom:200px;">
-                    <h4 class="pretty-font big-font text-center">What people are saying</h4>
-                    <div id="carousel-example-generic" class="carousel fade" data-ride="carousel">
-                        <!-- Wrapper for slides -->
-                        <div class="carousel-inner" role="listbox">
-                            <div class="item">
-                                <div class="mask">
-                                    <img src="assets/img/faces/face-3.png">
-                                </div>
-                                <div class="carousel-testimonial-caption">
-                                    <p>Bob John, Real Estate Agent</p>
-                                    <h5 class="slate">"I absolutely love your app! It's truly amazing and looks awesome!"</h5>
-                                </div>
-                            </div>
-                            <div class="item active">
-                                <div class="mask">
-                                    <img src="assets/img/faces/face-2.png">
-                                </div>
-                                <div class="carousel-testimonial-caption">
-                                    <p>John Deere, Farmer</p>
-                                    <h5 class="slate">"This is one of the most awesome apps I've ever seen! Wish you luck!"</h5>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="mask">
-                                    <img src="assets/img/faces/face-1.png">
-                                </div>
-                                <div class="carousel-testimonial-caption">
-                                    <p>Beach Bro, Accountant</p>
-                                    <h5 class="slate">"Loving this! Just picked it up the other day. Thank you for the work you put into this."</h5>
-                                </div>
-                            </div>
-                        </div>
-                        <ol class="carousel-indicators carousel-indicators-orange">
-                            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-                        </ol>
-                    </div>
-                </div>
-            </div>
-            <div class="section section-no-padding">
-                <div class="parallax filter-gradient gray" data-color="orange">
-                    <div class="parallax-background">
-                        <img class ="flipped" src="assets/img/showcases/showcase-1/bg.jpg">
-                    </div>
-                    <div class="info">
-                        <h1 class="pretty-font">Start Getting Paid</h1>
-                        <p>Free to use with no monthly fees or hidden charges | 3.99% + 30¢ per transaction </p>
-                        <br>
-                        <a target="_blank" href="https://itunes.apple.com/us/app/argent/id1110084542?mt=8" href><img height="50px" src="assets/img/icons/icon-app-store.png"></a>
-                    </div>
-                </div>
-            </div>
+           
             <footer class="footer" style="background:#7b8999;">
                 <div class="container">
                     <nav class="pull-left">
@@ -348,6 +190,16 @@
                                 <span class="white pretty-font">Blog</span>
                                 </a>
                             </li>
+                            <li>
+                                <a href="/privacy" target="_blank">
+                                <span class="white pretty-font">Privacy</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/terms" target="_blank">
+                                <span class="white pretty-font">Terms</span>
+                                </a>
+                            </li>     
                         </ul>
                     </nav>
                     <div class="social-area pull-right">                
@@ -375,5 +227,5 @@
     <script src="/assets/js/bootstrap.js"></script>
     <script src="/assets/js/app.js"></script>
     <script src="/assets/js/awesome-landing-page.js"></script>
-    <script src="/assets/js/sweetalert.min.js"></script>
-</html>
+    <script src="/assets/js/sweetalert.min.js"></script>  
+</html>                                  
