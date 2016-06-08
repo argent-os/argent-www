@@ -3148,6 +3148,12 @@ input.email-entry {
   text-transform: uppercase;
 }
 
+@media (min-width: 768px) {
+  .modal-dialog {
+      width: 600px;
+      margin: 200px auto;
+  }
+}
 .modal .btn {
   border-radius: 0px;
   width: 100%;
