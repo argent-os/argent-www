@@ -67,7 +67,7 @@
                                   vm.user = response.data;
                                   $rootScope.user = response.data;
                                   $rootScope.user = response.data;
-                                  response.data.picture !== undefined ? $rootScope.profilePicSecureUrl == response.data.picture : $rootScope.profilePicSecureUrl = 'app/img/user.jpg';
+                                  response.data.picture.secure_url !== undefined ? $rootScope.profilePicSecureUrl = response.data.picture.secure_url : $rootScope.profilePicSecureUrl = 'app/img/user.jpg';
                                   response.data.theme !== undefined ? $rootScope.userTheme = response.data.theme : $rootScope.userTheme = 1;
                                   response.data.stripeToken ? $rootScope.stripeConnected = true : $rootScope.stripeConnected = false;                   
                                   response.data.darkThemeEnabled ? $rootScope.stylePath = 'app/style/css/css_inverse/index_inverse.css' : $rootScope.stylePath = 'app/style/css/css_default/index_default.css';
@@ -79,21 +79,9 @@
                                   }                                        
                                   return response;
                               });
-                  },
-                  loadOrganization = function(user)
-                  {
-                      if(user.data.orgId) {
-                        return OrganizationFactory
-                                .getOrganization(user)
-                                .then(function(response)
-                                {
-                                    vm.organization = response;
-                                    $rootScope.organization = response;
-                                    return response;
-                                });
-                      }
                   }
-              loadUser().then(loadOrganization);
+              loadUser()
+              // loadUser().then(loadOrganization);
 
               $rootScope.user = null;
               $rootScope.organization  = null;
@@ -109,7 +97,7 @@
                           {
                               vm.user = response.data;
                               $rootScope.user = response.data;
-                              response.data.picture !== undefined ? $rootScope.profilePicSecureUrl == response.data.picture : $rootScope.profilePicSecureUrl = 'app/img/user.jpg';                              
+                              response.data.picture.secure_url != undefined ? $rootScope.profilePicSecureUrl = response.data.picture.secure_url : $rootScope.profilePicSecureUrl = 'app/img/user.jpg';                              
                               response.data.theme !== undefined ? $rootScope.userTheme = response.data.theme : $rootScope.userTheme = 1;                       
                               response.data.darkThemeEnabled ? $rootScope.stylePath = 'app/style/css/css_inverse/index_inverse.css' : $rootScope.stylePath = 'app/style/css/css_default/index_default.css';
                               response.data.darkThemeEnabled ? $rootScope.circleBg = 'rgba(255,255,255,0.1)' : $rootScope.circleBg = 'rgba(255,255,255,0.1)';
@@ -120,26 +108,8 @@
                               }                                      
                               return response;
                           });
-              },
-              loadOrganization = function(user)
-              {
-                  if(user.data.orgId !== 'none' || user.data.orgId) {
-                    return OrganizationFactory
-                            .getOrganization(user)
-                            .then(function(response)
-                            {
-                                vm.organization = response;
-                                $rootScope.organization = response;
-                                return response;
-                            }, function (err) {
-                              // console.log(err);
-                              return err;
-                            });
-                  } else {
-                    return null;
-                  }
               }
-          loadUser().then(loadOrganization);
+          loadUser()
 
           $rootScope.user = null;
           $rootScope.organization  = null;

@@ -62,8 +62,8 @@ background: rgba(255,255,255,0.9);
         ">
         <form class="form-group group">
               <h2 style="margin-top:20px" class="text-center animated fadeInDown delay-3"><span style="font-size:22px">@</span>{{vm.user.username}}</h2>
-              <img ng-if="!vm.user.picture.secureUrl" src="app/img/user.jpg" class="avatar circle text-center" style="height:100px;width:auto;border:2px solid rgba(255,255,255,0.5);margin-left:auto;margin-right:auto;display:block;margin-top:20px;margin-bottom:20px;box-shadow:0px 9px 19px rgba(0, 0, 0, 0.1);">
-              <img class="avatar circle animated fadeIn delay-4" ng-if="vm.user.picture.secureUrl" ng-src="{{vm.user.picture.secureUrl}}" class="avatar circle text-center" style="height:100px;width:100px;border:2px solid rgba(255,255,255,0.5);margin-left:auto;margin-right:auto;display:block;margin-top:20px;margin-bottom:20px;box-shadow:0px 9px 19px rgba(0, 0, 0, 0.1);">
+              <img ng-if="!vm.user.picture.secure_url" src="app/img/user.jpg" class="avatar circle text-center" style="height:100px;width:auto;border:2px solid rgba(255,255,255,0.5);margin-left:auto;margin-right:auto;display:block;margin-top:20px;margin-bottom:20px;box-shadow:0px 9px 19px rgba(0, 0, 0, 0.1);">
+              <img class="avatar circle animated fadeIn delay-4" ng-if="vm.user.picture.secure_url" ng-src="{{vm.user.picture.secure_url}}" class="avatar circle text-center" style="height:100px;width:100px;border:2px solid rgba(255,255,255,0.5);margin-left:auto;margin-right:auto;display:block;margin-top:20px;margin-bottom:20px;box-shadow:0px 9px 19px rgba(0, 0, 0, 0.1);">
 
             <div class="text-center" style="border-top:1px solid rgba(25,25,25,0.1);padding-top:10px;padding-left:5px;padding-right:5px;">
               <h4 class="animated bounceIn delay-6">{{vm.user.email}}</h4>

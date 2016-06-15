@@ -20,7 +20,7 @@
                             </div>   
                             <div ng-if="vm.user.picture.id" style="margin-top:-50px;">
                                 <div ng-if="vm.user.picture.id" style="cursor:pointer;height:125px;width:125px;margin-top:-30px;margin-right:auto;display:block;" ng-controller="photoUploadCtrl" ng-file-select ng-multiple="true" resetOnClick="true" ng-model="files" >
-                                          <img style="height:100px;width:100px;border:2px solid white;box-shadow:9px 9px 19px rgba(0, 0, 0, 0.2);" ng-if="vm.user.picture.id" ng-src="{{vm.user.picture.secureUrl}}" class="circle" />
+                                          <img style="height:100px;width:100px;border:2px solid white;box-shadow:9px 9px 19px rgba(0, 0, 0, 0.2);" ng-if="vm.user.picture.id" ng-src="{{vm.user.picture.secure_url}}" class="circle" />
                                 </div>
                             </div>                     
                             <div class="col-md-12" ng-init="showEdit=false">

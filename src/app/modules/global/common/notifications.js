@@ -62,7 +62,7 @@
                         positionClass: 'toast-bottom-left'                        
                     });     
                 } else {
-                    notificator.info('Click help on the bottom right side for information about ProtonPay usage', {
+                    notificator.info('Click help on the bottom right side for information about Argent usage', {
                         timeOut: 20000,
                         positionClass: 'toast-bottom-right'                                          
                     });  

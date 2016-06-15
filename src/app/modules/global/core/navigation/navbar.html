@@ -11,7 +11,7 @@
       </li>
           <!--xs & sm screen logo -->
         <li ng-if="!status.active" style="margin-top:25px;left:-20px;" class="fadein visible-xs">
-            <!-- <img width="50" height="auto" ui-sref="app.dashboard" class="visible-xs" style="display:block;padding-top:10px;" src="app/img/timekloudlogo-light.png"></img>     -->     <img height="20px" src="app/img/logo-light.png"><span>ProtonPay</span>    
+            <!-- <img width="50" height="auto" ui-sref="app.dashboard" class="visible-xs" style="display:block;padding-top:10px;" src="app/img/timekloudlogo-app.png"></img>     -->     <img height="20px" src="app/img/logo-app.png"><span>Argent</span>    
             <!-- <h4 class="font-weight-thin" ui-sref="app.dashboard" ui-sref-active="active">{{vm.organization.name}}</h4> -->
         </li>          
     </ul>
@@ -33,15 +33,12 @@
           <!-- <a style="font-weight:bold;" class="navbar-brand hidden-xs" ui-sref="app.dashboard" ui-sref-active="active">{{app.name}}</a> -->
         </li>
         <li style="margin-top:-1px;"> 
-          <a class="hidden-xs" ui-sref="app.dashboard" ui-sref-active="active" style="margin-left:-27px;color:#fff;"><span style="letter-spacing:2px;font-size:18px;font-weight:bold;font-family:'Nunito'"><img height="45px" src="app/img/logo-light.png"></span> 
+          <a class="hidden-xs" ui-sref="app.dashboard" ui-sref-active="active" style="margin-left:-27px;color:#fff;"><span style="letter-spacing:2px;font-size:18px;font-weight:bold;font-family:'Nunito'"><img height="45px" src="app/img/logo-app.png"></span> 
         </li>        
-        <li>
-          <a class="hidden-lg hidden-md hidden-sm visible-xs" style="margin-top:-20px" ui-sref="app.dashboard" ui-sref-active="active">Tracker</a>
-        </li> 
         <li dropdown class="visible-md hidden-lg visible-sm hidden-xs">
              <a href="#" dropdown-toggle style="text-transform:none;font-weight:600;" >Menu &nbsp;<i style="font-size:14px" class="icon ion-ios-arrow-down"></i></a>
               <ul class="dropdown-menu animated-drop">
-                <li ng-show="!orgFound">
+<!--                 <li ng-show="!orgFound">
                   <a ui-sref="app.editorganization({id: null})">Add Organization</a>
                 </li>                
                 <li ng-show="orgFound">
@@ -78,7 +75,7 @@
                 </li>                
                 <li>
                   <a ui-sref="app.createcustomer">Add Customer</a>
-                </li>                                                          
+                </li>           -->                                                
               </ul>
         </li>
 <!--         <li dropdown class="hidden-xs">
@@ -87,12 +84,12 @@
         <li dropdown class="hidden-sm hidden-xs hidden-md">
              <a href="#" dropdown-toggle style="text-transform:none;font-weight:600;" ><i class="icon ion-paper-airplane" style="font-size:12px;"></i>&nbsp;&nbsp;Overview &nbsp;<i style="font-size:14px" class="icon ion-ios-arrow-down"></i></a>
               <ul class="dropdown-menu animated-drop">
-                <li ng-show="!orgFound">
+<!--                 <li ng-show="!orgFound">
                   <a ui-sref="app.editorganization({id: null})">Add Organization</a>
                 </li>                
                 <li ng-show="orgFound">
                   <a ui-sref="app.organization({id: user.orgId})">Organization</a>
-                </li> 
+                </li>  -->
                 <li ng-if="vm.user.env == 'DEV'">
                   <!-- <a ui-sref="app.team">Teams<sup>&nbsp;Beta</sup></a> -->
                 </li>     
@@ -148,14 +145,14 @@
 <!--         <li dropdown class="hidden-xs">
              <a ng-if="vm.user.env == 'DEV'" ui-sref="app.billing" style="text-transform:none;font-weight:600;padding-top:0px;" >Billing &nbsp;<i class="icon"></i></a>
         </li>     -->                                                   
-        <li class="visible-xs hidden-sm hidden-md hidden-lg">
+<!--         <li class="visible-xs hidden-sm hidden-md hidden-lg">
           <a ui-sref="app.organization({id: organization._id})">Organization</a>
-        </li>                    
+        </li>    -->                 
       </ul>
       <ul class="nav navbar-nav navbar-right">            
         <li dropdown class="hidden-xs" ng-if="!user.facebook">
              <a href="#" dropdown-toggle><i ng-if="!vm.user.picture.id" class="icon ion-gear-a ion-1x" style="padding-top:3px;"></i>
-             <img ng-if="vm.user.picture.id" ng-src="{{vm.user.picture.secureUrl}}" class="image circle" height="30" width="30"></img>&nbsp;&nbsp;<i style="font-size:14px" class="icon ion-ios-arrow-down"></i></a>
+             <img ng-if="vm.user.picture.id" ng-src="{{vm.user.picture.secure_url}}" class="image circle" height="30" width="30"></img>&nbsp;&nbsp;<i style="font-size:14px" class="icon ion-ios-arrow-down"></i></a>
               <ul class="dropdown-menu animated-drop pull-right" style="">
                 <li>
                   <a ui-sref="app.profile">Profile</a>
