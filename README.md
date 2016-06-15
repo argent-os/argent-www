@@ -78,8 +78,7 @@ Edit the following in ```src/app/index.js``` to match local settings
 <br />
 ```
 .value('appconfig',{
-        apiRoot: 'http://localhost:5001',
-        firebaseUrl: 'https://demosandbox.firebaseio.com/api/v1'
+        apiRoot: 'http://localhost:5001'
 })
 ```    
 Run ```nodemon server``` to instantiate Angular frontend

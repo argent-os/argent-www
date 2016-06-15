@@ -156,10 +156,10 @@
         url: remindUrl
       }).then(function success(response) {
         console.log(response);
-        if(response.data.msg == 'new_password_sent') {
+        if(response.data.status == 'success') {
             notifications.showSuccess('Password reset link sent');                        
             // swal({   title: "On the way",   text: "Password reset link sent",   type: "success",   confirmButtonText: "Close" });                              
-        } else {
+        } else if(response.data.status == 'error') {
             notifications.showError('Error sending password reset link');                        
             // swal({   title: "Error",   text: "Could not send password",   type: "error",   confirmButtonText: "Close" });                                        
         }

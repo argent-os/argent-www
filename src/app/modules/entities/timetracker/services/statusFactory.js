@@ -3,13 +3,13 @@
         var factory = [];
 
         factory.getStatus = function (user) {
-            var ref = new Firebase(config.firebaseUrl + '/users/' + user.username + '/status/');
+            var ref = new Firebase('/users/' + user.username + '/status/');
             var statusObject = $firebaseObject(ref);
             return statusObject;
         };
         
         factory.setStatus = function (params, user) {
-            var ref = new Firebase(config.firebaseUrl + '/users/' + user.username + '/status/');
+            var ref = new Firebase('/users/' + user.username + '/status/');
             var sync = $firebaseObject(ref);
             sync.$set(params);
         };

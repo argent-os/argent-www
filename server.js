@@ -49,8 +49,7 @@ app.use(express.static(path.join(__dirname, 'www/web')));
 app.use(express.static(path.join(__dirname, 'src')));
 
 app.use(express.static('src'));
-// app.use('/bower_components',  express.static('bower_components'));
-app.use('/bower_components',  express.static(__dirname + '/bower_components'));
+app.use('/bower_components',  express.static(path.join(__dirname, 'bower_components')));
 
 app.use('/home', home);
 app.use('/company', company);

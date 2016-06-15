@@ -18,15 +18,15 @@
         controller: 'LoginController',
         controllerAs: 'vm'
       })
-      .state('register', {
-        url: '/register',
-        data: {
-          noAuth: true
-        },
-        templateUrl: 'app/modules/global/profile/auth/register.html',
-        controller: 'RegisterController',
-        controllerAs: 'vm'
-      })
+      // .state('register', {
+      //   url: '/register',
+      //   data: {
+      //     noAuth: true
+      //   },
+      //   templateUrl: 'app/modules/global/profile/auth/register.html',
+      //   controller: 'RegisterController',
+      //   controllerAs: 'vm'
+      // })
       .state('forgot', {
         url: '/forgot',
         data: {

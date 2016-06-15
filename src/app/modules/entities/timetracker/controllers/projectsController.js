@@ -100,7 +100,7 @@
             var _name = name;
             UserFactory.getProfile().then(function (res) {
                 var user = res.data;
-                var projectRef = new Firebase(config.firebaseUrl + '/' + user.username + '/projects/');
+                var projectRef = new Firebase('/' + user.username + '/projects/');
                 projectRef.once('value', function(snap) {
                     snap.forEach(function(childSnapshot) {
                         var childData = childSnapshot.val();    
@@ -122,7 +122,7 @@
             var _task = task;
             UserFactory.getProfile().then(function (res) {
                 var user = res.data;
-                var taskRef = new Firebase(config.firebaseUrl + '/' + user.username + '/tasks/');
+                var taskRef = new Firebase('/' + user.username + '/tasks/');
                 taskRef.once('value', function(snap) {
                     snap.forEach(function(childSnapshot) {
                         var childData = childSnapshot.val();    

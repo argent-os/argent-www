@@ -172,16 +172,16 @@ $gray:                   lighten($gray-base, 33.5%) !default; // #555
 $gray-light:             lighten($gray-base, 46.7%) !default; // #777
 $gray-lighter:           lighten($gray-base, 93.5%) !default; // #eee
 
-$brand-primary:         #19B5FE !default; // #337ab7
-$brand-success:         #27CE9C !default;
-$brand-info:            rgba(75, 164, 255, 1.0) !default;
-$brand-warning:         rgba(245, 171, 53, 1) !default;
-$brand-danger:          rgba(231, 58, 52, 1.0) !default;
+$brand-primary:         #2c3441 !default; // #337ab7
+$brand-success:         #1ecc70 !default;
+$brand-info:            #7b8999 !default;
+$brand-warning:         #FF9900 !default;
+$brand-danger:          #e84c4c !default;
 
-$text-muted:            #999;
+$text-muted:            #7b8999;
 
 //** Global textual link color.*/
-$link-color:            #19B5FE !default;
+$link-color:            #7b8999 !default;
 //** Link hover color set via `darken()` function.*/
 $link-hover-color:      lighten($link-color, 30%) !default;
 //** Link hover decoration.*/
@@ -323,7 +323,7 @@ $input-border-radius-large:      $border-radius-large !default;
 $input-border-radius-small:      $border-radius-small !default;
 
 //** Border color for inputs on focus*/
-$input-border-focus:             #4B9CE2 !default;
+$input-border-focus:             #7b8999 !default;
 
 //** Placeholder text color*/
 $input-color-placeholder:        rgba(25,25,25,0.5) !default;

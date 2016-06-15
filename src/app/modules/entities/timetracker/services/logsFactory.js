@@ -4,13 +4,13 @@
         var factory = [];
 
         factory.getLogs = function (user) {
-            var ref = new Firebase(config.firebaseUrl + '/users/' + user.username + '/logs');
+            var ref = new Firebase('/users/' + user.username + '/logs');
             var logsArray = $firebaseArray(ref);
             return logsArray;
         };
 
         factory.getLogById = function (id, user) {
-            var ref = new Firebase(config.firebaseUrl + '/users/' + user.username + '/logs/' + id);
+            var ref = new Firebase('/users/' + user.username + '/logs/' + id);
             var logsArray = $firebaseObject(ref);
             return logsArray;
         };
@@ -19,10 +19,10 @@
             var _taskId = taskId;
             UserFactory.getProfile().then(function(res) {
                 var user = res.data;
-                var taskRef = new Firebase(config.firebaseUrl + '/users/' + res.data.username + '/tasks/' + _taskId);
+                var taskRef = new Firebase('/users/' + res.data.username + '/tasks/' + _taskId);
                 taskRef.once('value', function(snap) {
                     // console.log(res);
-                    var ref = new Firebase(config.firebaseUrl + '/users/' + res.data.username + '/logs/');
+                    var ref = new Firebase('/users/' + res.data.username + '/logs/');
                     var sync = $firebaseArray(ref);
                     sync.$add({
                         projectId: projectId,
@@ -43,10 +43,10 @@
             var _taskId = taskId;
             UserFactory.getProfile().then(function(res) {
                 var user = res.data;
-                var taskRef = new Firebase(config.firebaseUrl + '/users/' + res.data.username + '/tasks/' + _taskId);
+                var taskRef = new Firebase('/users/' + res.data.username + '/tasks/' + _taskId);
                 taskRef.once('value', function(snap) {
                     // console.log(res);
-                    var ref = new Firebase(config.firebaseUrl + '/users/' + res.data.username + '/logs/');
+                    var ref = new Firebase('/users/' + res.data.username + '/logs/');
                     var sync = $firebaseArray(ref);
                     sync.$add({
                         projectId: projectId,
