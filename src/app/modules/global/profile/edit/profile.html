@@ -16,11 +16,15 @@
                             <!-- <div class="hex avatar">                             -->
 
                             <div ng-if="!vm.user.picture.id" style="margin-top:-50px;">
-                                <img ng-controller="photoUploadCtrl" ng-file-select resetOnClick="true" ng-model="files" ng-src="{{profilePicSecureUrl}}" class="" style="box-shadow:-5px 2px 9px rgba(0, 0, 0, 0.1);height:100px;width:100px;cursor:pointer;cursor:hand;padding-left:-49px;background-size:cover;background-repeat:no-repeat;margin-top:-15px;margin-bottom:20px;border-radius:50%;">
+                                <img resetOnClick="true" ng-model="files" ng-src="{{profilePicSecureUrl}}" class="" style="box-shadow:-5px 2px 9px rgba(0, 0, 0, 0.1);height:100px;width:100px;cursor:pointer;cursor:hand;padding-left:-49px;background-size:cover;background-repeat:no-repeat;margin-top:-15px;margin-bottom:20px;border-radius:50%;">
+                                <!-- <img ng-controller="photoUploadCtrl" ng-file-select resetOnClick="true" ng-model="files" ng-src="{{profilePicSecureUrl}}" class="" style="box-shadow:-5px 2px 9px rgba(0, 0, 0, 0.1);height:100px;width:100px;cursor:pointer;cursor:hand;padding-left:-49px;background-size:cover;background-repeat:no-repeat;margin-top:-15px;margin-bottom:20px;border-radius:50%;"> -->
+
                             </div>   
                             <div ng-if="vm.user.picture.id" style="margin-top:-50px;">
-                                <div ng-if="vm.user.picture.id" style="cursor:pointer;height:125px;width:125px;margin-top:-30px;margin-right:auto;display:block;" ng-controller="photoUploadCtrl" ng-file-select ng-multiple="true" resetOnClick="true" ng-model="files" >
+                                <div ng-if="vm.user.picture.id" style="cursor:pointer;height:125px;width:125px;margin-top:-30px;margin-right:auto;display:block;" resetOnClick="true" >
                                           <img style="height:100px;width:100px;border:2px solid white;box-shadow:9px 9px 19px rgba(0, 0, 0, 0.2);" ng-if="vm.user.picture.id" ng-src="{{vm.user.picture.secure_url}}" class="circle" />
+<!--                                 <div ng-if="vm.user.picture.id" style="cursor:pointer;height:125px;width:125px;margin-top:-30px;margin-right:auto;display:block;" ng-controller="photoUploadCtrl" ng-file-select ng-multiple="true" resetOnClick="true" ng-model="files" >
+                                          <img style="height:100px;width:100px;border:2px solid white;box-shadow:9px 9px 19px rgba(0, 0, 0, 0.2);" ng-if="vm.user.picture.id" ng-src="{{vm.user.picture.secure_url}}" class="circle" /> -->
                                 </div>
                             </div>                     
                             <div class="col-md-12" ng-init="showEdit=false">

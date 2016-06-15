@@ -1,2 +1,2 @@
-$.cloudinary.config().cloud_name = 'argent';
-$.cloudinary.config().upload_preset = 'mnhgtaz2';
+$.cloudinary.config().cloud_name = '';
+$.cloudinary.config().upload_preset = '';
