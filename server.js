@@ -13,6 +13,7 @@ var home           = require('./www/routes/home');
 var company        = require('./www/routes/company');
 var terms          = require('./www/routes/terms');
 var privacy        = require('./www/routes/privacy');
+var apple          = require('./www/routes/apple');
 
 // Mongo
 var uriUtil        = require('mongodb-uri');
@@ -55,6 +56,7 @@ app.use('/home', home);
 app.use('/company', company);
 app.use('/terms', terms);
 app.use('/privacy', privacy);
+app.use('/apple-app-site-association', apple);
 
 app.all('/*', function(req, res, next) {
     // Send the index.html for other files to support HTML5Mode
