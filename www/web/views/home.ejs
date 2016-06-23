@@ -19,6 +19,18 @@
         <link href="../assets/css/sweetalert.css" rel="stylesheet" />
         <link href="../assets/css/override.css" rel="stylesheet" />
         <style type="text/css">
+            html {
+                overflow: scroll;
+                overflow-x: hidden;
+            }
+            ::-webkit-scrollbar {
+                width: 0px;  /* remove scrollbar space */
+                background: transparent;  /* optional: just make scrollbar invisible */
+            }
+            /* optional: show position indicator in red */
+            ::-webkit-scrollbar-thumb {
+                background: #FF0000;
+            }               
             .bs-example{
                 margin: 20px;
             }
@@ -30,10 +42,10 @@
                     <!-- Modal HTML -->
                     <div id="modal" class="modal fade">
                         <div class="modal-dialog"  width="560" height="316">
-                            <div class="modal-content" style="background:white;-webkit-box-shadow:none;box-shadow:none;border-radius:10px;">
-                                <button type="button" class="close" style="margin-top:-20px;margin-right:-20px;color:white;" data-dismiss="modal" aria-hidden="true">×</button>
+                            <div class="modal-content" style="background:none;border:none;-webkit-box-shadow:none;box-shadow:none;border-radius:10px;">
+                                <button type="button" class="close" style="width:50px;height:50px;margin-top:-20px;margin-right:-20px;color:white;" data-dismiss="modal" aria-hidden="true">×</button>
                                 <div class="modal-body">
-                                    <iframe src="https://player.vimeo.com/video/169907726" width="560" height="320" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                                    <iframe src="https://player.vimeo.com/video/171163518" width="560" height="320" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
                                 </div>
                             </div>
                         </div>
@@ -142,7 +154,7 @@
                     <!-- <h3 style="color:#7b8999">Preparing thrusters...</h3> -->
                     <br>
                     <div class="">
-                        <a href><img height="50px" src="assets/img/icons/icon-app-store.png"></a>
+                        <a href="https://itunes.apple.com/us/app/argent/id1110084542?mt=8" target="_blank"><img height="50px" src="assets/img/icons/icon-app-store.png"></a>
                         <!-- <button class="btn btn-simple btn-neutral"> -->
                         <!-- <i class="fa fa-android"><span class="font-style">&nbsp;&nbsp;Coming Soon</span></i> -->
                         <!-- </button> -->
@@ -227,18 +239,6 @@
                         </div>
                         <div class="col-md-4">
                             <div class="card card-orange">
-                                <br>
-                                <div class="icon">
-                                    <img width="75" height="75" src="assets/img/icons/icon-risk.png" />
-                                </div>
-                                <div class="text">
-                                    <h4 class="pretty-font"><b>Risk Profiling</b></h4>
-                                    <p class="pretty-font"><span>Receive a score of 1-100 based on proprietary risk calculation algorithms.  All risk profiling data is confidential unless otherwise requested.   </span></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card card-orange">
                                 <br>                            
                                 <div class="icon">
                                     <img width="75" height="75" src="assets/img/icons/icon-pulse.png" />
@@ -254,7 +254,7 @@
                                     <img width="75" height="75" src="assets/img/icons/icon-bank.png" />
                                 </div>
                                 <h4 class="pretty-font"><b>Bank Authentication</b></h4>
-                                <p class="pretty-font"><span>Directly connect to any bank account in the US or Canada.  No more waiting for small deposits to clear.  We currently support over 1,000+ institutions. </span></p>
+                                <p class="pretty-font"><span>Use your ACH Routing number and account number to connect to any bank within the United States.  Direct authentication coming soon. </span></p>
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -276,9 +276,21 @@
                                     <img width="75" height="75" src="assets/img/icons/icon-touch.png" />
                                 </div>
                                 <h4 class="pretty-font"><b>Touch ID®</b></h4>
-                                <p class="pretty-font"><span>Utilize the power of biometrics to keep your account secure.  We use Touch ID as the default security configuration with a fallback to PIN codes for older iPhone models.</span></p>
+                                <p class="pretty-font"><span>Use the power of biometrics to keep your account secure.  We use Touch ID as the default security configuration with a fallback to PIN codes for older iPhone models.</span></p>
                             </div>
                         </div>
+                        <div class="col-md-4">
+                            <div class="card card-orange">
+                                <br>
+                                <div class="icon">
+                                    <img width="75" height="75" src="assets/img/icons/icon-risk.png" />
+                                </div>
+                                <div class="text">
+                                    <h4 class="pretty-font"><b>Risk Profiling <h6>(coming soon)<h6></b></h4>
+                                    <p class="pretty-font"><span>Receive a score of 1-100 based on proprietary risk calculation algorithms.  All risk profiling data is confidential unless otherwise requested.   </span></p>
+                                </div>
+                            </div>
+                        </div>                        
                         <div class="col-md-4">
                             <div class="card card-orange">
                                 <br>                            
@@ -286,21 +298,20 @@
                                     <img width="75" height="75" src="assets/img/icons/icon-alipay.png" />
                                 </div>
                                 <h4 class="pretty-font"><b>Alipay & ACH <h6>(coming soon)<h6></b></h4>
-                                <p class="pretty-font"><span>We are diligently working to add Alipay POS support as well as direct ACH money transfers from peer-to-peer and peer-to-merchant. </span></p>
+                                <p class="pretty-font"><span>We are working to add Alipay point-of-sale support as well as direct ACH money transfers for both peer-to-peer and peer-to-merchant transactions. </span></p>
                             </div>
                         </div>                                                
                     </div>
                 </div>
             </div>
-            <div class="section section-testimonial">
+<!--             <div class="section section-testimonial">
                 <div class="container" style="margin-top:200px;margin-bottom:200px;">
                     <h4 class="pretty-font big-font text-center">What people are saying</h4>
                     <div id="carousel-example-generic" class="carousel fade" data-ride="carousel">
-                        <!-- Wrapper for slides -->
                         <div class="carousel-inner" role="listbox">
                             <div class="item">
                                 <div class="mask">
-                                    <img src="assets/img/mom.jpg">
+                                    <img src="assets/img/1.jpg">
                                 </div>
                                 <div class="carousel-testimonial-caption">
                                     <p>Anne Smith, Consultant</p>
@@ -309,7 +320,7 @@
                             </div>
                             <div class="item active">
                                 <div class="mask">
-                                    <img src="assets/img/sis.jpg">
+                                    <img src="assets/img/2.jpg">
                                 </div>
                                 <div class="carousel-testimonial-caption">
                                     <p>Melissa Brooke, Designer</p>
@@ -318,7 +329,7 @@
                             </div>
                             <div class="item">
                                 <div class="mask">
-                                    <img src="assets/img/faces/face-1.png">
+                                    <img src="assets/img/faces/3.png">
                                 </div>
                                 <div class="carousel-testimonial-caption">
                                     <p>Kurt Johnson, Entrepreneur</p>
@@ -333,21 +344,21 @@
                         </ol>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <div class="section section-no-padding">
                 <div class="parallax filter-gradient gray" data-color="orange">
                     <div class="parallax-background">
-                        <img class ="flipped" src="assets/img/showcases/showcase-1/bg.jpg">
+                        <img class ="flipped" src="assets/img/stock/3.jpg">
                     </div>
                     <div class="info">
                         <h1 class="pretty-font">Start Getting Paid</h1>
-                        <p>Free to use with no monthly fees or hidden charges | 3.99% + 33¢ per transaction </p>
+                        <p>Free to use with no monthly fees or hidden charges | 3.9% + 30¢ per transaction </p>
                         <br>
                         <a target="_blank" href="https://itunes.apple.com/us/app/argent/id1110084542?mt=8" href><img height="50px" src="assets/img/icons/icon-app-store.png"></a>
                     </div>
                 </div>
             </div>
-            <footer class="footer" style="background:#7b8999;">
+            <footer class="footer" style="background:#7b8999;text-align:center;">
                 <div class="container">
                     <nav class="pull-left">
                         <ul>
@@ -422,24 +433,24 @@
             // console.log(form)
             $.ajax({
                 type: "POST",
-                url: "https://www.argentapp.com/v1/email",
+                url: "https://api.argent.cloud/v1/email",
                 dataType: "json",  
-                contentType: 'application/json; charset=UTF-8', // This is the money shot
+                contentType: 'application/json; charset=UTF-8',
                 data: JSON.stringify({
                     "email": email
                 }),
                 success: function (data) {
                     swal({   
                         type:"success",
-                        title: "🎉 Success",   
+                        title: "Success",   
                         text: "The app link is on it's way!",  
-                        confirmButtonText: "Ok!" 
+                        confirmButtonText: "Great!" 
                     });
                 },
                 failure: function(err) {
                     swal({   
                         title: "Error",   
-                        text: "App could not be sent to phone :(",   
+                        text: "App link could not be sent to email",   
                         type: "error",   
                         confirmButtonText: "Ok" 
                     });

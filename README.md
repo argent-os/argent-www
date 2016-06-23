@@ -1,13 +1,13 @@
 <br />
 <p align="center">
-	<img src="https://www.timekloud.com/assets/img/timekloudlogo-dark.png" width="220">
+	<img src="https://www.argentapp.com//assets/img/logos/argent/logo-app.png" width="220">
 </p>
 <br />
 ##Application Programming Interface (API)
 
 ###Introduction
 
-To get started with Running TimeKloud you will need the following system configuration
+To get started with Running Argent you will need the following system configuration
 
 Required dependencies
 
@@ -15,7 +15,7 @@ Required dependencies
 <br />
 ```defaults write com.apple.finder AppleShowAllFiles YES;```
 <br />```killall Finder /System/Library/CoreServices/Finder.app```
-<br /><br />Request the TimeKloud local ```.bash_profile``` file from a TimeKloud administrator
+<br /><br />Request the Argent local ```.bash_profile``` file from a Argent administrator
 
 Other environment variables should shadow production/dev env variables on Heroku
 
@@ -32,8 +32,8 @@ Other environment variables should shadow production/dev env variables on Heroku
 <br />```sudo npm i nodemon -g```
 
 #####Do not do the following unless absolutely necessary, it give files root permissions for installs to run
-```sudo chmod -R 0777 timekloud```  
-```sudo chmod -R 0777 timekloud-api```  
+```sudo chmod -R 0777 argent```  
+```sudo chmod -R 0777 argent-api```  
 
 Use Homebrew to install Mongo
 <br />```ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"```
@@ -89,47 +89,6 @@ App should now be running on ```http://localhost:5000```
 ----------------------------------------------------
 
 ##Staging and Deployment
-
-###Firebase
-
-#####URLs
-Sandbox: ```https://demosandbox.firebaseio.com```
-<br />Production: ```https://timekloud.firebaseiocom```
-
-To set up a new Firebase instance be sure to enable Email & Password User Authentication
-
-Be sure to include the following security rules
-<br />
-```
-{
-  "rules": {
-      "api" :{
-          "v1" : {
-              "users": {
-                "$username" :{
-                    "logs": {
-                      ".read": "$username === auth.username && auth.uid !== null && auth.hasTCAccess === true",
-                      ".write": "$username === auth.username && auth.uid !== null && auth.hasTCAccess === true"                  
-                    },
-                    "projects": {
-                      ".read": "$username === auth.username && auth.uid !== null && auth.hasTCAccess === true",
-                      ".write": "$username === auth.username && auth.uid !== null && auth.hasTCAccess === true"  
-                    },
-                    "status": {
-                      ".read": "$username === auth.username && auth.uid !== null && auth.hasTCAccess === true",
-                      ".write": "$username === auth.username && auth.uid !== null && auth.hasTCAccess === true"  
-                    },
-                    "tasks": {
-                      ".read": "$username === auth.username && auth.uid !== null && auth.hasTCAccess === true",
-                      ".write": "$username === auth.username && auth.uid !== null && auth.hasTCAccess === true"  
-                    }
-                }                  
-              }
-          }
-      }   
-  }
-}
-```
 
 ------------------------------
 ###Heroku
@@ -226,6 +185,6 @@ Fix npm install issue | run command last before bower install
 
 ###QUESTIONS?
 
-For any questions please email [support](mailto:support@timekloud.com)
+For any questions please email [support](mailto:support@argent-tech.com)
 
 

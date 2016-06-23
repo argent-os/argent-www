@@ -19,6 +19,18 @@
         <link href="../assets/css/sweetalert.css" rel="stylesheet" />
         <link href="../assets/css/override.css" rel="stylesheet" />
         <style type="text/css">
+            html {
+                overflow: scroll;
+                overflow-x: hidden;
+            }
+            ::-webkit-scrollbar {
+                width: 0px;  /* remove scrollbar space */
+                background: transparent;  /* optional: just make scrollbar invisible */
+            }
+            /* optional: show position indicator in red */
+            ::-webkit-scrollbar-thumb {
+                background: #FF0000;
+            }      
             #header, .icon, nav.li {
                 /*margin-top: 25px;*/
                 /*font-size: 26px;*/
@@ -67,45 +79,83 @@
     </head>
     <body class="landing-page landing-page1">       
     <div class="hero fullscreen section-one">
-                <div class="pay-with-biller">
+                <div class="bs-example">                    
+                    <!-- Modal HTML -->
+                    <div id="modal" class="modal fade">
+                        <div class="modal-dialog"  width="560" height="316">
+                            <div class="modal-content" style="background:none;border:none;-webkit-box-shadow:none;box-shadow:none;border-radius:10px;">
+                                <button type="button" class="close" style="width:50px;height:50px;margin-top:-20px;margin-right:-20px;color:white;" data-dismiss="modal" aria-hidden="true">×</button>
+                                <div class="modal-body">
+                                    <iframe src="https://player.vimeo.com/video/171163518" width="560" height="320" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>         
+                <div class="">
                     <h2 class="push-down pretty-font"></h2>
                     
+                        <div class="desktop-visitor">
+                            <a>
+                            <br><br><br><br>
+                            <h3 class="pretty-font">Our Company</h3>
+                            </a>
+                        </div>
                         <div class="mobile-visitor">
                             <a>
-                            <br><br><br>
+                            <br><br>
                             <h3 class="pretty-font">Our Company</h3>
                             <br>
                             </a>
-                        </div>
-                        <div class="desktop-visitor">
-                            <br><br><br><br><br>
-                            <h3 id="header" class="pretty-font" style="line-height:2">We are a dedicated team of entrepreneurs based in the United States <br> who hope to change the businesses and individuals get paid for services.<br>  Our company offers a recurring billing system and a payment platform where individuals<br> and companies can make and receive payments using credit cards, bank accounts<br> or crypto currencies for the services they offer.</h3>
+                        </div>                        
+                        <div class="col-md-offset-2 col-md-8 desktop-visitor">
+                            <br><br>
+                            <h3 id="header" class="pretty-font" style="line-height:2">We are a dedicated team of entrepreneurs based in the United States who hope to change the businesses and individuals get paid for services. Our company offers a recurring billing system and a payment platform where individuals and companies can make and receive payments using credit cards, bank accounts or crypto currencies for the services they offer.</h3>
                             <br>
-                                <!-- <div class="btn btn-primary btn-lg button push-down">Download</div> -->
                             </a>
                         </div>
+                        <div class="col-md-offset-2 col-md-8 mobile-visitor">
+                            <h5 id="header" class="pretty-font" style="line-height:2">We are a dedicated team of entrepreneurs based in the United States who hope to change the businesses and individuals get paid for services. Our company offers a recurring billing system and a payment platform where individuals and companies can make and receive payments using credit cards, bank accounts or Bitcoin. <br><br>Got any questions? <a style="color:#00aced" href="mailto:support@argent-tech.com">Get in touch!</a></h5>
+                            <br>
+                            </a>
+                        </div>                        
                 </div>
-                <br>
+                <dir>
+                    <div class="col-md-offset-2 col-md-8 desktop-visitor">
+                            <h3 id="header" class="pretty-font" style="line-height:2">Got a Question?  <a style="color:#00aced" href="mailto:support@argent-tech.com">Get in touch!</a></h3>
+                    </div>
+                    <div class="col-md-offset-2 col-md-8 mobile-visitor">
+                            <h3 id="header" class="pretty-font" style="line-height:2">Got a Question?  <a style="color:#00aced" href="mailto:support@argent-tech.com">Get in touch!</a></h3>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                    </div>
+                </dir>
+<!--            <br>
                 <br>
                 <br>
                 <br>
                 <div class="row">
                     <div class="col-md-3 col-md-offset-2">
                         <a href="#" class="thumbnail" style="border:none;">
-                             <img height="120px" width="120px" src="assets/img/sis.jpg" class="icon img-responsive" style="border-radius:50%">
+                             <img height="120px" width="120px" src="assets/img/1.jpg" class="icon img-responsive" style="border-radius:50%">
                         </a>
                     </div>
                      <div class="col-md-2">
                         <a href="#" class="thumbnail" style="border:none;">
-                             <img height="120px" width="120px" src="assets/img/mom.jpg" class="icon img-responsive" style="border-radius:50%">
+                             <img height="120px" width="120px" src="assets/img/2.jpg" class="icon img-responsive" style="border-radius:50%">
                         </a>
                     </div>
                     <div class="col-md-3">
                         <a href="#" class="thumbnail" style="border:none;">
-                             <img height="120px" width="120px" src="assets/img/faces/face-1.png" class="icon img-responsive" style="border-radius:50%">
+                             <img height="120px" width="120px" src="assets/img/faces/3.png" class="icon img-responsive" style="border-radius:50%">
                         </a>
                     </div>
-                </div>                 
+                </div>      -->   
+
             </div>
            
             <nav class="navbar navbar-light navbar-top" role="navigation">
@@ -150,7 +200,7 @@
                                 </a>
                             </li>  
                             <li>
-                                <a class="font-style" href="#"> 
+                                <a class="font-style" href="#modal" class="btn btn-lg btn-primary" data-toggle="modal"> 
                                     <span>Video</span>
                                 </a>
                             </li>                                                                         
@@ -170,7 +220,7 @@
                 </div>
             </nav>
            
-            <footer class="footer" style="background:#7b8999;">
+            <footer class="footer" style="background:#7b8999;text-align:center;">
                 <div class="container">
                     <nav class="pull-left">
                         <ul>
@@ -227,4 +277,23 @@
     <script src="/assets/js/app.js"></script>
     <script src="/assets/js/awesome-landing-page.js"></script>
     <script src="/assets/js/sweetalert.min.js"></script>  
+        <script type="text/javascript">
+        $(document).ready(function(){
+            /* Get iframe src attribute value i.e. YouTube video url
+            and store it in a variable */
+            var url = $("#video").attr('src');
+            
+            /* Assign empty url value to the iframe src attribute when
+            modal hide, which stop the video playing */
+            $("#modal").on('hide.bs.modal', function(){
+                $("#video").attr('src', '');
+            });
+            
+            /* Assign the initially stored url back to the iframe src
+            attribute when modal is displayed again */
+            $("#modal").on('show.bs.modal', function(){
+                $("#video").attr('src', url);
+            });
+        });
+    </script>  
 </html>                                  
