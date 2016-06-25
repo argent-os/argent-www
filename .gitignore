@@ -6,6 +6,9 @@ data/
 .idea/
 *.log
 .DS_Store
+docker
+Dockerfile
+Dockerrun.aws.json
 src/app/index.js
 # Elastic Beanstalk Files
 .elasticbeanstalk/*

@@ -2,7 +2,8 @@
 var express        = require('express');
 var path           = require('path');
 var favicon        = require('serve-favicon');
-var logger         = require('morgan');
+var log4js         = require('log4js');
+var logger         = log4js.getLogger();
 var cookieParser   = require('cookie-parser');
 var bodyParser     = require('body-parser');
 var expressSession = require('express-session');
@@ -15,13 +16,6 @@ var terms          = require('./www/routes/terms');
 var privacy        = require('./www/routes/privacy');
 var apple          = require('./www/routes/apple');
 
-// Mongo
-var uriUtil        = require('mongodb-uri');
-var mongoose       = require('mongoose');
-var mongodbUri     = process.env.MONGOLAB_URI;
-var mongooseUri    = uriUtil.formatMongoose(mongodbUri) + '/zyte';
-var localMongo     = 'mongodb://localhost/zyte';    
-
 //Compression
 var h5bp           = require('h5bp');
 var compress       = require('compression');    
@@ -30,11 +24,6 @@ var app = express();
 
 app.use(h5bp({ root: __dirname + '/src' }));
 app.use(compress());
-
-mongoose.connect(mongooseUri || localMongo);
-mongoose.connection.on('error', function () {
-    console.log('Cannot connect to MongoDB');
-});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'www/web/views'));
@@ -93,6 +82,8 @@ app.use(function(err, req, res, next) {
 
 var http   = require('http');
 var server = http.createServer(app).listen(port);
+
+logger.info("Running app on port " + port)
 
 server.on("close", function() {
     process.exit();

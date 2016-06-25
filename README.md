@@ -164,9 +164,68 @@ To correctly provision the SSL it is recommended to use a service such as Expedi
 - Once the third-party SSL Service has been installed, edit your www CNAME to point to the SSL endpoint (e.g. ```https://floatingbreeze8293.herokuapp.com```)
 
 ------------------------------
+###Docker
+
+To run Docker you will need a Dockerfile
+
+Run the following commands
+<br />```docker build ./ -t <tag-name>```
+<br />```docker run -it <tag-name>```
+
+No cache build, run from scratch
+<br />```docker build --no-cache ./ -t <tag-name>```
+
+To inspect a container
+# find ID of your running container:
+<br />```docker ps -a ```
+
+# create image (snapshot) from container filesystem
+<br />```docker commit 12345678904b5 mysnapshot```
+
+# explore this filesystem using bash (for example)
+<br />```docker run -t -i mysnapshot /bin/bash```
+
+# run it, use the container after building finished id
+<br />```docker run -d -p 5000:5000 <enter-id-here>```
+
+# stop all docker containers
+<br />```docker stop $(docker ps -a -q)```
+
+# remove all docker containers
+<br />```docker rm $(docker ps -a -q)```
+
+## DockerHub
+
+# build for dockerhub
+<br />```docker build ./ -t <hub-user>/<repo-name>```
+
+# push to dockerhub
+<br />```docker push <hub-user>/<repo-name>:<tag>```
+
+
+# useful commands, see if the image and tag are available (1:yes, 0:no)
+<br />```docker images | grep "app/website:latest" | wc -l```
+<br />```docker images | grep "app/website:v1.1.5" | wc -l```
+
+# For failed logins, restart machine and relogin.  Useful for new locations with Docker
+<br />```docker-machine restart default```
+<br />```docker login```
+
+# deploy to aws
+<br />http://victorlin.me/posts/2014/11/26/running-docker-with-aws-elastic-beanstalk
+
+------------------------------
+### OPENSSL
+
+To create a base64 encoded password
+openssl base64 -in "pass.txt" -out "base64.txt"
+use this inside authentication json > docker/.dockercfg
 
 ------------------------------
 ###AWS DEPLOYMENT
+
+EB Install Link
+http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3-install.html
 
 Initialize
 <br />```eb init```
