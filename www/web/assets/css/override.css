@@ -2134,11 +2134,11 @@ h2 {
   height: 400px;
 }
 
-@media only screen and (min-width: 339px) and (max-width: 599px) {
+/*@media only screen and (min-width: 339px) and (max-width: 599px) {
   .hero {
     height: 400px;
   }
-}
+}*/
 @media only screen and (min-width: 600px) and (max-width: 900px) {
   .hero {
     height: 500px;
@@ -2158,7 +2158,7 @@ h2 {
   height: 100%;
   position: relative;
 }
-@media only screen and (min-width: 1px) and (max-width: 338px) {
+/*@media only screen and (min-width: 1px) and (max-width: 338px) {
   .hero.fullscreen {
     max-height: 600px;
     min-height: 600px;
@@ -2169,7 +2169,7 @@ h2 {
     max-height: 600px;
     min-height: 600px;
   }
-}
+}*/
 @media only screen and (min-width: 600px) and (max-width: 900px) {
   .hero.fullscreen {
     max-height: 550px;
