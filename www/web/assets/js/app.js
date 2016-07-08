@@ -5,7 +5,7 @@ function animateSectionOne() {
 }
 
 function animateSectionThree() {
-    hasPlayedSectionThree || $("#apple-watch").attr("src", "assets/img/mocks/apple-watch-dark.gif")
+    // hasPlayedSectionThree || $("#apple-watch").attr("src", "assets/img/mocks/apple-watch-dark.gif")
 }
 
 var hasPlayedSectionOne = !1,

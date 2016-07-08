@@ -103,6 +103,12 @@ p {
   letter-spacing: 1px;
 }
 
+.pretty-font-header {
+  font-family: 'PT Sans';  
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
 .big-font {
   font-size: 24px;
 }
@@ -165,6 +171,7 @@ a:focus, a:active {
 .nav > li > a:hover, .nav > li > a:focus {
     text-decoration: none;
     background-color: #fff;
+    border-radius: 5px;
 }
 .btn-hover, i {
   -webkit-transition: all 150ms linear;
@@ -509,6 +516,12 @@ a:focus, a:active {
 
 .section-white {
   background-color: #FFFFFF;
+}
+
+@media (max-width:767px){
+  .nav-responsive-color {
+    background: white;
+  }
 }
 
 .navbar {
@@ -974,7 +987,7 @@ a:focus, a:active {
 
 .landing-page .parallax {
   width: 100%;
-  height: 800px;
+  /*height: 800px;*/
   overflow: hidden;
   display: block;
   background-size: 100%;
@@ -1166,7 +1179,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#de8e0009', e
     display: block;
     width: 100%;
     margin: 0px auto;
-    padding-top: 48px;
+    padding-top: 0px;
   }
    .landing-page .logos li{
     display: inline-block;
@@ -2120,6 +2133,7 @@ h2 {
   overflow: hidden;
   height: 400px;
 }
+
 @media only screen and (min-width: 339px) and (max-width: 599px) {
   .hero {
     height: 400px;
@@ -2146,32 +2160,32 @@ h2 {
 }
 @media only screen and (min-width: 1px) and (max-width: 338px) {
   .hero.fullscreen {
-    max-height: 545px;
-    min-height: 545px;
+    max-height: 600px;
+    min-height: 600px;
   }
 }
 @media only screen and (min-width: 339px) and (max-width: 599px) {
   .hero.fullscreen {
-    max-height: 515px;
-    min-height: 515px;
+    max-height: 600px;
+    min-height: 600px;
   }
 }
 @media only screen and (min-width: 600px) and (max-width: 900px) {
   .hero.fullscreen {
-    max-height: 800px;
-    min-height: 930px;
+    max-height: 550px;
+    min-height: 550px;
   }
 }
 @media only screen and (min-width: 900px) {
   .hero.fullscreen {
-    max-height: 800px;
-    min-height: 800px;
+    max-height: 550px;
+    min-height: 550px;
   }
 }
 @media only screen and (min-width: 1200px) {
   .hero.fullscreen {
-    max-height: 1050px;
-    min-height: 800px;
+    max-height: 550px;
+    min-height: 550px;
   }
 }
 .hero div.label {
