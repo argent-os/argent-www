@@ -6,6 +6,10 @@
     color: #2c3441;
 }
 
+.pastel-blue {
+    color: #497ea8;
+}
+
 .dark-blue {
     color: #141c29;
 }
@@ -41,6 +45,10 @@
 .alipay-blue {
     color: #1aa1e6;
 }
+
+.footer-color {
+    color: #586468;
+}
    
 input:-webkit-autofill {
     -webkit-box-shadow: 0 0 0px 1000px #f5f7fa inset;
@@ -50,7 +58,7 @@ input:-webkit-autofill {
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6, p, .navbar, .brand, .btn-simple, a, .td-name, td {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  font-family: "Helvetica Neue","Open Sans",Arial,sans-serif;
+  font-family: "Hind","Hind",Arial,sans-serif;
 }
 
 h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
@@ -79,7 +87,7 @@ h4, .h4 {
 h5, .h5 {
   font-family: sans-serif;
   font-weight: thin;
-  font-family: 'Open Sans';
+  font-family: 'Hind';
   letter-spacing: 1px;
   font-size: 16px;
   margin-bottom: 15px;
@@ -88,7 +96,7 @@ h5, .h5 {
 h6, .h6 {
   font-size: 14px;
   font-weight: 300;
-  font-family: 'Open Sans';
+  font-family: 'Hind';
   letter-spacing: 1px;
 }
 
@@ -98,14 +106,21 @@ p {
 }
 
 .pretty-font {
-  font-family: 'Open Sans';  
+  font-family: 'Hind';  
   font-weight: 300;
   letter-spacing: 1px;
 }
 
+.pretty-caps {
+  font-family: 'Hind';  
+  font-weight: 300;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
 .pretty-font-header {
-  font-family: 'PT Sans';  
-  font-weight: 700;
+  font-family: 'Hind';  
+  font-weight: 300;
   letter-spacing: 1px;
 }
 
@@ -118,20 +133,16 @@ p {
 }
 
 .brand-style {
-  font-family:'HelveticaNeue', sans-serif;
+  font-family:'Hind', sans-serif;
   letter-spacing: 2px;
 }
 
 .font-style {
-  font-family:'HelveticaNeue', sans-serif;
+  font-family:'Hind', sans-serif;
   font-size: 14px;
 }
 
 /*     General overwrite     */
-body {
-  font-family: "Helvetica Neue","Open Sans",Arial,sans-serif;
-}
-
 a {
   color: #2ca8ff;
 }
@@ -165,12 +176,13 @@ a:focus, a:active {
 }
 
 .nav a {
-  color: #2c3441;
+  color: #fff;
 }
 
 .nav > li > a:hover, .nav > li > a:focus {
     text-decoration: none;
     background-color: #fff;
+    color: #334048;
     border-radius: 5px;
 }
 .btn-hover, i {
@@ -520,7 +532,7 @@ a:focus, a:active {
 
 @media (max-width:767px){
   .nav-responsive-color {
-    background: white;
+    background: #497ea8;
   }
 }
 
@@ -674,11 +686,11 @@ a:focus, a:active {
   text-align: center;
 }
 .footer .social-area > a:not(.btn):hover, .footer .social-area > a:not(.btn):focus {
-  color: #7b8999;
+  color: #2ca8ff;
 }
 .footer .copyright {
-  font-family: "Helvetica Neue", "Open Sans", sans-serif;
-  color: #7b8999;
+  font-family: "Hind", sans-serif;
+  color: #2ca8ff;
   padding: 10px 15px;
   margin: 15px 3px;
   line-height: 20px;
@@ -688,7 +700,7 @@ a:focus, a:active {
   border-color: #dddddd;
 }
 .footer .title {
-  color: #7b8999;
+  color: #2ca8ff;
 }
 
 .footer:not(.footer-big) nav > ul {
@@ -809,6 +821,9 @@ a:focus, a:active {
   width: 100%;
   position: relative;
   height: 100%;
+  background-size:cover;
+  background-repeat: no-repeat;
+  background-position: center;
  
 }
 
@@ -1189,7 +1204,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#de8e0009', e
    .landing-page .section-presentation {
     overflow: hidden;
     width: 100%;
-    min-height: 600px;
+    min-height: 1300px;
     margin-top: 30px;
    }
 
@@ -1212,7 +1227,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#de8e0009', e
     position: relative;
     overflow: hidden;
     width: 100%;
-    height: 600px;
+    /*height: 600px;*/
     text-align: center;
    }
  
@@ -1281,7 +1296,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#de8e0009', e
         width: 100%;
         min-height: 390px;
         padding: 10px 30px;
-        border: 1px solid #7b8999;
+        border: 0px solid #7b8999;
         border-radius: 10px;
         margin-top: 30px;
         text-align: center;
@@ -2071,17 +2086,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#de8e0009', e
 body, html {
   min-width: 310px;
   margin: 0 auto;
-  height: 100%;
-  font-family: -apple-system, "Helvetica Neue", "Helvetica", "Lucida Grande";
+  /*height: 100%;*/
+  font-family: -apple-system, "Hind", "Helvetica", "Lucida Grande";
   font-weight: 100;
   letter-spacing: 1px;
-}
-
-a {
-  color: #7b8999;
-}
-a:focus, a:hover {
-  color: #6c7888;
 }
 
 .btn {
@@ -2172,20 +2180,20 @@ h2 {
 }*/
 @media only screen and (min-width: 600px) and (max-width: 900px) {
   .hero.fullscreen {
-    max-height: 550px;
-    min-height: 550px;
+    max-height: 100%;
+    min-height: 100%;
   }
 }
 @media only screen and (min-width: 900px) {
   .hero.fullscreen {
-    max-height: 550px;
-    min-height: 550px;
+    max-height: 100%;
+    min-height: 100%;
   }
 }
 @media only screen and (min-width: 1200px) {
   .hero.fullscreen {
-    max-height: 550px;
-    min-height: 550px;
+    max-height: 100%;
+    min-height: 100%;
   }
 }
 .hero div.label {
