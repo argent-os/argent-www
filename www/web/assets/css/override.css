@@ -2798,6 +2798,9 @@ a:hover {
   padding-left: 0px;
 }
 
+.section-three {
+  height:900px;
+}
 .section-three h2.push-down {
   margin-top: 50px;
 }
