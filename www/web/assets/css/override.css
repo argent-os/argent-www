@@ -1007,7 +1007,9 @@ a:focus, a:active {
     right: 0;
     top: 0;
     display: block;
-    background-image: url(../../assets/img/backgrounds/header.png);
+    background: url(../../assets/img/backgrounds/header-transparent.png), #4776E6; /* fallback for old browsers */
+    background: url(../../assets/img/backgrounds/header-transparent.png), -webkit-linear-gradient(to bottom, #5dc0fa , #8e9ef2); /* Chrome 10-25, Safari 5.1-6 */
+    background: url(../../assets/img/backgrounds/header-transparent.png), linear-gradient(to bottom, #5dc0fa , #8e9ef2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     background-size: cover;
     -webkit-transform-origin: center center 0;
     -webkit-transform: translateZ(-1px) scale(2);
@@ -1089,6 +1091,25 @@ a:focus, a:active {
     content: "";
     opacity: .7;
 }
+
+@media (max-width:768px){
+  .filter-gradient:after{
+      background: url(../../assets/img/backgrounds/header-transparent.png), #4a7da7; /* fallback for old browsers */
+      background: url(../../assets/img/backgrounds/header-transparent.png), -webkit-linear-gradient(from bottom to left, #4a7da7 , #4a7da7); /* Chrome 10-25, Safari 5.1-6 */
+      background: url(../../assets/img/backgrounds/header-transparent.png), linear-gradient(from bottom to left, #4a7da7 , #4a7da7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */    
+      background-size: 2000px;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+      z-index: 1;
+      content: "";
+      opacity: 1;
+  }
+}
+
 .filter-gradient.gray:after{
 /* IE9 SVG, needs conditional override of 'filter' to 'none' */
 background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzIzMjUyNiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM0MTQzNDUiIHN0b3Atb3BhY2l0eT0iMC44NyIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);

@@ -9,15 +9,15 @@
 
   function appConfig($stateProvider, $urlRouterProvider) {
     $stateProvider
-      .state('login', {
-        url: '/login',
-        data: {
-          noAuth: true
-        },
-        templateUrl: 'app/modules/global/profile/auth/login.html',
-        controller: 'LoginController',
-        controllerAs: 'vm'
-      })
+      // .state('login', {
+      //   url: '/login',
+      //   data: {
+      //     noAuth: true
+      //   },
+      //   templateUrl: 'app/modules/global/profile/auth/login.html',
+      //   controller: 'LoginController',
+      //   controllerAs: 'vm'
+      // })
       // .state('register', {
       //   url: '/register',
       //   data: {
