@@ -1008,8 +1008,8 @@ a:focus, a:active {
     top: 0;
     display: block;
     background: url(../../assets/img/backgrounds/header-transparent.png), #4776E6; /* fallback for old browsers */
-    background: url(../../assets/img/backgrounds/header-transparent.png), -webkit-linear-gradient(to bottom, #5dc0fa , #8e9ef2); /* Chrome 10-25, Safari 5.1-6 */
-    background: url(../../assets/img/backgrounds/header-transparent.png), linear-gradient(to bottom, #5dc0fa , #8e9ef2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: url(../../assets/img/backgrounds/header-transparent.png), -webkit-linear-gradient(to bottom, #0e547d , #a9d8ff); /* Chrome 10-25, Safari 5.1-6 */
+    background: url(../../assets/img/backgrounds/header-transparent.png), linear-gradient(to bottom, #0e547d , #a9d8ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     background-size: cover;
     -webkit-transform-origin: center center 0;
     -webkit-transform: translateZ(-1px) scale(2);
