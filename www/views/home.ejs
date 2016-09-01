@@ -8,7 +8,8 @@
         
         <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
         <meta name="viewport" content="width=device-width" />
-        
+        <meta name="Easy Recurring Billing" content="Welcome to the Argent app.  We focus on getting individuals and small businesses paid on a recurring basis." />
+
         <link href="../assets/css/bootstrap.css" rel="stylesheet" />
         <link href="../assets/css/landing-page.css" rel="stylesheet"/>
         <!--     Fonts and icons     -->
@@ -672,8 +673,6 @@
                     "email": email
                 }),
                 success: function (data) {
-                    // Send a "Played song" event to Mixpanel
-                    // with a property "genre"
                     mixpanel.track(
                         "Email app sent",
                         {"status": "success"}
@@ -716,8 +715,6 @@
             attribute when modal is displayed again */
             $("#modal").on('show.bs.modal', function(){
                 $("#video").attr('src', url);
-                // Send a "Played song" event to Mixpanel
-                // with a property "genre"
                 mixpanel.track(
                     "Played video",
                     {"video": "argent-intro"}

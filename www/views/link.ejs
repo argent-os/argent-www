@@ -1,0 +1,77 @@
+<!-- A hidden input named public_token will be appended to this form
+once the user has completed the Link flow. Link will then submit the
+form, sending the public_token to your server. -->
+<html>
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="../assets/css/sweetalert.css" rel="stylesheet" />
+</head>
+
+<body onload="openLink()">
+	<form id="plaidForm" method="POST" action="/api_post">
+	<input type="hidden" name="plaidToken" id="plaidToken" val=""/>
+	<input type="hidden" name="plaidAcctId" id="plaidAcctId" val=""/>
+	<img src="assets/img/logos/argent/argent-dark.png" style="height:60px;width:60px;margin-top:120px;display:block;margin-left:auto;margin-right:auto;"></img>
+	<p style="font-family:sans-serif;font-weight:300;letter-spacing:1px;text-align:center;margin-top:10px;display:block;margin-left:auto;margin-right:auto;">Welcome to Argent ACH</p>
+	<button type="button" id="linkButton" style="margin-top:20px;width:200px;font-family:sans-serif;font-weight:400;letter-spacing:2px;color:white;border:1px solid #497ea8;border-radius:5px;background:transparent;padding:12px;padding-left:17px;padding-right:17px;color:#497ea8;display:block;margin-left:auto;margin-right:auto;">LOGIN TO BANK</button>
+	</form>
+</body>
+
+<script src="/assets/js/jquery.js"></script>
+<script src="/assets/js/sweetalert.min.js"></script>
+<script src="https://cdn.plaid.com/link/stable/link-initialize.js"></script>
+<script>
+
+	function openLink() {
+		linkHandler.open();
+	}
+
+	// Be sure to check the url endpoint http://localhost:5001/v1/plaid/link | https://api.argent.cloud/v1/plaid/link
+	function sendDataToBackendServer(public_token, account_id) {
+        $.ajax({
+            type: "POST",
+            url: "https://www.argentapp.com/v1/plaid/link",
+            dataType: "json",  
+            contentType: 'application/json; charset=UTF-8',
+            data: JSON.stringify({
+			      public_token: public_token,
+			      account_id: account_id
+            }),
+            success: function (data) {
+            	// In Swift: controller.addScriptMessageHandler(self, name: "observe") where messageHandlers.observe is called
+            	window.webkit.messageHandlers.observe.postMessage(data);
+				console.log("Your bank is now linked.")               
+            },
+            failure: function(err) {                 
+				console.log("Failed to link your bank account. Please contact support@argent-tech.com for assistance.")
+            }
+        });		
+	}
+
+	// Be sure to check the env tartan | production
+	var linkHandler = Plaid.create({
+	  selectAccount: true,
+	  env: 'production',
+	  clientName: 'Argent',
+	  key: 'fb32b0520292ad69be7b4d1ade4bd3',
+	  product: 'auth',
+	  onSuccess: function(public_token, metadata) {
+	    // The onSuccess function is called when the user has successfully
+	    // authenticated and selected an account to use.
+	    //
+	    // When called, you will send the public_token and the selected
+	    // account ID, metadata.account_id, to your backend app server.
+	    //
+
+	    sendDataToBackendServer(public_token, metadata.account_id);
+	  },
+	});
+	//er the standard Institution Select view
+	//er the standard Institution Select view
+	document.getElementById('linkButton').onclick = function() {
+	  linkHandler.open();
+	};		
+</script>
+
+</html>

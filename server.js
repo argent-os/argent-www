@@ -15,6 +15,8 @@ var company        = require('./www/routes/company');
 var terms          = require('./www/routes/terms');
 var privacy        = require('./www/routes/privacy');
 var apple          = require('./www/routes/apple');
+var link           = require('./www/routes/link');
+var success        = require('./www/routes/success');
 
 //Compression
 var h5bp           = require('h5bp');
@@ -26,7 +28,7 @@ app.use(h5bp({ root: __dirname + '/src' }));
 app.use(compress());
 
 // view engine setup
-app.set('views', path.join(__dirname, 'www/web/views'));
+app.set('views', path.join(__dirname, 'www/views'));
 app.set('view engine', 'ejs');
 
 // uncomment after placing your favicon in /public
@@ -35,7 +37,7 @@ app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use(express.static(path.join(__dirname, 'www/web')));
+app.use(express.static(path.join(__dirname, 'www')));
 app.use(express.static(path.join(__dirname, 'src')));
 
 app.use(express.static('src'));
@@ -45,6 +47,8 @@ app.use('/home', home);
 app.use('/company', company);
 app.use('/terms', terms);
 app.use('/privacy', privacy);
+app.use('/link', link);
+app.use('/success', success);
 app.use('/apple-app-site-association', apple);
 
 app.all('/*', function(req, res, next) {
