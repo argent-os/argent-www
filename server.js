@@ -12,9 +12,11 @@ var port           = process.env.PORT || 5000;
 // Setup API routes
 var home           = require('./www/routes/home');
 var company        = require('./www/routes/company');
+var cases          = require('./www/routes/cases');
 var terms          = require('./www/routes/terms');
 var privacy        = require('./www/routes/privacy');
 var apple          = require('./www/routes/apple');
+var google         = require('./www/routes/google');
 var link           = require('./www/routes/link');
 var success        = require('./www/routes/success');
 
@@ -45,11 +47,13 @@ app.use('/bower_components',  express.static(path.join(__dirname, 'bower_compone
 
 app.use('/home', home);
 app.use('/company', company);
+app.use('/cases', cases);
 app.use('/terms', terms);
 app.use('/privacy', privacy);
 app.use('/link', link);
 app.use('/success', success);
 app.use('/apple-app-site-association', apple);
+app.use('/home/googlee5289762658fad15.html', google);
 
 app.all('/*', function(req, res, next) {
     // Send the index.html for other files to support HTML5Mode

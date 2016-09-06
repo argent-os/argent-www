@@ -111,6 +111,14 @@ p {
   letter-spacing: 1px;
 }
 
+.pretty-font-thin {
+  font-family: 'Hind';  
+  font-weight: 300;
+  letter-spacing: 1.2px;
+  font-size:13px;
+  text-transform: uppercase;
+}
+
 .pretty-caps {
   font-family: 'Hind';  
   font-weight: 300;
@@ -149,6 +157,14 @@ a {
 a:hover, a:focus {
   color: #109cff;
   text-decoration: none;
+}
+
+a.white-link {
+  color: #fff;
+}
+a.white-link:hover, a.white-link:focus {
+  color: #eee;
+  text-decoration: underline;
 }
 
 a:focus, a:active {
