@@ -31,7 +31,7 @@ form, sending the public_token to your server. -->
 	function sendDataToBackendServer(public_token, account_id) {
         $.ajax({
             type: "POST",
-            url: "https://www.argentapp.com/v1/plaid/link",
+            url: "https://api.argent.cloud/v1/plaid/link",
             dataType: "json",  
             contentType: 'application/json; charset=UTF-8',
             data: JSON.stringify({

@@ -5,10 +5,10 @@
         <!-- <link rel="icon" type="image/png" href="assets/img/favicon.ico"> -->
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         <title>Argent</title>
-        
+        <meta name="p:domain_verify" content="5274e35f66b0e48ad4a70af28a4d0ea5"/>
         <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
         <meta name="viewport" content="width=device-width" />
-        <meta name="Easy Recurring Billing" content="Welcome to the Argent app.  We focus on getting individuals and small businesses paid on a recurring basis." />
+        <meta name="description" content="Welcome to the Argent app.  We focus on getting individuals and small businesses paid on a recurring basis." />
 
         <link href="../assets/css/bootstrap.css" rel="stylesheet" />
         <link href="../assets/css/landing-page.css" rel="stylesheet"/>
@@ -19,7 +19,12 @@
         <link href="../assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
         <link href="../assets/css/sweetalert.css" rel="stylesheet" />
         <link href="../assets/css/override.css" rel="stylesheet" />
+
         <style type="text/css">
+            .typed-cursor{
+                opacity: 0;
+                color: white;
+            }
             html {
                 overflow: scroll;
                 overflow-x: hidden;
@@ -62,7 +67,7 @@
                     <div class="filter-gradient" data-color="orange">
                         <div class="info header-responsive">
                             <h1 class="pretty-font-header" style="z-index:9999;position:relative;color:#FFF;letter-spacing:2px;font-weight:300;text-transform:uppercase;font-family:'Open Sans';font-size:30px;"">ARGENT</h1>
-                            <p class="pretty-font-header" style="z-index:9999;position:relative;color:#FFF;letter-spacing:2px;font-weight:100;text-transform:uppercase;">Payments for the mobile generation</p>
+                            <p class="pretty-font-header element" style="z-index:9999;position:relative;color:#FFF;letter-spacing:2px;font-weight:100;text-transform:uppercase;">Payments for the mobile generation</p>
                             <br>
                             <a class="btn btn-primary" style="z-index:9999;position:relative;color:#333;background:#fff;width:200px;height:50px;border-radius:5px;" href="https://itunes.apple.com/us/app/argent/id1110084542?mt=8" href>App Store</a>
                             <br class="visible-xs visible-sm">
@@ -75,7 +80,7 @@
                     <div class="parallax filter-gradient" data-color="orange">
                         <div class="info" style="margin-top:-40px;">
                             <h1 class="pretty-font-header" style="color:#FFF;letter-spacing:2px;font-weight:300;text-transform:uppercase;font-family:'Open Sans'"">ARGENT</h1>
-                            <p class="pretty-font-header" style="color:#FFF;letter-spacing:2px;font-weight:100;text-transform:uppercase;">Payments for the mobile generation</p>
+                            <p class="pretty-font-header element" style="color:#FFF;letter-spacing:2px;font-weight:100;text-transform:uppercase;">Payments for the mobile generation</p>
                             <br>
                             <a href="https://itunes.apple.com/us/app/argent/id1110084542?mt=8" href><img height="50px" src="assets/img/icons/icon-app-store.png"></a>
                             <br class="visible-xs visible-sm">
@@ -324,7 +329,7 @@
                                     <img width="75" height="75" src="assets/img/icons/spark/clock.png" />
                                 </div>
                                 <div class="text">
-                                    <h4 class="pretty-font-header" style="font-weight:500">Easy Payments</h4>
+                                    <h4 class="pretty-font-header" style="font-weight:500">Virtual Payments</h4>
                                     <p class="pretty-font-header"><span>Accept one-time or repeating payments from your clients, members, tenants and more. Our customizable billing schedule allow any payment schedule with any time frame.</span></p>
                                 </div>
                             </div>
@@ -626,6 +631,7 @@
     </body>
 
     <script src="/assets/js/jquery.js"></script>
+    <script src="/assets/js/typed.js"></script>
     <script src="/assets/js/jquery-ui-1.10.4.custom.min.js"></script>
     <script src="/assets/js/bootstrap.js"></script>
     <script src="/assets/js/app.js"></script>
@@ -707,6 +713,15 @@
             });
         }
     </script>
+    <script>
+      $(function(){
+          $(".element").typed({
+            strings: ["PAYMENTS FOR THE MOBILE GENERATION"],
+            typeSpeed: 10
+          });
+      });
+    </script>
+
     <script type="text/javascript">
         $(document).ready(function(){
             /* Get iframe src attribute value i.e. YouTube video url

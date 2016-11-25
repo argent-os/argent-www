@@ -12,7 +12,7 @@
         <link href="../assets/css/bootstrap.css" rel="stylesheet" />
         <link href="../assets/css/landing-page.css" rel="stylesheet"/>
         <!--     Fonts and icons     -->
-        <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Hind:300,400,500" rel="stylesheet">
         <link href="../assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
         <link href="../assets/css/sweetalert.css" rel="stylesheet" />
@@ -110,7 +110,7 @@ background: linear-gradient(to bottom left, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), u
 background-size:cover;
 background: #10567F; /* fallback for old browsers */
 background: -webkit-linear-gradient(to bottom left, rgba(0,0,0,0.5) , rgba(0,0,0,0.5)), url(assets/img/cards/32.jpg) no-repeat center center fixed; /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to bottom left, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(assets/img/cards/32.jpg) no-repeat center center; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */""><a href class="white-link">Web Developers</a></h5>     
+background: linear-gradient(to bottom left, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(assets/img/cards/32.jpg) no-repeat center center; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */""><a href class="white-link">Freelancers</a></h5>     
                         </div>        
                         <div>
                             <h5 id="header" class="pretty-font col-md-4" style="line-height:2;background:white;padding:30px;border-radius:20px;color:white;font-weight:500;text-transform:uppercase;letter-spacing: 2px;padding:50px;border:10px solid white;
@@ -137,8 +137,8 @@ background: linear-gradient(to bottom left, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), u
                             <h5 id="header" class="pretty-font col-md-4" style="line-height:2;background:white;padding:30px;border-radius:20px;color:white;font-weight:500;text-transform:uppercase;letter-spacing: 2px;padding:50px;border:10px solid white;
 background-size:cover;
 background: #10567F; /* fallback for old browsers */
-background: -webkit-linear-gradient(to bottom left, rgba(0,0,0,0.5) , rgba(0,0,0,0.5)), url(assets/img/cards/26.jpg) no-repeat center center fixed; /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to bottom left, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(assets/img/cards/26.jpg) no-repeat center center; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */"">Outdoorsman</h5>     
+background: -webkit-linear-gradient(to bottom left, rgba(0,0,0,0.5) , rgba(0,0,0,0.5)), url(assets/img/cards/17.jpg) no-repeat center center fixed; /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to bottom left, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(assets/img/cards/17.jpg) no-repeat center center; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */"">Web Developers</h5>     
                         </div>    
                         <div>
                             <h5 id="header" class="pretty-font col-md-4" style="line-height:2;background:white;padding:30px;border-radius:20px;color:white;font-weight:500;text-transform:uppercase;letter-spacing: 2px;padding:50px;border:10px solid white;
@@ -199,10 +199,10 @@ background: linear-gradient(to bottom left, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), u
                 <div class="container text-center">
                     <div>
                         <button class="btn btn-simple btn-neutral hidden-xs">
-                            <span class="pretty-font-header" style="color:#334048;font-weight:600;">Using one we didn't think of? <a href="mailto:hello@argent-tech.com"><b> Drop us a line!<b></a></span>                        
+                            <span class="pretty-font-header" style="color:#334048;font-weight:600;">Let us know how we can help your business. <a href="mailto:hello@argent-tech.com"><b> Drop us a line!<b></a></span>                        
                         </button>
 
-                        <span class="pretty-font-header visible-xs" style="color:#334048;font-weight:600;">Using one we didn't think of? <a href="mailto:hello@argent-tech.com"><b> Drop us a line!<b></a></span>                        
+                        <span class="pretty-font-header visible-xs" style="color:#334048;font-weight:600;">Let us know how we can help your business. <a href="mailto:hello@argent-tech.com"><b> Drop us a line!<b></a></span>                        
                     </div>
                 </div>     
             </div>
@@ -365,4 +365,21 @@ background: linear-gradient(to bottom left, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), u
             });
         });
     </script>  
+    <script type="text/javascript">
+        mixpanel.track_links("#nav a", "nav link clicked", {
+            "referrer": document.referrer
+        });
+    </script>    
+    <script type="text/javascript">
+        $(document).ready(function(){
+                mixpanel.track(
+                    "Loaded Cases",
+                    {"status": "loaded"}
+                );
+        });
+    </script>       
+    <!-- start Mixpanel --><script type="text/javascript">(function(e,b){if(!b.__SV){var a,f,i,g;window.mixpanel=b;b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable time_event track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config reset people.set people.set_once people.increment people.append people.union people.track_charge people.clear_charges people.delete_user".split(" ");
+        for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2;a=e.createElement("script");a.type="text/javascript";a.async=!0;a.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"file:"===e.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";f=e.getElementsByTagName("script")[0];f.parentNode.insertBefore(a,f)}})(document,window.mixpanel||[]);
+        mixpanel.init("1f4fcfed7b7cd487fd3c3270e61476e6");
+    </script><!-- end Mixpanel -->    
 </html>                                  
