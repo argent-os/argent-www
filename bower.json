@@ -1,7 +1,7 @@
 {
-  "name": "timekloud-app",
+  "name": "argent-www-website",
   "version": "1.0.0-beta",
-  "description": "TimeKloud App",
+  "description": "App",
   "private": "true",
   "ignore": [
     "**/.*",
